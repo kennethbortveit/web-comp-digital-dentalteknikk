@@ -49,10 +49,13 @@ export default class Map extends DDComponent {
     }
 
     #createMap(container) {
+		L.Icon.Default.imagePath = './Dependencies/leaflet/images/'
         const map = L.map(container).setView([60.14, 10.25], 11)
         L.tileLayer(
             Map.#tileLayer.url, 
             Map.#tileLayer.props).addTo(map)
+        const marker = L.marker([59.91132, 10.7372501]).addTo(map)
+        map.flyTo(marker.getLatLng(), 13)
     }
 }
 
