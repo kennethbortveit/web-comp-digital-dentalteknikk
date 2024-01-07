@@ -31,7 +31,6 @@ export default class SelfProducedImplant extends DDComponent {
 	
 	connectedCallback() {
 		const content = this.#createContent()
-		const torontoBridge = this.#createTorontoBridge()
 		this.shadowRoot.appendChild(content)
 	}
 	
@@ -50,6 +49,10 @@ export default class SelfProducedImplant extends DDComponent {
 			this.#createDescriptions()
 		)
 		content.appendChild(descriptionBlock)
+		for(let picture of SelfProducedImplant.productImages) {
+			const pictureBlock = this.#createProductImage(picture)
+			content.appendChild(pictureBlock)
+		}
 		content.setAttribute('slot', 'content')
 		subSection.appendChild(content)
 		return subSection
@@ -129,6 +132,15 @@ export default class SelfProducedImplant extends DDComponent {
 		image.setAttribute('src', src)
 		image.setAttribute('alt', alt)
 		return image
+	}
+	
+	#createProductImage({src, alt}) {
+		const img = document.createElement('img')
+		img.setAttribute('src', src)
+		img.setAttribute('alt', alt)
+		const block = this.#createContentBlock(img)
+		return block
+		return img
 	}
 }
 
