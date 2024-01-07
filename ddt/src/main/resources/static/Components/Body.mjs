@@ -4,6 +4,7 @@ import About from './Sections/About.mjs'
 import Products from './Sections/Products.mjs'
 import DigitalProduction from "./Sections/DigitalProduction.mjs";
 import Contact from "./Sections/Contact.mjs";
+import SelfProducedImplant from "./Sections/SelfProducedImplant.mjs";
 
 export default class Body extends DDComponent {
     constructor() {
@@ -18,6 +19,9 @@ export default class Body extends DDComponent {
         container.appendChild(
             this.#createProducts()
         )
+        container.appendChild(
+			this.#createSelfProducedImplant()
+		)
         container.appendChild(
             this.#createDigitalProduction()
         )
@@ -71,6 +75,14 @@ export default class Body extends DDComponent {
         section.appendChild(contact)
         return section
     }
+    
+    #createSelfProducedImplant() {
+		const section = this.#createSection('Egenproduksjon implantater')
+		const selfProducesImplant = DDComponent.createElement(SelfProducedImplant)
+		selfProducesImplant.setAttribute('slot', 'content')
+		section.appendChild(selfProducesImplant)
+		return section
+	}
 
     #createSection(name) {
         const section = document.createElement(

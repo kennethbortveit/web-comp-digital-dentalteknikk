@@ -7,6 +7,7 @@ export default class Navigation extends DDComponent
         'Forsiden',
         'Om oss',
         'Produkter',
+        'Egenproduksjon implantater',
         'Digital produksjon',
         'Kontakt'
     ]
