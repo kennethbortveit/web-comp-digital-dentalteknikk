@@ -1,5 +1,5 @@
 import DDComponent from "../DDComponent.mjs";
-import H3 from '../Header/H3.mjs'
+import H3 from '../Heading/H3.mjs'
 
 export default class SubSection extends DDComponent {
     constructor() {

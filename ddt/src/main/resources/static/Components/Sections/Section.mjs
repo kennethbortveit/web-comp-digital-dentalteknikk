@@ -1,5 +1,5 @@
 import DDComponent from "../DDComponent.mjs"
-import H2 from '../Header/H2.mjs'
+import H2 from '../Heading/H2.mjs'
 
 export default class Section extends DDComponent {
     constructor() {

@@ -1,5 +1,4 @@
 import DDComponent from "../DDComponent.mjs";
-import Section from "./Section.mjs";
 import SubSection from "./SubSection.mjs";
 
 export default class SelfProducedImplant extends DDComponent {

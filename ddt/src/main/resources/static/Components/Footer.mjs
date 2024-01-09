@@ -1,5 +1,5 @@
 import DDComponent from "./DDComponent.mjs";
-import H4 from "./Header/H4.mjs";
+import H4 from "./Heading/H4.mjs";
 import Map from "./Map.mjs";
 
 export default class Footer extends DDComponent {

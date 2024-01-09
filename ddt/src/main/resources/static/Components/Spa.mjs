@@ -1,7 +1,7 @@
 import DDComponent from "./DDComponent.mjs";
 
 import Navigation from "./Navigation/Navigation.mjs";
-import H1 from './Header/H1.mjs'
+import H1 from './Heading/H1.mjs'
 import { pipe } from '../utils.mjs'
 import Body from './Body.mjs'
 import Footer from "./Footer.mjs";
