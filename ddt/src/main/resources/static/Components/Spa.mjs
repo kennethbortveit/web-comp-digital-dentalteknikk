@@ -1,7 +1,7 @@
 import DDComponent from "./DDComponent.mjs";
 
 import Navigation from "./Navigation/Navigation.mjs";
-import H1 from './Heading/H1.mjs'
+import Header from "./Header/Header.mjs";
 import { pipe } from '../utils.mjs'
 import Body from './Body.mjs'
 import Footer from "./Footer.mjs";
@@ -26,14 +26,9 @@ class Spa extends DDComponent
         this.shadowRoot.appendChild(this.#createFooter())
     }
 
-    #createHeader = () => pipe(
-        DDComponent.getComponentName,
-        document.createElement.bind(document),
-        e => {
-            e.setAttribute('text', 'Digital Dentalteknikk')
-            return e
-        }
-        )(H1)
+    #createHeader() {
+		return DDComponent.createElement(Header)
+	}
 
     #createNavigation = () => pipe(
         DDComponent.getComponentName,
