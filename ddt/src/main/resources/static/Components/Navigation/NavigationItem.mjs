@@ -2,12 +2,15 @@ import DDComponent from '../DDComponent.mjs'
 
 export default class NavigationItem extends DDComponent
 {
-    constructor()
-    {
+	#stylesheetUrl = './Componentes/Navigation'
+    constructor() {
         super()
     }
 
     connectedCallback() {
+		this.appendExternalStyleSheet(
+			'./Components/Navigation/NavigationItem.css'
+			)
         const container = this.#createContainer()
         const text = this.#createText()
         container.appendChild(text)

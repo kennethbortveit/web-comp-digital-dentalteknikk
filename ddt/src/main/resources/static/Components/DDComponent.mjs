@@ -18,9 +18,26 @@ export default class DDComponent extends HTMLElement
             .bind(document)(name)
         return element
     }
+    
+    static createStyleLink(url) {
+		const link = (document.createElement.bind(document))('link')
+		Object.assign(link, {
+			rel: 'stylesheet',
+			href: url
+		})
+		return link
+	}
 
     constructor() {
         super()
         this.attachShadow({mode: 'open'})
+        this.shadowRoot.appendChild(
+			DDComponent.createStyleLink('./index.css')
+		)
     }
+    
+    appendExternalStyleSheet(url) {
+		const link = DDComponent.createStyleLink(url)
+		this.shadowRoot.appendChild(link)
+	}
 }
