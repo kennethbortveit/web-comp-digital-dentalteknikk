@@ -9,6 +9,7 @@ import Footer from "./Footer.mjs";
 
 class Spa extends DDComponent
 {
+	#stylesheetUrl = './Components/Spa.css'
     constructor()
     {
         super()
@@ -16,18 +17,31 @@ class Spa extends DDComponent
 
     connectedCallback()
     {
-        this.shadowRoot.appendChild(this.#createNavigation())
-        this.shadowRoot.appendChild(this.#createHeader())
-        this.shadowRoot.appendChild(
-            document.createElement(
-                DDComponent.getComponentName(Body)
-            )
-        )
-        this.shadowRoot.appendChild(this.#createFooter())
+		this.appendExternalStyleSheet(this.#stylesheetUrl)
+		const container = this.#createContainer()
+		container.appendChild(
+			this.#createNavigation(),
+		)
+		container.appendChild(
+			this.#createHeader(),
+		)
+		container.appendChild(
+			DDComponent.createElement(Body),
+		)
+		container.appendChild(
+			this.#createFooter()
+		)
+        this.shadowRoot.appendChild(container)
     }
+    #createContainer() {
+		const container = document.createElement('div')
+		container.setAttribute('class', 'main-container')
+		return container
+	}
 
     #createHeader() {
-		return DDComponent.createElement(Header)
+		const header = DDComponent.createElement(Header)
+		return header;
 	}
 
     #createNavigation = () => pipe(

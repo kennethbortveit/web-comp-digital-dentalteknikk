@@ -12,26 +12,21 @@ export default class Header extends DDComponent {
 			alt: 'Mester og norges tanntekniker forbund logoer.'
 		}
 	}
+	
+	#stylesheetUrl = './Components/Header/Header.css'
 
 	constructor() {
 		super()
 	}
 	
 	connectedCallback() {
+		this.appendExternalStyleSheet(this.#stylesheetUrl)
 		const container = this.#createContainer()
-		const heading = this.#createHeading()
 		const logoImage = this.#createLogo()
 		const certificationImage = this.#createCertification()
-		container.appendChild(heading)
 		container.appendChild(logoImage)
 		container.appendChild(certificationImage)
 		this.shadowRoot.appendChild(container)
-	}
-	
-	#createHeading() {
-		const heading = DDComponent.createElement(H1)
-		heading.setAttribute('text', 'Digital Dentalteknikk')
-		return heading
 	}
 	
 	#createContainer() {
@@ -39,16 +34,22 @@ export default class Header extends DDComponent {
 	}
 	
 	#createLogo() {
+		const container = document.createElement('div')
 		const image = document.createElement('img')
+		container.setAttribute('class', 'ddt-logo')
 		image.setAttribute('src', Header.#images.logo.src)
 		image.setAttribute('alt', Header.#images.logo.alt)
-		return image
+		container.appendChild(image)
+		return container
 	}
 	
 	#createCertification() {
+		const container = document.createElement('div')
 		const image = document.createElement('img')
 		Object.assign(image, Header.#images.certification)
-		return image
+		container.appendChild(image)
+		container.setAttribute('class', 'ddt-certification')
+		return container
 	}
 }
 

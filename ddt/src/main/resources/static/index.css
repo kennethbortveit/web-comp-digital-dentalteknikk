@@ -1,4 +1,4 @@
-:host {
+:root {
 	--blue: #0000ff;
 	--white: #ffffff;
 	--black: #000000;
@@ -8,4 +8,15 @@
 	--spacing-small: 16px;
 	--spacing-medium: 32px;
 	--spacing-large: 64px;
+}
+
+html {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	margin: 0px;
+	padding-left: var(--spacing-medium);
+	padding-right: var(--spacing-medium);
 }
