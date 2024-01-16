@@ -1,4 +1,8 @@
+div {
+	color: var(--grey);
+}
 div:hover {
-	background-color: var(--grey);
 	cursor: pointer;
+	color: var(--white);
+	background-color: var(--blue);
 }

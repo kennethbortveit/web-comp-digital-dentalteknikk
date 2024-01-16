@@ -11,12 +11,15 @@ export default class Navigation extends DDComponent
         'Digital produksjon',
         'Kontakt'
     ]
+    
+    #stylesheetUrl = './Components/Navigation/Navigation.css'
 
     constructor() {
         super()
     }
 
     connectedCallback() {
+		this.appendExternalStyleSheet(this.#stylesheetUrl)
         const container = this.#createContainer()
         this.#appendItems(container)
         this.shadowRoot.appendChild(container)
@@ -24,6 +27,7 @@ export default class Navigation extends DDComponent
 
     #createContainer() {
         const div = document.createElement('div')
+        div.setAttribute('class', 'navigation-container')
         return div
     }
 

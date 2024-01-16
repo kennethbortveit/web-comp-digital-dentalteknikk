@@ -4,4 +4,8 @@
 	--black: #000000;
 	--red: #ff0000;
 	--grey: #e1e1e1;
+	
+	--spacing-small: 16px;
+	--spacing-medium: 32px;
+	--spacing-large: 64px;
 }
