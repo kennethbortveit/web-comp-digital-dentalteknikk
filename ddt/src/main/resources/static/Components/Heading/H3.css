@@ -1,0 +1,6 @@
+h3 {
+	text-align: center;
+	background-color: var(--black);
+	color: var(--white);
+	padding: var(--spacing-small);
+}

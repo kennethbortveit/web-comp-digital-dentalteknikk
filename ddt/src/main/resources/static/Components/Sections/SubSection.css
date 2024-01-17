@@ -1,0 +1,5 @@
+.sub-section-content {
+	background-color: var(--blue);
+	color: var(--white);
+	padding: var(--spacing-small);
+}

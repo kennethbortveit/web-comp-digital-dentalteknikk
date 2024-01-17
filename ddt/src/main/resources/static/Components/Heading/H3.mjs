@@ -3,10 +3,11 @@ import DDComponent from "../DDComponent.mjs";
 export default class H3 extends DDComponent {
     constructor() {
         super()
-        this.stylesheetUrl = './Components/Heading/H4.css'
+        this.stylesheetUrl = './Components/Heading/H3.css'
     }
 
     connectedCallback() {
+		this.appendExternalStyleSheet()
         const text = this.getAttribute('text')
         const textNode = document.createTextNode(text)
         const header = document.createElement('h3')
