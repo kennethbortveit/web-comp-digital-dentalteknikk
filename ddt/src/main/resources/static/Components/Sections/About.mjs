@@ -4,10 +4,13 @@ import SubSection from "./SubSection.mjs";
 export default class About extends DDComponent {
     constructor() {
         super()
+        this.stylesheetUrl = './Components/Sections/About.css'
     }
 
     connectedCallback() {
+		this.appendExternalStyleSheet()
         const container = this.#createContainer()
+        container.setAttribute('class', 'about-container')
         const history = this.#createHistory()
         container.appendChild(history)
         const purpose = this.#createPurpose()
