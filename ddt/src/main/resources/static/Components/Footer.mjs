@@ -17,6 +17,67 @@ export default class Footer extends DDComponent {
 		this.appendExternalStyleSheet()
         const container = document.createElement('div')
         container.setAttribute('class', 'footer-container')
+        const info = this.#createInfo()
+        const map = this.#createMap()
+        container.appendChild(info)
+        container.appendChild(map)
+        return container
+    }
+
+    #createInfoBlock(keyValuePairs) {
+        const container = document.createElement('div')
+        for(let pair of keyValuePairs) {
+            container.appendChild(
+                this.#createInfoPair(pair)
+            )
+        }
+        return container
+    } 
+
+    #createInfoPair(keyValuePair) {
+        const container = document.createElement('div')
+        container.setAttribute('class', 'footer-info-pair')
+        const label = this.#createInfoLabel(keyValuePair.label)
+        container.appendChild(label)
+        container.appendChild(keyValuePair.element)
+        return container
+    }
+
+    #createInfoLabel(text) {
+        const label = document.createElement('p')
+        label.setAttribute('class', 'footer-info-pair-label')
+        label.appendChild(
+            document.createTextNode(text)
+        )
+        return label
+    }
+
+    #createInfoText(text) {
+        const p = document.createElement('p')
+        p.appendChild(
+            document.createTextNode(text)
+        )
+        return p
+    }
+
+    #createFacebookLink() {
+        const image = document.createElement('img')
+        image.src = './Images/footer/Facebook_logo_2.svg'
+        image.alt = 'Facebook logo'
+        return image
+    }
+
+    #createMap() {
+		const container = document.createElement('div')
+		container.setAttribute('class', 'footer-map')
+        const map = DDComponent.createElement(Map)
+        container.appendChild(map)
+        return container
+    }
+    
+    #createInfo() {
+		const container = document.createElement('div')
+		container.setAttribute('class', 'footer-info')
         const header = DDComponent.createElement(H4)
         header.setAttribute('text', 'Digital Dentalteknikk')
         container.appendChild(header)
@@ -60,56 +121,8 @@ export default class Footer extends DDComponent {
             }
         ])
         container.appendChild(socialMediaInfoBlock)
-        const map = this.#createMap()
-        container.appendChild(map)
-        return container
-    }
-
-    #createInfoBlock(keyValuePairs) {
-        const container = document.createElement('div')
-        for(let pair of keyValuePairs) {
-            container.appendChild(
-                this.#createInfoPair(pair)
-            )
-        }
-        return container
-    } 
-
-    #createInfoPair(keyValuePair) {
-        const container = document.createElement('div')
-        const label = this.#createInfoLabel(keyValuePair.label)
-        container.appendChild(label)
-        container.appendChild(keyValuePair.element)
-        return container
-    }
-
-    #createInfoLabel(text) {
-        const label = document.createElement('label')
-        label.appendChild(
-            document.createTextNode(text)
-        )
-        return label
-    }
-
-    #createInfoText(text) {
-        const p = document.createElement('p')
-        p.appendChild(
-            document.createTextNode(text)
-        )
-        return p
-    }
-
-    #createFacebookLink() {
-        const image = document.createElement('img')
-        image.src = './Images/footer/Facebook_logo_2.svg'
-        image.alt = 'Facebook logo'
-        return image
-    }
-
-    #createMap() {
-        const map = DDComponent.createElement(Map)
-        return map
-    }
+		return container
+	}
 }
 
 DDComponent.define(Footer)
