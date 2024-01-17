@@ -29,6 +29,10 @@
 	margin: 0px;
 	padding: 0px;
 }
+.footer-info-pair > img {
+	width: var(--spacing-medium);
+	height: var(--spacing-medium);
+}
 .footer-info-pair-label {
 	color: var(--grey);
 }
