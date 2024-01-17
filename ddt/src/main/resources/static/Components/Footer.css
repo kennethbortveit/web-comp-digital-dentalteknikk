@@ -10,6 +10,9 @@
 .footer-info {
 	flex-basis: 0px;
 	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-medium);
 }
 
 .footer-map {
@@ -19,7 +22,18 @@
 
 .footer-info-pair {
 	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.footer-info-pair > p {
+	margin: 0px;
+	padding: 0px;
 }
 .footer-info-pair-label {
 	color: var(--grey);
+}
+.info-block {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-small);
 }

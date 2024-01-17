@@ -26,6 +26,7 @@ export default class Footer extends DDComponent {
 
     #createInfoBlock(keyValuePairs) {
         const container = document.createElement('div')
+        container.setAttribute('class', 'info-block')
         for(let pair of keyValuePairs) {
             container.appendChild(
                 this.#createInfoPair(pair)
