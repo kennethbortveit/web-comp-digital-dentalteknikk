@@ -12,12 +12,14 @@ export default class Map extends DDComponent {
         css: './Dependencies/leaflet/leaflet.css',
         js: './Dependencies/leaflet/leaflet.js'
     }
-
+    
     constructor() {
         super()
+        this.stylesheetUrl = './Components/Map.css'
     }
 
     connectedCallback() {
+		this.appendExternalStyleSheet()
         const mapStyles = this.#createMapStylesLink()
         this.shadowRoot.appendChild(mapStyles)
         const container = this.#createContainer()
@@ -43,8 +45,6 @@ export default class Map extends DDComponent {
     #createContainer() {
         const container = document.createElement('div')
         container.setAttribute('id', Map.#containerId)
-        container.style.height = '400px'
-        container.style.width = '600px'
         return container
     }
 

@@ -42,7 +42,7 @@ export default class DDComponent extends HTMLElement
 		if(url) {
 			const link = DDComponent.createStyleLink(url)
 			this.shadowRoot.appendChild(link)
-		} else {
+		} else if(this.stylesheetUrl) {
 			this.shadowRoot.appendChild(
 				DDComponent.createStyleLink(
 					this.stylesheetUrl

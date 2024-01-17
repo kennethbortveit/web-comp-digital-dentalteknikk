@@ -14,7 +14,7 @@
 
 .footer-map {
 	flex-basis: 0px;
-	flex-grow: 0;
+	flex-grow: 1;
 }
 
 .footer-info-pair {
