@@ -3,8 +3,10 @@ import { pipe } from '../../utils.mjs'
 
 
 export default class H1 extends DDComponent {
+
     constructor() {
         super()
+        this.stylesheetUrl = './Components/Heading/H1.css'
     }
 
     connectedCallback() {

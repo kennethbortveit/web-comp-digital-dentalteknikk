@@ -27,6 +27,8 @@ export default class DDComponent extends HTMLElement
 		})
 		return link
 	}
+	
+	stylesheetUrl = ''
 
     constructor() {
         super()
@@ -37,7 +39,15 @@ export default class DDComponent extends HTMLElement
     }
     
     appendExternalStyleSheet(url) {
-		const link = DDComponent.createStyleLink(url)
-		this.shadowRoot.appendChild(link)
+		if(url) {
+			const link = DDComponent.createStyleLink(url)
+			this.shadowRoot.appendChild(link)
+		} else {
+			this.shadowRoot.appendChild(
+				DDComponent.createStyleLink(
+					this.stylesheetUrl
+				)
+			)
+		}
 	}
 }
