@@ -5,6 +5,7 @@ import Map from "./Map.mjs";
 export default class Footer extends DDComponent {
     constructor() {
         super()
+        this.stylesheetUrl = './Components/Footer.css'
     }
 
     connectedCallback() {
@@ -13,8 +14,9 @@ export default class Footer extends DDComponent {
     }
 
     #createContainer() {
+		this.appendExternalStyleSheet()
         const container = document.createElement('div')
-
+        container.setAttribute('class', 'footer-container')
         const header = DDComponent.createElement(H4)
         header.setAttribute('text', 'Digital Dentalteknikk')
         container.appendChild(header)
