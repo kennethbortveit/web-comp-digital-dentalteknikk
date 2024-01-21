@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ddt-deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: ddt
+  template:
+    metadata:
+      labels:
+        app: ddt
+    spec:
+      containers:
+      - image: docker.io/kennethhaugen/ddt:latest
+        name: ddt
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 200m
+            memory: 500Mi
