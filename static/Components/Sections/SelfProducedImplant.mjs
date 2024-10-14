@@ -4,23 +4,23 @@ import SubSection from "./SubSection.mjs";
 export default class SelfProducedImplant extends DDComponent {
 	static productImages = [
 		{
-			src: './Images/self-produced-implant/1.png',
+			src: './static/Images/self-produced-implant/1.png',
 			alt: 'Createch Medical hybrid abutment'
 		},
 		{
-			src: './Images/self-produced-implant/2.png',
+			src: './static/Images/self-produced-implant/2.png',
 			alt: 'Gingival porselen'
 		},
 		{
-			src: './Images/self-produced-implant/3.png',
+			src: './static/Images/self-produced-implant/3.png',
 			alt: 'Ivoclar ZirCad Prime C 3 monolittiske broer'
 		},
 		{
-			src: './Images/self-produced-implant/4.png',
+			src: './static/Images/self-produced-implant/4.png',
 			alt: 'Semanterte broer'
 		},
 		{
-			src: './Images/self-produced-implant/5.png',
+			src: './static/Images/self-produced-implant/5.png',
 			alt: 'Klinisk foto'
 		},
 	]
@@ -68,35 +68,35 @@ export default class SelfProducedImplant extends DDComponent {
 			{
 				text: 'Createch Medical hybrid abutment',
 				image: {
-					src: './Images/products/1_tall_fet.svg',
+					src: './static/Images/products/1_tall_fet.svg',
 					alt: 'Tallet 1'
 				}
 			},
 			{
 				text: 'Gingival porselen',
 				image: {
-					src: './Images/products/2_tall_fet.svg',
+					src: './static/Images/products/2_tall_fet.svg',
 					alt: 'Tallet 2'
 				}
 			},
 			{
 				text: 'Ivoclar ZirCad Prime C 3 monolittiske broer',
 				image: {
-					src: './Images/products/3_tall_fet.svg',
+					src: './static/Images/products/3_tall_fet.svg',
 					alt: 'Tallet 3'
 				}
 			},
 			{
 				text: 'Sementerte broer',
 				image: {
-					src: './Images/products/4_tall_fet.svg',
+					src: './static/Images/products/4_tall_fet.svg',
 					alt: 'Tallet 4'
 				}
 			},
 			{
 				text: 'Klinisk foto',
 				image: {
-					src: './Images/products/5_tall_fet.svg',
+					src: './static/Images/products/5_tall_fet.svg',
 					alt: 'Tallet 5'
 				}
 			},

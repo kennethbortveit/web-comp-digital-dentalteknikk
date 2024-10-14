@@ -6,7 +6,7 @@ export default class H1 extends DDComponent {
 
     constructor() {
         super()
-        this.stylesheetUrl = './Components/Heading/H1.css'
+        this.stylesheetUrl = './static/Components/Heading/H1.css'
     }
 
     connectedCallback() {

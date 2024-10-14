@@ -12,14 +12,14 @@ export default class Navigation extends DDComponent
         'Kontakt'
     ]
     
-    #stylesheetUrl = './Components/Navigation/Navigation.css'
+    #stylesheetUrl = './static/Components/Navigation/Navigation.css'
 
     constructor() {
         super()
     }
 
     connectedCallback() {
-		this.appendExternalStyleSheet(this.#stylesheetUrl)
+	this.appendExternalStyleSheet(this.#stylesheetUrl)
         const container = this.#createContainer()
         this.#appendItems(container)
         this.shadowRoot.appendChild(container)

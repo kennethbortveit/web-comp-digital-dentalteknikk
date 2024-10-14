@@ -4,7 +4,7 @@ import H3 from '../Heading/H3.mjs'
 export default class SubSection extends DDComponent {
     constructor() {
         super()
-        this.stylesheetUrl = './Components/Sections/SubSection.css'
+        this.stylesheetUrl = './static/Components/Sections/SubSection.css'
     }
 
     connectedCallback() {

@@ -4,15 +4,15 @@ import SubSection from "./SubSection.mjs";
 export default class DigitalProduction extends DDComponent {
     static #images = [
         {
-            src: './Images/digital-production/6.png', 
+            src: './static/Images/digital-production/6.png', 
             alt: ''
         },
         {
-            src: './Images/digital-production/7.png',
+            src: './static/Images/digital-production/7.png',
             alt: ''
         },
         {
-            src: './Images/digital-production/8.png',
+            src: './static/Images/digital-production/8.png',
             alt: ''
         }
     ]

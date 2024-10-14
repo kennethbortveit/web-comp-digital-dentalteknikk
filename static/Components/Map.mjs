@@ -3,19 +3,19 @@ import DDComponent from "./DDComponent.mjs";
 export default class Map extends DDComponent {
     static #containerId = 'dd-map' 
     static #tileLayer = {
-        url: 'https://opencache.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo4&zoom={z}&x={x}&y={y}',
+        url: 'https://cache.kartverket.no/v1/wmts/1.0.0/topo/default/webmercator/{z}/{y}/{x}.png',
         props: {
-            attribution: '<a href="http://www.kartverket.no/">Kartverket</a>'
+            attribution: '&copy; <a href="http://www.kartverket.no/">Kartverket</a>'
         }
     }
     static leaflet = {
-        css: './Dependencies/leaflet/leaflet.css',
-        js: './Dependencies/leaflet/leaflet.js'
+        css: './static/Dependencies/leaflet/leaflet.css',
+        js: './static/Dependencies/leaflet/leaflet.js'
     }
     
     constructor() {
         super()
-        this.stylesheetUrl = './Components/Map.css'
+        this.stylesheetUrl = './static/Components/Map.css'
     }
 
     connectedCallback() {
@@ -49,7 +49,7 @@ export default class Map extends DDComponent {
     }
 
     #createMap(container) {
-		L.Icon.Default.imagePath = './Dependencies/leaflet/images/'
+		L.Icon.Default.imagePath = './static/Dependencies/leaflet/images/'
         const map = L.map(container).setView([60.14, 10.25], 11)
         L.tileLayer(
             Map.#tileLayer.url, 
