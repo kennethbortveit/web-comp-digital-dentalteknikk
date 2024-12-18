@@ -3,7 +3,7 @@ import DDComponent from "../DDComponent.mjs";
 export default class H4 extends DDComponent {
     constructor() {
         super()
-        this.stylesheetUrl = './static/Components/Heading/H4.css'
+        this.stylesheetUrl = './Components/Heading/H4.css'
     }
 
     connectedCallback() {

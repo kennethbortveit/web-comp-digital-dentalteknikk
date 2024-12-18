@@ -12,7 +12,7 @@ export default class Navigation extends DDComponent
         'Kontakt'
     ]
     
-    #stylesheetUrl = './static/Components/Navigation/Navigation.css'
+    #stylesheetUrl = './Components/Navigation/Navigation.css'
 
     constructor() {
         super()

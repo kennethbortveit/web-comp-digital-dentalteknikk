@@ -4,23 +4,23 @@ import SubSection from "./SubSection.mjs";
 export default class Products extends DDComponent {
     static #productImages = [
         {
-            src: './static/Images/products/1_p.png',
+            src: './Images/products/1_p.png',
             alt: 'Fast protetikk'
         },
         {
-            src: './static/Images/products/2_p.png',
+            src: './Images/products/2_p.png',
             alt: 'Avtagbar protetikk'
         },
         {
-            src: './static/Images/products/3_p.png',
+            src: './Images/products/3_p.png',
             alt: 'Implantatretinert protetikk'
         },
         {
-            src: './static/Images/products/4_p.png',
+            src: './Images/products/4_p.png',
             alt: 'Kombinasjons protetikk'
         },
         {
-            src: './static/Images/products/5_p.png',
+            src: './Images/products/5_p.png',
             alt: 'Fargeuttak/Innprøving'
         }
     ]
@@ -72,28 +72,28 @@ export default class Products extends DDComponent {
             {
                 text: 'Fast protetikk',
                 image: {
-                    src: './static/Images/products/1_tall_fet.svg',
+                    src: './Images/products/1_tall_fet.svg',
                     alt: 'Nummer 1.'
                 }
             },
             {
                 text: 'Avtagbar protetikk',
                 image: {
-                    src: './static/Images/products/2_tall_fet.svg',
+                    src: './Images/products/2_tall_fet.svg',
                     alt: 'Nummer 2.'
                 }
             },
             {
                 text: 'Implantatretinert protetikk',
                 image: {
-                    src: './static/Images/products/3_tall_fet.svg',
+                    src: './Images/products/3_tall_fet.svg',
                     alt: 'Nummer 3.'
                 }
             },
             {
                 text: 'Kombinasjons protetikk',
                 image: {
-                    src: './static/Images/products/4_tall_fet.svg',
+                    src: './Images/products/4_tall_fet.svg',
                     alt: 'Nummer 4.'
                 }
             },
@@ -101,7 +101,7 @@ export default class Products extends DDComponent {
                 text: 'Fargeuttak/Innprøving',
                 image: {
                     alt: 'Nummer 5.',
-                    src: './static/Images/products/5_tall_fet.svg'
+                    src: './Images/products/5_tall_fet.svg'
                 }
             }
         ]

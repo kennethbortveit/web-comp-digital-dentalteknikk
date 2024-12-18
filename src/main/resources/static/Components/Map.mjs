@@ -9,13 +9,13 @@ export default class Map extends DDComponent {
         }
     }
     static leaflet = {
-        css: './static/Dependencies/leaflet/leaflet.css',
-        js: './static/Dependencies/leaflet/leaflet.js'
+        css: './Dependencies/leaflet/leaflet.css',
+        js: './Dependencies/leaflet/leaflet.js'
     }
     
     constructor() {
         super()
-        this.stylesheetUrl = './static/Components/Map.css'
+        this.stylesheetUrl = './Components/Map.css'
     }
 
     connectedCallback() {
@@ -49,7 +49,7 @@ export default class Map extends DDComponent {
     }
 
     #createMap(container) {
-		L.Icon.Default.imagePath = './static/Dependencies/leaflet/images/'
+		L.Icon.Default.imagePath = './Dependencies/leaflet/images/'
         const map = L.map(container).setView([60.14, 10.25], 11)
         L.tileLayer(
             Map.#tileLayer.url, 

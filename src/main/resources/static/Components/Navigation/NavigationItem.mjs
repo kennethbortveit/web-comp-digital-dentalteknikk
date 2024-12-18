@@ -2,7 +2,7 @@ import DDComponent from '../DDComponent.mjs'
 
 export default class NavigationItem extends DDComponent
 {
-	#stylesheetUrl = './static/Components/Navigation/NavigationItem.css'
+	#stylesheetUrl = './Components/Navigation/NavigationItem.css'
 	constructor() {
 		super()
 	}

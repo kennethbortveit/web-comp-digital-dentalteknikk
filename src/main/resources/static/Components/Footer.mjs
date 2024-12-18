@@ -5,7 +5,7 @@ import Map from "./Map.mjs";
 export default class Footer extends DDComponent {
     constructor() {
         super()
-        this.stylesheetUrl = './static/Components/Footer.css'
+        this.stylesheetUrl = './Components/Footer.css'
     }
 
     connectedCallback() {
@@ -63,7 +63,7 @@ export default class Footer extends DDComponent {
 
     #createFacebookLink() {
         const image = document.createElement('img')
-        image.src = './static/Images/footer/Facebook_logo_2.svg'
+        image.src = './Images/footer/Facebook_logo_2.svg'
         image.alt = 'Facebook logo'
         return image
     }

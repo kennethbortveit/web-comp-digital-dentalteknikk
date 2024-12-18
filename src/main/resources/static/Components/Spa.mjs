@@ -9,7 +9,7 @@ import Footer from "./Footer.mjs";
 
 class Spa extends DDComponent
 {
-	#stylesheetUrl = './static/Components/Spa.css'
+	#stylesheetUrl = './Components/Spa.css'
     constructor()
     {
         super()

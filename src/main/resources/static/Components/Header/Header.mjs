@@ -4,16 +4,16 @@ import H1 from "../Heading/H1.mjs";
 export default class Header extends DDComponent {
 	static #images = {
 		logo: {
-			src: './static/Images/front-page/dd-logo.svg',
+			src: './Images/front-page/dd-logo.svg',
 			alt: 'Digital Dentalteknikk logo.'
 		},
 		certification: {
-			src: './static/Images/front-page/mester-logo.svg',
+			src: './Images/front-page/mester-logo.svg',
 			alt: 'Mester og norges tanntekniker forbund logoer.'
 		}
 	}
 	
-	#stylesheetUrl = './static/Components/Header/Header.css'
+	#stylesheetUrl = './Components/Header/Header.css'
 
 	constructor() {
 		super()

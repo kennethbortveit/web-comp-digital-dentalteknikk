@@ -34,7 +34,7 @@ export default class DDComponent extends HTMLElement
         super()
         this.attachShadow({mode: 'open'})
         this.shadowRoot.appendChild(
-			DDComponent.createStyleLink('./static/index.css')
+			DDComponent.createStyleLink('./index.css')
 		)
     }
     

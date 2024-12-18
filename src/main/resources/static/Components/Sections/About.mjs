@@ -4,7 +4,7 @@ import SubSection from "./SubSection.mjs";
 export default class About extends DDComponent {
     constructor() {
         super()
-        this.stylesheetUrl = './static/Components/Sections/About.css'
+        this.stylesheetUrl = './Components/Sections/About.css'
     }
 
     connectedCallback() {
