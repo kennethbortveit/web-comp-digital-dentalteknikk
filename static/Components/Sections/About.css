@@ -1,0 +1,10 @@
+.about-container {
+	display: flex;
+	justify-content: space-between;
+	gap: var(--spacing-medium);
+}
+
+.about-container > dd-subsection {
+	flex-basis: 0px;
+	flex-grow: 1;
+}

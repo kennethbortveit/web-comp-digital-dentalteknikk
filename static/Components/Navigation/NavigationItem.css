@@ -1,0 +1,9 @@
+div {
+	color: var(--grey);
+	padding: var(--spacing-small);
+}
+div:hover {
+	cursor: pointer;
+	color: var(--white);
+	background-color: var(--blue);
+}
