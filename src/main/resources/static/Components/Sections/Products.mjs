@@ -30,6 +30,13 @@ export default class Products extends DDComponent {
     }
 
     connectedCallback() {
+		this.applyStyles(`
+			.product-content {
+				display: grid;
+				grid-template-columns: auto auto auto;
+				gap: var(--spacing-small);
+			}
+			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
         this.shadowRoot.appendChild(subSection)
     }

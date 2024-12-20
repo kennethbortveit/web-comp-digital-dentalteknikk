@@ -38,7 +38,7 @@ export default class DDComponent extends HTMLElement
 		)
     }
 	
-	appendStyles(styles) {
+	applyStyles(styles) {
 		const e = document.createElement('style')
 		e.innerHTML = styles
 		this.shadowRoot.appendChild(e)
