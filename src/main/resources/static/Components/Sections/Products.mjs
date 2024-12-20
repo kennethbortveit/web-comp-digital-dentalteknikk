@@ -48,6 +48,7 @@ export default class Products extends DDComponent {
 
     #createProductContent() {
         const content = document.createElement('div')
+		content.classList.add('product-content')
         const description = this.#createProductBlock(
             this.#createProductDescription()
         )
