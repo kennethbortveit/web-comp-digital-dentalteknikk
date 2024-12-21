@@ -32,6 +32,12 @@ export default class Contact extends DDComponent {
 		.name-input {
 			grid-area: name-input;
 		}
+		.phone-label {
+			grid-area: phone-label;
+		}
+		.phone-input {
+			grid-area: phone-input;
+		}
 		.captcha-input {
 			grid-area: captcha-input;
 		}
@@ -52,6 +58,8 @@ export default class Contact extends DDComponent {
 		form.appendChild(this.#createInquiryInput())
 		form.appendChild(this.#createNameLabel())
 		form.appendChild(this.#createNameInput())
+		form.appendChild(this.#createPhoneLabel())
+		form.appendChild(this.#createPhoneInput())
 		form.appendChild(this.#createCaptcha())
 		form.appendChild(this.#createSendButton())
         return form
@@ -78,6 +86,18 @@ export default class Contact extends DDComponent {
 		const c = document.createElement('div')
 		c.classList.add('name-input')
 		const i = this.#createTextInput('name-input')
+		c.appendChild(i)
+		return c
+	}
+	#createPhoneLabel() {
+		const l = this.#createLabel('Telefonnummer:', 'contact-phone')
+		l.classList.add('phone-label')
+		return l
+	}
+	#createPhoneInput() {
+		const c = document.createElement('div')
+		c.classList.add('phone-input')
+		const i = this.#createTextInput('phone-input')
 		c.appendChild(i)
 		return c
 	}
