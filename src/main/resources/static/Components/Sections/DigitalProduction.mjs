@@ -16,11 +16,33 @@ export default class DigitalProduction extends DDComponent {
             alt: ''
         }
     ]
+	static styles = `
+		.digital-production-container {
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.digital-production-images {
+			display: flex;
+			gap: var(--spacing-small);
+		}
+		
+		.digital-production-image {
+			flex-grow: 1;
+			flex-basis: 0;
+		}
+		
+		.digital-production-image > img {
+			width: 100%;
+		}
+		
+	`
     constructor() {
         super()
     }
 
     connectedCallback() {
+		this.applyStyles(DigitalProduction.styles)
         const subSection = document.createElement(
             DDComponent.getComponentName(SubSection)
         )
@@ -34,6 +56,7 @@ export default class DigitalProduction extends DDComponent {
 
     #createContent() {
         const container = document.createElement('div')
+		container.classList.add('digital-production-container')
         const images = this.#createImages()
         container.appendChild(images)
         const information = this.#createInformation()
@@ -51,18 +74,22 @@ export default class DigitalProduction extends DDComponent {
 
     #createImages() {
         const container = document.createElement('div')
-        DigitalProduction.#images.forEach(function(image) {
+		container.classList.add('digital-production-images')
+        DigitalProduction.#images.forEach(image => {
             const block = this.#createImageBlock(image)
             container.appendChild(block)
-        }.bind(this))
+        })
         return container
     }
 
     #createImageBlock(imageData) {
+		const c = document.createElement('div')
+		c.classList.add('digital-production-image')
         const image = document.createElement('img')
         image.src = imageData.src
         image.alt = imageData.alt
-        return image
+		c.appendChild(image)
+        return c
     }
 
 }
