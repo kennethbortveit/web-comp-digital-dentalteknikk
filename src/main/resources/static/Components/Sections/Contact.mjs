@@ -56,6 +56,12 @@ export default class Contact extends DDComponent {
 		.reply-type-input {
 			grid-area: reply-type-input;
 		}
+		.message-label {
+			grid-area: message-label;
+		}
+		.message-input {
+			grid-area: message-input;
+		}
 	`
 
     connectedCallback() {
@@ -76,6 +82,8 @@ export default class Contact extends DDComponent {
 		form.appendChild(this.#createEmailInput())
 		form.appendChild(this.#createReplyTypeLabel())
 		form.appendChild(this.#createReplyTypeInput())
+		form.appendChild(this.#createMessageLabel())
+		form.appendChild(this.#createMessageInput())
 		form.appendChild(this.#createCaptcha())
 		form.appendChild(this.#createSendButton())
         return form
@@ -130,7 +138,7 @@ export default class Contact extends DDComponent {
 		return c
 	}
 	#createReplyTypeLabel() {
-		const l = this.#createLabel('Jeg ønsker å kontaktes på:', 'reply-type-label')
+		const l = this.#createLabel('Jeg ønsker å kontaktes på:', 'reply-type-input')
 		l.classList.add('reply-type-label')
 		return l
 	}
@@ -141,6 +149,18 @@ export default class Contact extends DDComponent {
 		c.appendChild(i)
 		return c
 	}
+	#createMessageLabel() {
+		const l = this.#createLabel('Melding', 'message-input')
+		l.classList.add('message-label')
+		return l
+	}
+	#createMessageInput() {
+		const c = document.createElement('div')
+		c.classList.add('message-input')
+		const i = this.#createTextarea('message-input')
+		c.appendChild(i)
+		return c
+	}	
 	#createLabel(text, labelFor) {
 		const l = document.createElement('label')
 		l.setAttribute('for', labelFor)
@@ -154,7 +174,12 @@ export default class Contact extends DDComponent {
 		i.setAttribute('name', id)
 		return i
 	}
-	
+	#createTextarea(id) {
+		const t = document.createElement('textarea')
+		t.setAttribute('id', id)
+		t.setAttribute('name', id)
+		return t
+	}
 	#createCaptcha() {
 		const c = document.createElement('div')
 		c.classList.add('captcha-input')
