@@ -32,7 +32,7 @@ export default class SelfProducedImplant extends DDComponent {
 		}
 		.product-container {
 			display: grid;
-			grid-template-columns: auto auto auto;
+			grid-template-columns: 1fr 1fr 1fr;
 			gap: var(--spacing-small);
 		}
 		.product-image {

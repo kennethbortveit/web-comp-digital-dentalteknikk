@@ -33,7 +33,7 @@ export default class Products extends DDComponent {
 		this.applyStyles(`
 			.product-content {
 				display: grid;
-				grid-template-columns: auto auto auto;
+				grid-template-columns: 1fr 1fr 1fr;
 				gap: var(--spacing-small);
 			}
 			.product-description-item {
