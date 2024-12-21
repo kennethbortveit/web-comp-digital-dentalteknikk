@@ -72,6 +72,8 @@ export default class Contact extends DDComponent {
 
     #createForm() {
         const form = document.createElement('form')
+		form.setAttribute('action', '/receive-contact-form')
+		form.setAttribute('method', 'post')
 		form.appendChild(this.#createInquiryLabel())
 		form.appendChild(this.#createInquiryInput())
 		form.appendChild(this.#createNameLabel())
