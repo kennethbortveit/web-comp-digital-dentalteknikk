@@ -36,6 +36,11 @@ export default class Products extends DDComponent {
 				grid-template-columns: auto auto auto;
 				gap: var(--spacing-small);
 			}
+			.product-description-item {
+				display: flex;
+				justify-content: flex-start;
+				gap: var(--spacing-small)
+			}
 			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
         this.shadowRoot.appendChild(subSection)
@@ -115,6 +120,7 @@ export default class Products extends DDComponent {
         ]
         descriptons.forEach(desc => {
             const item = document.createElement('li')
+			item.classList.add('product-description-item')
             const p = document.createElement('p')
             const textNode = document.createTextNode(desc.text)
             p.appendChild(textNode)
