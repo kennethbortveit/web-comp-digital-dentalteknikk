@@ -44,6 +44,12 @@ export default class Contact extends DDComponent {
 		.contact-send-button {
 			grid-area: send-button;
 		}
+		.email-label {
+			grid-area: email-label;
+		}
+		.email-input {
+			grid-area: email-input;
+		}
 	`
 
     connectedCallback() {
@@ -60,6 +66,8 @@ export default class Contact extends DDComponent {
 		form.appendChild(this.#createNameInput())
 		form.appendChild(this.#createPhoneLabel())
 		form.appendChild(this.#createPhoneInput())
+		form.appendChild(this.#createEmailLabel())
+		form.appendChild(this.#createEmailInput())
 		form.appendChild(this.#createCaptcha())
 		form.appendChild(this.#createSendButton())
         return form
@@ -98,6 +106,18 @@ export default class Contact extends DDComponent {
 		const c = document.createElement('div')
 		c.classList.add('phone-input')
 		const i = this.#createTextInput('phone-input')
+		c.appendChild(i)
+		return c
+	}
+	#createEmailLabel() {
+		const l = this.#createLabel('Epost:', 'email-input')
+		l.classList.add('email-label')
+		return l
+	}
+	#createEmailInput() {
+		const c = document.createElement('div')
+		c.classList.add('email-input')
+		const i = this.#createTextInput('email-input')
 		c.appendChild(i)
 		return c
 	}
