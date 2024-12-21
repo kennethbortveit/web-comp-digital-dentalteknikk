@@ -72,7 +72,7 @@ export default class Contact extends DDComponent {
 
     #createForm() {
         const form = document.createElement('form')
-		form.setAttribute('action', '/receive-contact-form')
+		form.setAttribute('action', '/api/contact/receive-contact-form')
 		form.setAttribute('method', 'post')
 		form.appendChild(this.#createInquiryLabel())
 		form.appendChild(this.#createInquiryInput())
@@ -99,7 +99,7 @@ export default class Contact extends DDComponent {
 	#createInquiryInput() {
 		const c = document.createElement('div')
 		c.classList.add('inquiry-input')
-		const i = this.#createTextInput('inquiry-input')
+		const i = this.#createTextInput('inquiry-input', 'inquiry')
 		c.appendChild(i)
 		return c
 	}	
@@ -111,7 +111,7 @@ export default class Contact extends DDComponent {
 	#createNameInput() {
 		const c = document.createElement('div')
 		c.classList.add('name-input')
-		const i = this.#createTextInput('name-input')
+		const i = this.#createTextInput('name-input', 'name')
 		c.appendChild(i)
 		return c
 	}
@@ -123,7 +123,7 @@ export default class Contact extends DDComponent {
 	#createPhoneInput() {
 		const c = document.createElement('div')
 		c.classList.add('phone-input')
-		const i = this.#createTextInput('phone-input')
+		const i = this.#createTextInput('phone-input', 'phone')
 		c.appendChild(i)
 		return c
 	}
@@ -135,7 +135,7 @@ export default class Contact extends DDComponent {
 	#createEmailInput() {
 		const c = document.createElement('div')
 		c.classList.add('email-input')
-		const i = this.#createTextInput('email-input')
+		const i = this.#createTextInput('email-input', 'email')
 		c.appendChild(i)
 		return c
 	}
@@ -147,7 +147,7 @@ export default class Contact extends DDComponent {
 	#createReplyTypeInput() {
 		const c = document.createElement('div')
 		c.classList.add('reply-type-input')
-		const i = this.#createTextInput('reply-type-input')
+		const i = this.#createTextInput('reply-type-input', 'replyType')
 		c.appendChild(i)
 		return c
 	}
@@ -159,7 +159,7 @@ export default class Contact extends DDComponent {
 	#createMessageInput() {
 		const c = document.createElement('div')
 		c.classList.add('message-input')
-		const i = this.#createTextarea('message-input')
+		const i = this.#createTextarea('message-input', 'message')
 		c.appendChild(i)
 		return c
 	}	
@@ -169,17 +169,17 @@ export default class Contact extends DDComponent {
 		l.textContent = text
 		return l
 	}
-	#createTextInput(id) {
+	#createTextInput(id, name) {
 		const i = document.createElement('input')
 		i.setAttribute('type', 'text')
 		i.setAttribute('id', id)
-		i.setAttribute('name', id)
+		i.setAttribute('name', name)
 		return i
 	}
-	#createTextarea(id) {
+	#createTextarea(id, name) {
 		const t = document.createElement('textarea')
 		t.setAttribute('id', id)
-		t.setAttribute('name', id)
+		t.setAttribute('name', name)
 		return t
 	}
 	#createCaptcha() {
