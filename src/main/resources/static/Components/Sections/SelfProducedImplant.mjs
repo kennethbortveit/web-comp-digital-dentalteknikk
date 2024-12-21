@@ -24,11 +24,27 @@ export default class SelfProducedImplant extends DDComponent {
 			alt: 'Klinisk foto'
 		},
 	]
+	static styles = `
+		.product-description-item {
+			display: flex;
+			justify-content: flex-start;
+			gap: var(--spacing-small);
+		}
+		.product-container {
+			display: grid;
+			grid-template-columns: auto auto auto;
+			gap: var(--spacing-small);
+		}
+		.product-image {
+			width: 100%;
+		}
+	`
 	constructor() {
 		super()
 	}
 	
 	connectedCallback() {
+		this.applyStyles(SelfProducedImplant.styles)
 		const content = this.#createContent()
 		this.shadowRoot.appendChild(content)
 	}
@@ -44,6 +60,7 @@ export default class SelfProducedImplant extends DDComponent {
 		const subSection = DDComponent.createElement(SubSection)
 		subSection.setAttribute('name', 'Toronto bridge')
 		const content = document.createElement('div')
+		content.classList.add('product-container')
 		const descriptionBlock = this.#createContentBlock(
 			this.#createDescriptions()
 		)
@@ -111,6 +128,7 @@ export default class SelfProducedImplant extends DDComponent {
 	
 	#createDescriptionItem(data) {
 		const item = document.createElement('li')
+		item.classList.add('product-description-item')
 		const text = this.#createDescriptionText(data.text)
 		const image = this.#createDescriptionImage(data)
 		item.appendChild(text)
@@ -135,6 +153,7 @@ export default class SelfProducedImplant extends DDComponent {
 	
 	#createProductImage({src, alt}) {
 		const img = document.createElement('img')
+		img.classList.add('product-image')
 		img.setAttribute('src', src)
 		img.setAttribute('alt', alt)
 		const block = this.#createContentBlock(img)
