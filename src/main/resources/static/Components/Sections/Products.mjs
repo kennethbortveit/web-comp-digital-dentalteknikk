@@ -41,6 +41,9 @@ export default class Products extends DDComponent {
 				justify-content: flex-start;
 				gap: var(--spacing-small)
 			}
+			.product-image > img {
+				width: 100%;
+			}
 			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
         this.shadowRoot.appendChild(subSection)
@@ -75,6 +78,7 @@ export default class Products extends DDComponent {
 
     #createProductBlock(content) {
         const container = document.createElement('div')
+		container.classList.add('product-image')
         container.appendChild(content)
         return container
     }
