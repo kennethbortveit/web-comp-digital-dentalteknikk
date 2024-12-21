@@ -26,6 +26,12 @@ export default class Contact extends DDComponent {
 		.inquiry-input {
 			grid-area: inquiry-input;
 		}
+		.name-label {
+			grid-area: name-label;
+		}
+		.name-input {
+			grid-area: name-input;
+		}
 		.captcha-input {
 			grid-area: captcha-input;
 		}
@@ -44,6 +50,8 @@ export default class Contact extends DDComponent {
         const form = document.createElement('form')
 		form.appendChild(this.#createInquiryLabel())
 		form.appendChild(this.#createInquiryInput())
+		form.appendChild(this.#createNameLabel())
+		form.appendChild(this.#createNameInput())
 		form.appendChild(this.#createCaptcha())
 		form.appendChild(this.#createSendButton())
         return form
@@ -61,6 +69,18 @@ export default class Contact extends DDComponent {
 		c.appendChild(i)
 		return c
 	}	
+	#createNameLabel() {
+		const l = this.#createLabel('Navn:', 'name-input')
+		l.classList.add('name-label')
+		return l
+	}
+	#createNameInput() {
+		const c = document.createElement('div')
+		c.classList.add('name-input')
+		const i = this.#createTextInput('name-input')
+		c.appendChild(i)
+		return c
+	}
 	#createLabel(text, labelFor) {
 		const l = document.createElement('label')
 		l.setAttribute('for', labelFor)
@@ -70,6 +90,8 @@ export default class Contact extends DDComponent {
 	#createTextInput(id) {
 		const i = document.createElement('input')
 		i.setAttribute('type', 'text')
+		i.setAttribute('id', id)
+		i.setAttribute('name', id)
 		return i
 	}
 	
