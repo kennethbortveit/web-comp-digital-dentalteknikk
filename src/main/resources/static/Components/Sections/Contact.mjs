@@ -15,7 +15,7 @@ export default class Contact extends DDComponent {
 				'name-label name-input'
 				'phone-label phone-input'
 				'email-label email-input'
-				'reply-info-label reply-info-input'
+				'reply-type-label reply-type-input'
 				'message-label message-input'
 				'. captcha-input'
 				'. send-button';
@@ -50,6 +50,12 @@ export default class Contact extends DDComponent {
 		.email-input {
 			grid-area: email-input;
 		}
+		.reply-type-label {
+			grid-area: reply-type-label;
+		}
+		.reply-type-input {
+			grid-area: reply-type-input;
+		}
 	`
 
     connectedCallback() {
@@ -68,6 +74,8 @@ export default class Contact extends DDComponent {
 		form.appendChild(this.#createPhoneInput())
 		form.appendChild(this.#createEmailLabel())
 		form.appendChild(this.#createEmailInput())
+		form.appendChild(this.#createReplyTypeLabel())
+		form.appendChild(this.#createReplyTypeInput())
 		form.appendChild(this.#createCaptcha())
 		form.appendChild(this.#createSendButton())
         return form
@@ -118,6 +126,18 @@ export default class Contact extends DDComponent {
 		const c = document.createElement('div')
 		c.classList.add('email-input')
 		const i = this.#createTextInput('email-input')
+		c.appendChild(i)
+		return c
+	}
+	#createReplyTypeLabel() {
+		const l = this.#createLabel('Jeg ønsker å kontaktes på:', 'reply-type-label')
+		l.classList.add('reply-type-label')
+		return l
+	}
+	#createReplyTypeInput() {
+		const c = document.createElement('div')
+		c.classList.add('reply-type-input')
+		const i = this.#createTextInput('reply-type-input')
 		c.appendChild(i)
 		return c
 	}
