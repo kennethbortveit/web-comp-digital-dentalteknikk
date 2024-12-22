@@ -194,9 +194,24 @@ export default class Contact extends DDComponent {
     #createSendButton() {
         const button = document.createElement('button')
 		button.classList.add('contact-send-button')
-        button.setAttribute('type', 'submit')
         const buttonText = document.createTextNode('Send')
         button.appendChild(buttonText)
+		button.onclick = e => {
+			e.preventDefault()
+			grecaptcha.ready(() => {
+				grecaptcha
+					.execute('6Ldw7KIqAAAAAI3QPgpkMS0xP95dO5Vg-bTMqbDW', {action: 'submit'})
+					.then(token => {
+						const form = this.shadowRoot.querySelector('form')
+						const i = document.createElement('input')
+						i.setAttribute('value', token)
+						i.setAttribute('type', 'hidden')
+						i.setAttribute('name', 'recaptcha')
+						form.appendChild(i)
+						form.submit()
+					})
+			})
+		}
         return button
     }
 }
