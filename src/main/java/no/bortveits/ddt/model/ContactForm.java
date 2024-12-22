@@ -7,7 +7,14 @@ public class ContactForm {
 	private String email;
 	private String message;
 	private String replyType;
+	private String recaptcha;
 
+	public String getRecaptcha() {
+		return recaptcha;
+	}
+	public void setRecaptcha(String recaptcha) {
+		this.recaptcha = recaptcha;
+	}
 	public String getReplyType() {
 		return replyType;
 	}
