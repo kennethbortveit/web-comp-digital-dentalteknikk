@@ -36,6 +36,11 @@ export default class DDComponent extends HTMLElement
         this.shadowRoot.appendChild(
 			DDComponent.createStyleLink('./index.css')
 		)
+		this.applyStyles(`
+			:host {
+				display: block;
+			}
+		`)
     }
 	
 	applyStyles(styles) {

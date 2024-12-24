@@ -12,14 +12,21 @@ export default class Navigation extends DDComponent
         'Kontakt'
     ]
     
-    #stylesheetUrl = './Components/Navigation/Navigation.css'
+	static styles = `
+		.navigation-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: var(--spacing-medium);
+		}
+	`
 
     constructor() {
         super()
     }
 
     connectedCallback() {
-	this.appendExternalStyleSheet(this.#stylesheetUrl)
+		this.applyStyles(Navigation.styles)
         const container = this.#createContainer()
         this.#appendItems(container)
         this.shadowRoot.appendChild(container)
