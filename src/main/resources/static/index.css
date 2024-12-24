@@ -5,9 +5,12 @@
 	--red: #ec3626;
 	--grey: #919191;
 	
+	--spacing-xsmall: 8px;
 	--spacing-small: 16px;
 	--spacing-medium: 32px;
 	--spacing-large: 64px;
+	--spacing-xlarge: 128px;
+	--spacing-xxlarge: 256px;
 }
 
 html {

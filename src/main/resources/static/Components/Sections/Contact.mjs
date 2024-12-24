@@ -1,4 +1,5 @@
 import DDComponent from "../DDComponent.mjs";
+import Button from '../Button.mjs'
 
 export default class Contact extends DDComponent {
     constructor() {
@@ -17,7 +18,6 @@ export default class Contact extends DDComponent {
 				'email-label email-input'
 				'reply-type-label reply-type-input'
 				'message-label message-input'
-				'. captcha-input'
 				'. send-button';
 		}
 		.inquiry-label {
@@ -37,9 +37,6 @@ export default class Contact extends DDComponent {
 		}
 		.phone-input {
 			grid-area: phone-input;
-		}
-		.captcha-input {
-			grid-area: captcha-input;
 		}
 		.contact-send-button {
 			grid-area: send-button;
@@ -68,6 +65,7 @@ export default class Contact extends DDComponent {
 		this.applyStyles(Contact.styles)
         const form = this.#createForm()
         this.shadowRoot.appendChild(form)
+		
     }
 
     #createForm() {
@@ -86,7 +84,6 @@ export default class Contact extends DDComponent {
 		form.appendChild(this.#createReplyTypeInput())
 		form.appendChild(this.#createMessageLabel())
 		form.appendChild(this.#createMessageInput())
-		form.appendChild(this.#createCaptcha())
 		form.appendChild(this.#createSendButton())
         return form
     }
@@ -182,20 +179,11 @@ export default class Contact extends DDComponent {
 		t.setAttribute('name', name)
 		return t
 	}
-	#createCaptcha() {
-		const c = document.createElement('div')
-		c.classList.add('captcha-input')
-		const p = document.createElement('p')
-		p.textContent = 'Captcha here'
-		c.appendChild(p)
-		return c
-	}
 	
     #createSendButton() {
-        const button = document.createElement('button')
+        const button = new Button()
 		button.classList.add('contact-send-button')
-        const buttonText = document.createTextNode('Send')
-        button.appendChild(buttonText)
+        button.innerText = 'Send'
 		button.onclick = e => {
 			e.preventDefault()
 			grecaptcha.ready(() => {
