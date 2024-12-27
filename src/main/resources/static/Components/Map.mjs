@@ -12,14 +12,21 @@ export default class Map extends DDComponent {
         css: './Dependencies/leaflet/leaflet.css',
         js: './Dependencies/leaflet/leaflet.js'
     }
+
+    static styles = `
+        #dd-map {
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
+        }
+    `
     
     constructor() {
         super()
-        this.stylesheetUrl = './Components/Map.css'
     }
 
     connectedCallback() {
-		this.appendExternalStyleSheet()
+        this.applyStyles(Map.styles)
         const mapStyles = this.#createMapStylesLink()
         this.shadowRoot.appendChild(mapStyles)
         const container = this.#createContainer()

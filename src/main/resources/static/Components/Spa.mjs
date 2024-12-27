@@ -9,7 +9,14 @@ import Footer from "./Footer.mjs";
 
 class Spa extends DDComponent
 {
-	#stylesheetUrl = './Components/Spa.css'
+	static styles = `
+		.main-container {
+			overflow: hidden;
+			max-width: 1200px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	`
     constructor()
     {
         super()
@@ -17,7 +24,7 @@ class Spa extends DDComponent
 
     connectedCallback()
     {
-		this.appendExternalStyleSheet(this.#stylesheetUrl)
+		this.applyStyles(Spa.styles)
 		const container = this.#createContainer()
 		const body = DDComponent.createElement(Body)
 		const navigation = this.#createNavigation()

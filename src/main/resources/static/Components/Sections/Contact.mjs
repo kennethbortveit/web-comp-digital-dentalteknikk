@@ -20,6 +20,10 @@ export default class Contact extends DDComponent {
 				'message-label message-input'
 				'. send-button';
 		}
+		.contact-label {
+			display: flex;
+			justify-content: flex-end;
+		}
 		.inquiry-label {
 			grid-area: inquiry-label;
 		}
@@ -91,6 +95,7 @@ export default class Contact extends DDComponent {
 	#createInquiryLabel() {
 		const l = this.#createLabel('Henvendelsen gjelder:', 'inquiry-input')
 		l.classList.add('inquiry-label')
+		l.classList.add('contact-label')
 		return l
 	}
 	#createInquiryInput() {
@@ -103,6 +108,7 @@ export default class Contact extends DDComponent {
 	#createNameLabel() {
 		const l = this.#createLabel('Navn:', 'name-input')
 		l.classList.add('name-label')
+		l.classList.add('contact-label')
 		return l
 	}
 	#createNameInput() {
@@ -115,6 +121,7 @@ export default class Contact extends DDComponent {
 	#createPhoneLabel() {
 		const l = this.#createLabel('Telefonnummer:', 'contact-phone')
 		l.classList.add('phone-label')
+		l.classList.add('contact-label')
 		return l
 	}
 	#createPhoneInput() {
@@ -127,6 +134,7 @@ export default class Contact extends DDComponent {
 	#createEmailLabel() {
 		const l = this.#createLabel('Epost:', 'email-input')
 		l.classList.add('email-label')
+		l.classList.add('contact-label')
 		return l
 	}
 	#createEmailInput() {
@@ -139,6 +147,7 @@ export default class Contact extends DDComponent {
 	#createReplyTypeLabel() {
 		const l = this.#createLabel('Jeg ønsker å kontaktes på:', 'reply-type-input')
 		l.classList.add('reply-type-label')
+		l.classList.add('contact-label')
 		return l
 	}
 	#createReplyTypeInput() {
@@ -151,6 +160,7 @@ export default class Contact extends DDComponent {
 	#createMessageLabel() {
 		const l = this.#createLabel('Melding', 'message-input')
 		l.classList.add('message-label')
+		l.classList.add('contact-label')
 		return l
 	}
 	#createMessageInput() {
