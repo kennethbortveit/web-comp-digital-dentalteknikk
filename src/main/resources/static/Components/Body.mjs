@@ -7,27 +7,25 @@ import Contact from "./Sections/Contact.mjs";
 import SelfProducedImplant from "./Sections/SelfProducedImplant.mjs";
 
 export default class Body extends DDComponent {
+    #sections
+
     constructor() {
         super()
+        this.#sections = [
+            this.#createAbout(),
+            this.#createProducts(),
+            this.#createSelfProducedImplant(),
+            this.#createDigitalProduction(),
+            this.#createContact()
+        ]
     }
+
+
+    get menuItems() { return this.#sections }
 
     connectedCallback() {
         const container = this.#createContainer()
-        container.appendChild(
-            this.#createAbout()
-        )
-        container.appendChild(
-            this.#createProducts()
-        )
-        container.appendChild(
-			this.#createSelfProducedImplant()
-		)
-        container.appendChild(
-            this.#createDigitalProduction()
-        )
-        container.appendChild(
-            this.#createContact()
-        )
+        this.#sections.forEach(s => container.appendChild(s))
         this.shadowRoot.appendChild(container)
     }
 

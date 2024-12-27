@@ -19,14 +19,17 @@ class Spa extends DDComponent
     {
 		this.appendExternalStyleSheet(this.#stylesheetUrl)
 		const container = this.#createContainer()
+		const body = DDComponent.createElement(Body)
+		const navigation = this.#createNavigation()
+		body.menuItems.forEach(i => navigation.addObservedEntry(i))
 		container.appendChild(
-			this.#createNavigation(),
+			navigation
 		)
 		container.appendChild(
 			this.#createHeader(),
 		)
 		container.appendChild(
-			DDComponent.createElement(Body),
+			body
 		)
 		container.appendChild(
 			this.#createFooter()
