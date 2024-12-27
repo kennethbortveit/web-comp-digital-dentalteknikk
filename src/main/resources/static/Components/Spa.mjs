@@ -21,12 +21,14 @@ class Spa extends DDComponent
 		const container = this.#createContainer()
 		const body = DDComponent.createElement(Body)
 		const navigation = this.#createNavigation()
+		const header = this.#createHeader()
+		navigation.addObservedEntry(header)
 		body.menuItems.forEach(i => navigation.addObservedEntry(i))
 		container.appendChild(
 			navigation
 		)
 		container.appendChild(
-			this.#createHeader(),
+			header
 		)
 		container.appendChild(
 			body
@@ -44,6 +46,7 @@ class Spa extends DDComponent
 
     #createHeader() {
 		const header = DDComponent.createElement(Header)
+		header.setAttribute('name', 'Forsiden')
 		return header;
 	}
 
