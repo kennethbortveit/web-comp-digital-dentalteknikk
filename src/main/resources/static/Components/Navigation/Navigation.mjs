@@ -36,7 +36,7 @@ export default class Navigation extends DDComponent
 
     addObservedEntry(e) {
         this.#observer.observe(e)
-        const item = this.#createItem(e.getAttribute('name'))
+        const item = this.#createItem(e.getAttribute('name'), e)
         this.#items.push({element: e, item, visible: false })
         this.#container.appendChild(item)
     }
@@ -63,9 +63,10 @@ export default class Navigation extends DDComponent
         return div
     }
 
-    #createItem(item) {
+    #createItem(item, el) {
         const i = document.createElement(DDComponent.getComponentName(NavigationItem))
         i.setAttribute('label', item)
+        i.element = el
         return i
     }
 }

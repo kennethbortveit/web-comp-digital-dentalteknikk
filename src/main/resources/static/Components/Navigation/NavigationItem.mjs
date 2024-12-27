@@ -13,8 +13,14 @@ export default class NavigationItem extends DDComponent
 			background-color: var(--blue);
 		}
 	`
+
+	#el
+
+	set element(v) { this.#el = v }
+
 	constructor() {
 		super()
+		this.onclick = this.navigateTo.bind(this)
 	}
 
 	connectedCallback() {
@@ -24,6 +30,10 @@ export default class NavigationItem extends DDComponent
 		container.appendChild(text)
 		this.shadowRoot.appendChild(container)
 	} 
+
+	navigateTo() {
+		if(this.#el) this.#el.scrollIntoView()
+	}
 
 	#createContainer() {
 		const div = document.createElement('div')
