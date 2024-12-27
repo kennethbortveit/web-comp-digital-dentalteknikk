@@ -37,19 +37,19 @@ export default class Navigation extends DDComponent
     addObservedEntry(e) {
         this.#observer.observe(e)
         const item = this.#createItem(e.getAttribute('name'))
-        this.#items.push({element: e, item })
+        this.#items.push({element: e, item, visible: false })
         this.#container.appendChild(item)
     }
     
     observerCallback(entries) {
+        const cl = 'active-section'
+        this.#items.forEach(it => it.item.classList.remove(cl))
         entries.forEach(e => {
             const i = this.#items.find(i => i.element === e.target)
-            if (e.isIntersecting) {
-                i.item.classList.add('active-section')
-            } else {
-                i.item.classList.remove('active-section')
-            }
+            i.visible = e.isIntersecting
         })
+        const firstVisible = this.#items.find(i => i.visible)
+        firstVisible.item.classList.add(cl)
     }
 
     connectedCallback() {
