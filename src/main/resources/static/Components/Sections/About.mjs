@@ -7,8 +7,21 @@ export default class About extends DDComponent {
         this.stylesheetUrl = './Components/Sections/About.css'
     }
 
+    static styles = `
+        .about-container {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-medium);
+        }
+
+        .about-container > dd-subsection {
+            flex-basis: 0px;
+            flex-grow: 1;
+        }
+    `
+
     connectedCallback() {
-		this.appendExternalStyleSheet()
+        this.applyStyles(About.styles)
         const container = this.#createContainer()
         container.setAttribute('class', 'about-container')
         const history = this.#createHistory()
