@@ -158,7 +158,6 @@ export default class SelfProducedImplant extends DDComponent {
 		img.setAttribute('alt', alt)
 		const block = this.#createContentBlock(img)
 		return block
-		return img
 	}
 }
 

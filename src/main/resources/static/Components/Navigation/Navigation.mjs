@@ -43,12 +43,9 @@ export default class Navigation extends DDComponent
     
     observerCallback(entries) {
         entries.forEach(e => {
-            console.debug('observer entries', e, e.isIntersecting, this.#items)
             const i = this.#items.find(i => i.element === e.target)
-            console.debug('Item', i)
             if (e.isIntersecting) {
                 i.item.classList.add('active-section')
-                console.debug('Added class active section.')
             } else {
                 i.item.classList.remove('active-section')
             }
