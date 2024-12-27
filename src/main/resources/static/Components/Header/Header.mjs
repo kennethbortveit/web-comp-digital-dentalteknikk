@@ -13,14 +13,35 @@ export default class Header extends DDComponent {
 		}
 	}
 	
-	#stylesheetUrl = './Components/Header/Header.css'
+	static styles = `
+		.ddt-logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.ddt-logo > img {
+			width: 100%;
+		}
+
+		.ddt-certification {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.ddt-certification > img {
+			width: 100%;
+			height: 100px;
+		}
+	`
 
 	constructor() {
 		super()
 	}
 	
 	connectedCallback() {
-		this.appendExternalStyleSheet(this.#stylesheetUrl)
+		this.applyStyles(Header.styles)
 		const container = this.#createContainer()
 		const logoImage = this.#createLogo()
 		const certificationImage = this.#createCertification()

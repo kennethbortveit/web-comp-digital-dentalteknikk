@@ -4,6 +4,9 @@ import NavigationItem from '../Navigation/NavigationItem.mjs'
 export default class Navigation extends DDComponent
 {
 	static styles = `
+        :host {
+            margin-bottom: var(--spacing-large);
+        }
 		.navigation-container {
             position: fixed;
             top: 0;
