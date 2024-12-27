@@ -12,6 +12,8 @@ export default class About extends DDComponent {
             display: flex;
             justify-content: space-between;
             gap: var(--spacing-medium);
+            heigth: 100%;
+            overflow: hidden;
         }
 
         .about-container > dd-subsection {

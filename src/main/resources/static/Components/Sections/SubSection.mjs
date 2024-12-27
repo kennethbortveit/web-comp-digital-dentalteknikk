@@ -4,11 +4,19 @@ import H3 from '../Heading/H3.mjs'
 export default class SubSection extends DDComponent {
     constructor() {
         super()
-        this.stylesheetUrl = './Components/Sections/SubSection.css'
     }
 
+    static styles = `
+        .sub-section-content {
+            background-color: var(--blue);
+            color: var(--white);
+            padding: var(--spacing-small);
+            height: 100%;
+        }
+    `
+
     connectedCallback() {
-		this.appendExternalStyleSheet()
+        this.applyStyles(SubSection.styles)
         const header = this.#getHeader()
         const container = this.#createContentContainer()
         const contentSlot = this.#createContentSlot()
