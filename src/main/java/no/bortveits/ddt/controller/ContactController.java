@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import no.bortveits.ddt.model.ContactForm;
 import no.bortveits.ddt.model.ReCaptchaRequest;
 import no.bortveits.ddt.model.ReCaptchaResponse;
@@ -49,13 +53,20 @@ public class ContactController {
 		var fullUri = uri
 			.concat("?secret=").concat(secret)
 			.concat("&response=").concat(token);
-		var request = this.webClient
+		var response = this.webClient
 			.post()
 			.uri(fullUri)
 			.contentType(MediaType.APPLICATION_JSON)
 			.retrieve()
 			.bodyToMono(String.class)
 			.block();
-		return false;
+		try {
+			var resObj = new ObjectMapper().readValue(response, ReCaptchaResponse.class);
+			return false;
+		} 
+		catch(Exception e) {
+			System.err.println("Noooo! ".concat(e.getMessage().concat("something here:   ")));
+			return false;
+		}
 	}
 }

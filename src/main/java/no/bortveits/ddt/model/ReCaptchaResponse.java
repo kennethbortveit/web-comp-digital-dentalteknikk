@@ -7,7 +7,7 @@ public class ReCaptchaResponse {
     private boolean success;
     private double score;
     private String action;
-    private LocalDateTime challenge_ts;
+    private String challenge_ts;
     private String hostname;
 
     public boolean isSuccess() {
@@ -28,10 +28,10 @@ public class ReCaptchaResponse {
     public void setAction(String action) {
         this.action = action;
     }
-    public LocalDateTime getChallenge_ts() {
+    public String getChallenge_ts() {
         return challenge_ts;
     }
-    public void setChallenge_ts(LocalDateTime challenge_ts) {
+    public void setChallenge_ts(String challenge_ts) {
         this.challenge_ts = challenge_ts;
     }
     public String getHostname() {
