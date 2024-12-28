@@ -2,6 +2,9 @@ package no.bortveits.ddt.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 public class ReCaptchaResponse {
 
     private boolean success;
@@ -9,7 +12,16 @@ public class ReCaptchaResponse {
     private String action;
     private String challenge_ts;
     private String hostname;
+    private String[] errorCodes;
 
+    @JsonGetter("error-codes")
+    public String[] getErrorCodes() {
+        return errorCodes;
+    }
+    @JsonSetter("error-codes")
+    public void setErrorCodes(String[] errorCodes) {
+        this.errorCodes = errorCodes;
+    }
     public boolean isSuccess() {
         return success;
     }
