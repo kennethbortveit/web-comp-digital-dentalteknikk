@@ -37,16 +37,14 @@ public class ContactController {
 	}
 
 	@PostMapping("/receive-contact-form")
-	public ContactForm ReceiveContactForm(ContactForm contactForm) {
-		if(validCaptcha(this.recaptchaVerificationUrl, contactForm.getRecaptcha(), this.recaptachaSecret)) {
-			return contactForm;
-		}
-		var empty = new ContactForm();
-		empty.setMessage("Invalid captcha.");
-		return empty;
+	public double ReceiveContactForm(ContactForm contactForm) {
+		return validCaptcha(
+			this.recaptchaVerificationUrl, 
+			contactForm.getRecaptcha(), 
+			this.recaptachaSecret);
 	}
 
-	private boolean validCaptcha(final String uri, final String token, final String secret) {
+	private double validCaptcha(final String uri, final String token, final String secret) {
 		var obj = new ReCaptchaRequest();
 		obj.setResponse(token);
 		obj.setSecret(secret);
@@ -62,11 +60,11 @@ public class ContactController {
 			.block();
 		try {
 			var resObj = new ObjectMapper().readValue(response, ReCaptchaResponse.class);
-			return false;
+			return resObj.getScore();
 		} 
 		catch(Exception e) {
-			System.err.println("Noooo! ".concat(e.getMessage().concat("something here:   ")));
-			return false;
+			System.err.println("Noooo! ".concat(e.getMessage()));
+			return 0;
 		}
 	}
 }
