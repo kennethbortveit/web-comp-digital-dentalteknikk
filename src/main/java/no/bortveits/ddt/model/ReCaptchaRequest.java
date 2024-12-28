@@ -1,6 +1,6 @@
 package no.bortveits.ddt.model;
 
-public class ReCaptcha {
+public class ReCaptchaRequest {
     private String secret;
     private String reponse;
 
