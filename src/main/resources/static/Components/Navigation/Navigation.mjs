@@ -3,6 +3,7 @@ import NavigationItem from '../Navigation/NavigationItem.mjs'
 
 export default class Navigation extends DDComponent
 {
+    static activeSectionClassName = 'active-section'
 	static styles = `
         :host {
             margin-bottom: var(--spacing-large);
@@ -19,7 +20,7 @@ export default class Navigation extends DDComponent
             width: 100%;
             height: var(--spacing-large);
 		}
-        .active-section {
+        .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
         }
 	`
@@ -43,27 +44,36 @@ export default class Navigation extends DDComponent
     }
     
     observerCallback(entries) {
-        const cl = 'active-section'
-        this.#items.forEach(it => {
-            it.item.classList.remove(cl)
-            it.item.removeActiveSection()
-        })
         entries.forEach(e => {
             const i = this.#items.find(i => i.element === e.target)
             i.visible = e.isIntersecting
-            i.usage = e.intersectionRatio
         })
-        this.#items.sort((a, b) => a.usage > b.usage ? -1 : 1)
-        const firstVisible = this.#items.find(i => i.visible)
-        if(firstVisible) {
-            firstVisible.item.classList.add(cl)
-            firstVisible.item.addActiveSection()
-        }
+    }
+
+    #distanceToVerticalMiddle(e) {
+        const rect = e.getBoundingClientRect()
+        const viewPortHeight = window.innerHeight || document.documentElement.clientHeight
+        const viewPortMiddle = viewPortHeight / 2
+        const distance = Math.abs(rect.top - viewPortMiddle)
+        return distance
     }
 
 
     connectedCallback() {
 		this.applyStyles(Navigation.styles)
+        window.addEventListener('scroll', () => {
+            this.#items.forEach(i => {
+                i.distance = this.#distanceToVerticalMiddle(i.element)
+                i.item.classList.remove(Navigation.activeSectionClassName)
+                i.item.removeActiveSection()
+            })
+            const closest = this.#items.reduce((a, b) => a.distance < b.distance ? a : b)
+            if(closest) {
+                closest.item.classList.add(Navigation.activeSectionClassName)
+                closest.item.addActiveSection()
+            }
+
+        })
         this.shadowRoot.appendChild(this.#container)
     }
 
