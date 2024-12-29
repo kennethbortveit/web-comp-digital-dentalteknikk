@@ -44,7 +44,7 @@ export default class NavigationItem extends DDComponent
 	} 
 
 	navigateTo() {
-		if(this.#el) this.#el.scrollIntoView()
+		if(this.#el) this.#el.scrollIntoView({ behavior: 'smooth' })
 	}
 
 	#createContainer() {
