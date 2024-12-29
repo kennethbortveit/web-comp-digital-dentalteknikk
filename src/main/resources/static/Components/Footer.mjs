@@ -20,12 +20,12 @@ export default class Footer extends DDComponent {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-medium);
+            justify-content: space-between;
         }
 
         .footer-map {
-            flex-basis: 0px;
-            flex-grow: 1;
+            width: 50%;
+            height: 100%;
         }
 
         .footer-info-pair {
@@ -47,7 +47,7 @@ export default class Footer extends DDComponent {
         .info-block {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-small);
+            gap: var(--spacing-xxsmall);
         }
     `
     constructor() {
