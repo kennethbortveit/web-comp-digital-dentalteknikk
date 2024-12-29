@@ -3,9 +3,55 @@ import H4 from "./Heading/H4.mjs";
 import Map from "./Map.mjs";
 
 export default class Footer extends DDComponent {
+    static styles = `
+        .footer-container {
+            color: var(--white);
+            padding: var(--spacing-medium);
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-medium);
+            max-width: var(--inner-max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-info {
+            flex-basis: 0px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-medium);
+        }
+
+        .footer-map {
+            flex-basis: 0px;
+            flex-grow: 1;
+        }
+
+        .footer-info-pair {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .footer-info-pair > p {
+            margin: 0px;
+            padding: 0px;
+        }
+        .footer-info-pair > img {
+            width: var(--spacing-medium);
+            height: var(--spacing-medium);
+        }
+        .footer-info-pair-label {
+            color: var(--grey);
+        }
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-small);
+        }
+    `
     constructor() {
         super()
-        this.stylesheetUrl = './Components/Footer.css'
     }
 
     connectedCallback() {
@@ -14,7 +60,7 @@ export default class Footer extends DDComponent {
     }
 
     #createContainer() {
-		this.appendExternalStyleSheet()
+        this.applyStyles(Footer.styles)
         const container = document.createElement('div')
         container.setAttribute('class', 'footer-container')
         const info = this.#createInfo()

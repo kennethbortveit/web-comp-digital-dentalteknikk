@@ -11,15 +11,11 @@
 	--spacing-large: 64px;
 	--spacing-xlarge: 128px;
 	--spacing-xxlarge: 256px;
+
+	--inner-max-width: 1200px;
 }
 
-html {
+html, body {
 	margin: 0px;
 	padding: 0px;
-}
-
-body {
-	margin: 0px;
-	padding-left: var(--spacing-medium);
-	padding-right: var(--spacing-medium);
 }

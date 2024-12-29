@@ -12,9 +12,25 @@ class Spa extends DDComponent
 	static styles = `
 		.main-container {
 			overflow: hidden;
-			max-width: 1200px;
 			margin-left: auto;
 			margin-right: auto;
+			width: 100%;
+		}
+
+		.body-container {
+			width: var(--inner-max-width);
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.header-container {
+			width: var(--inner-max-width);
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.footer-container {
+			background-color: var(--black);
 		}
 	`
     constructor()
@@ -27,21 +43,27 @@ class Spa extends DDComponent
 		this.applyStyles(Spa.styles)
 		const container = this.#createContainer()
 		const body = DDComponent.createElement(Body)
+		const bodyContainer = this.#createBodyContainer()
+		bodyContainer.appendChild(body)
 		const navigation = this.#createNavigation()
 		const header = this.#createHeader()
+		const headerContainer = this.#createHeaderContainer()
+		const footerContainer = this.#createFooterContainer()
+		footerContainer.appendChild(this.#createFooter())
+		headerContainer.appendChild(header)
 		navigation.addObservedEntry(header)
 		body.menuItems.forEach(i => navigation.addObservedEntry(i))
 		container.appendChild(
 			navigation
 		)
 		container.appendChild(
-			header
+			headerContainer
 		)
 		container.appendChild(
-			body
+			bodyContainer
 		)
 		container.appendChild(
-			this.#createFooter()
+			footerContainer
 		)
         this.shadowRoot.appendChild(container)
     }
@@ -49,6 +71,18 @@ class Spa extends DDComponent
 		const container = document.createElement('div')
 		container.setAttribute('class', 'main-container')
 		return container
+	}
+
+	#createHeaderContainer() {
+		const c = document.createElement('div')
+		c.classList.add('header-container')
+		return c
+	}
+
+	#createBodyContainer() {
+		const c = document.createElement('div')
+		c.classList.add('body-container')
+		return c
 	}
 
     #createHeader() {
@@ -66,6 +100,12 @@ class Spa extends DDComponent
         const footer = DDComponent.createElement(Footer)
         return footer
     }
+
+	#createFooterContainer() {
+		const c = document.createElement('div')
+		c.classList.add('footer-container')
+		return c
+	}
 }
 
 DDComponent.define(Spa)
