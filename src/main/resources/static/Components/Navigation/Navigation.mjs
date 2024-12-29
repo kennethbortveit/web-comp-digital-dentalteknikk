@@ -53,7 +53,7 @@ export default class Navigation extends DDComponent
     #distanceToVerticalMiddle(e) {
         const rect = e.getBoundingClientRect()
         const viewPortHeight = window.innerHeight || document.documentElement.clientHeight
-        const viewPortMiddle = viewPortHeight / 2
+        const viewPortMiddle = (viewPortHeight / 2) * 0.5
         const distance = Math.abs(rect.top - viewPortMiddle)
         return distance
     }
