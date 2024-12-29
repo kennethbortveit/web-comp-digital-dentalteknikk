@@ -51,11 +51,16 @@ export default class Navigation extends DDComponent
         entries.forEach(e => {
             const i = this.#items.find(i => i.element === e.target)
             i.visible = e.isIntersecting
+            i.usage = e.intersectionRatio
         })
+        this.#items.sort((a, b) => a.usage > b.usage ? -1 : 1)
         const firstVisible = this.#items.find(i => i.visible)
-        firstVisible.item.classList.add(cl)
-        firstVisible.item.addActiveSection()
+        if(firstVisible) {
+            firstVisible.item.classList.add(cl)
+            firstVisible.item.addActiveSection()
+        }
     }
+
 
     connectedCallback() {
 		this.applyStyles(Navigation.styles)
