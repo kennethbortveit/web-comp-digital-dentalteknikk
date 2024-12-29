@@ -7,6 +7,9 @@ export default class NavigationItem extends DDComponent
 			color: var(--grey);
 			padding: var(--spacing-small);
 		}
+		.active-section {
+			color: var(--white);
+		}
 		div:hover {
 			cursor: pointer;
 			color: var(--white);
@@ -15,6 +18,7 @@ export default class NavigationItem extends DDComponent
 	`
 
 	#el
+	#text
 
 	set element(v) { this.#el = v }
 
@@ -23,11 +27,19 @@ export default class NavigationItem extends DDComponent
 		this.onclick = this.navigateTo.bind(this)
 	}
 
+	removeActiveSection() {
+		this.#text.classList.remove('active-section')
+	}
+
+	addActiveSection() {
+		this.#text.classList.add('active-section')
+	}
+
 	connectedCallback() {
 		this.applyStyles(NavigationItem.styles)
 		const container = this.#createContainer()
-		const text = this.#createText()
-		container.appendChild(text)
+		this.#text = this.#createText()
+		container.appendChild(this.#text)
 		this.shadowRoot.appendChild(container)
 	} 
 

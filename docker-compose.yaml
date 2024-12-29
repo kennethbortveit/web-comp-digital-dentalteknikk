@@ -5,7 +5,9 @@ services:
     image: docker.io/postgres:latest
     restart: always
     environment:
-      POSTGRES_PASSWORD: test
+      POSTGRES_PASSWORD: test1234
+      POSTGRES_USER: admin
+      POSTGRES_DB: ddt
   adminer:
     image: docker.io/adminer
     restart: always

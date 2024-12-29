@@ -19,10 +19,8 @@ export default class Navigation extends DDComponent
             width: 100%;
             height: var(--spacing-large);
 		}
-
         .active-section {
             background-color: var(--blue);
-            color: var(--white);
         }
 	`
 
@@ -46,13 +44,17 @@ export default class Navigation extends DDComponent
     
     observerCallback(entries) {
         const cl = 'active-section'
-        this.#items.forEach(it => it.item.classList.remove(cl))
+        this.#items.forEach(it => {
+            it.item.classList.remove(cl)
+            it.item.removeActiveSection()
+        })
         entries.forEach(e => {
             const i = this.#items.find(i => i.element === e.target)
             i.visible = e.isIntersecting
         })
         const firstVisible = this.#items.find(i => i.visible)
         firstVisible.item.classList.add(cl)
+        firstVisible.item.addActiveSection()
     }
 
     connectedCallback() {
