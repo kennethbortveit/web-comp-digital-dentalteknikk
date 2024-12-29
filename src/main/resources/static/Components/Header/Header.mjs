@@ -1,5 +1,4 @@
 import DDComponent from "../DDComponent.mjs";
-import H1 from "../Heading/H1.mjs";
 
 export default class Header extends DDComponent {
 	static #images = {
@@ -39,6 +38,7 @@ export default class Header extends DDComponent {
 	constructor() {
 		super()
 	}
+    get isHeader() { return true }
 	
 	connectedCallback() {
 		this.applyStyles(Header.styles)

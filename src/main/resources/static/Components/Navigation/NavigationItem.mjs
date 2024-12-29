@@ -44,7 +44,11 @@ export default class NavigationItem extends DDComponent
 	} 
 
 	navigateTo() {
-		if(this.#el) this.#el.scrollIntoView({ behavior: 'smooth' })
+		if(this.#el && this.#el.isHeader) window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		}) 
+		else if(this.#el) this.#el.scrollIntoView({ behavior: 'smooth' })
 	}
 
 	#createContainer() {
