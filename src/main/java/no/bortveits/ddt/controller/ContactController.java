@@ -1,7 +1,9 @@
 package no.bortveits.ddt.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,7 @@ import no.bortveits.ddt.model.ContactForm;
 import no.bortveits.ddt.model.ContactFormResponse;
 import no.bortveits.ddt.model.ReCaptchaRequest;
 import no.bortveits.ddt.model.ReCaptchaResponse;
+import no.bortveits.ddt.service.ContactService;
 
 @RestController
 @RequestMapping("/api/contact")
@@ -20,15 +23,22 @@ public class ContactController {
 	private final WebClient webClient;
 	private final String recaptchaVerificationUrl;
 	private final String recaptachaSecret;
-	
+	private final ContactService contactService;
 
 	public ContactController(
 		@Value("${google.recaptcha.url}") String recaptchaVerificationUrl,
-		@Value("${google.recaptcha.secret}") String recaptchaSecret
+		@Value("${google.recaptcha.secret}") String recaptchaSecret,
+		@Autowired ContactService contactService
 	) {
 		this.recaptchaVerificationUrl = recaptchaVerificationUrl;
 		this.recaptachaSecret = recaptchaSecret;
 		this.webClient = WebClient.create();
+		this.contactService = contactService;
+	}
+
+	@GetMapping("/list")
+	public ContactForm[] listLatest() {
+		return this.contactService.listContactRequests(10, 0, false);
 	}
 
 	@PostMapping("/receive-contact-form")
@@ -49,7 +59,6 @@ public class ContactController {
 			res.setMessage(msg);
 		}
 		return res;
-		
 	}
 
 	private ReCaptchaResponse validateCaptcha(final String uri, final String token, final String secret) {

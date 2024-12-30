@@ -37,7 +37,7 @@ export default class Footer extends DDComponent {
             margin: 0px;
             padding: 0px;
         }
-        .footer-info-pair > img {
+        .footer-info-pair > a > img {
             width: var(--spacing-medium);
             height: var(--spacing-medium);
         }
@@ -108,10 +108,14 @@ export default class Footer extends DDComponent {
     }
 
     #createFacebookLink() {
+        const link = document.createElement('a')
+        link.setAttribute('href', 'https://www.facebook.com/DrobakDentalteknikk/')
+        link.setAttribute('target', '_blank')
         const image = document.createElement('img')
         image.src = './Images/footer/Facebook_logo_2.svg'
         image.alt = 'Facebook logo'
-        return image
+        link.appendChild(image)
+        return link
     }
 
     #createMap() {
