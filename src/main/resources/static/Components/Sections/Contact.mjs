@@ -63,6 +63,16 @@ export default class Contact extends DDComponent {
 		.message-input {
 			grid-area: message-input;
 		}
+		.ddt-text-input {
+			height: var(--spacing-medium);
+			border-radius: 4px;
+			width: var(--spacing-xxlarge);
+		}
+		.ddt-textarea {
+			width: var(--spacing-xxlarge);
+			height: var(--spacing-large);
+			border-radius: 4px;
+		}
 	`
 
     connectedCallback() {
@@ -178,6 +188,7 @@ export default class Contact extends DDComponent {
 	}
 	#createTextInput(id, name) {
 		const i = document.createElement('input')
+		i.classList.add('ddt-text-input')
 		i.setAttribute('type', 'text')
 		i.setAttribute('id', id)
 		i.setAttribute('name', name)
@@ -185,6 +196,7 @@ export default class Contact extends DDComponent {
 	}
 	#createTextarea(id, name) {
 		const t = document.createElement('textarea')
+		t.classList.add('ddt-textarea')
 		t.setAttribute('id', id)
 		t.setAttribute('name', name)
 		return t
