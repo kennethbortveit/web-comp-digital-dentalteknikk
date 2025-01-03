@@ -12,7 +12,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import no.bortveits.ddt.model.ContactForm;
-import no.bortveits.ddt.model.ContactFormResponse;
 import no.bortveits.ddt.model.ReCaptchaRequest;
 import no.bortveits.ddt.model.ReCaptchaResponse;
 import no.bortveits.ddt.service.ContactService;
@@ -38,27 +37,20 @@ public class ContactController {
 
 	@GetMapping("/list")
 	public ContactForm[] listLatest() {
-		return this.contactService.listContactRequests(10, 0, false);
+		return this.contactService
+			.listContactRequests(10, 0, false);
 	}
 
 	@PostMapping("/receive-contact-form")
-	public ContactFormResponse ReceiveContactForm(ContactForm contactForm) {
+	public Long ReceiveContactForm(ContactForm contactForm) {
 		var captchaRes = validateCaptcha(
 			this.recaptchaVerificationUrl, 
 			contactForm.getRecaptcha(), 
 			this.recaptachaSecret);
-		var res = new ContactFormResponse();
-		res.setScore(captchaRes.getScore());
-		if(captchaRes.isSuccess()) {
-			res.setMessage("It was a success.");
-		} else {
-			var msg = String.format(
-				"A failure with these error messages: %s.", 
-				String.join(",", captchaRes.getErrorCodes())
-			);
-			res.setMessage(msg);
+		if(captchaRes.getScore() > 0.5) {
+			return this.contactService.saveContactForm(contactForm);
 		}
-		return res;
+		return -1L;
 	}
 
 	private ReCaptchaResponse validateCaptcha(final String uri, final String token, final String secret) {
