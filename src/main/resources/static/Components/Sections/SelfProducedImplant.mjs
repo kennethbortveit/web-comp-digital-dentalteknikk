@@ -219,8 +219,8 @@ export default class SelfProducedImplant extends DDComponent {
 		item.classList.add('product-description-item')
 		const text = this.#createDescriptionText(data.text)
 		const image = this.#createDescriptionImage(data)
-		item.appendChild(text)
 		item.appendChild(image)
+		item.appendChild(text)
 		return item
 	}
 	

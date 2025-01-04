@@ -131,8 +131,8 @@ export default class Products extends DDComponent {
             const image = document.createElement('img')
             image.setAttribute('src', desc.image.src)
             image.setAttribute('alt', desc.image.alt)
-            item.appendChild(p)
             item.appendChild(image)
+            item.appendChild(p)
             list.appendChild(item)
         })
         return list
