@@ -24,6 +24,28 @@ export default class SelfProducedImplant extends DDComponent {
 			alt: 'Klinisk foto'
 		},
 	]
+	static zirconiaImages = [
+		{
+			src: './Images/self-produced-implant/zirconia/1.png',
+			alt: 'Design forslag til tannlege'
+		},
+		{
+			src: './Images/self-produced-implant/zirconia/2.png',
+			alt: 'Digital fil med scan body`er'
+		},
+		{
+			src: './Images/self-produced-implant/zirconia/3.png',
+			alt: 'Metallskjeletter for individuelle distanser og base bridges'
+		},
+		{
+			src: './Images/self-produced-implant/zirconia/4.png',
+			alt: 'Ferdig zirconia og metallskjeletter for kroner - base bridges'
+		},
+		{
+			src: './Images/self-produced-implant/zirconia/5.png',
+			alt: 'Klinisk foto. Tannerstatninger lagd litt lyse da restannsett skal blekes senere'
+		}
+	]
 	static styles = `
 		.product-description-item {
 			display: flex;
@@ -52,7 +74,9 @@ export default class SelfProducedImplant extends DDComponent {
 	#createContent() {
 		const container = document.createElement('div')
 		const torontoBridgeSubSection = this.#createTorontoBridge()
+		const zirconiaSubSection = this.#createZirconia()
 		container.appendChild(torontoBridgeSubSection)
+		container.appendChild(zirconiaSubSection)
 		return container
 	}
 	
@@ -71,6 +95,24 @@ export default class SelfProducedImplant extends DDComponent {
 		}
 		content.setAttribute('slot', 'content')
 		subSection.appendChild(content)
+		return subSection
+	}
+
+	#createZirconia() {
+		const subSection = DDComponent.createElement(SubSection)
+		subSection.setAttribute('name', 'Individuelle distanser og bar bridges med zirconia')
+		const content = document.createElement('div')
+		content.classList.add('product-container')
+		const descriptionBlock = this.#createContentBlock(
+			this.#createZirconiaDescriptions()
+		)
+		content.appendChild(descriptionBlock)
+		content.setAttribute('slot', 'content')
+		subSection.appendChild(content)
+		for(let picture of SelfProducedImplant.zirconiaImages) {
+			const pictureBlock = this.#createProductImage(picture)
+			content.appendChild(pictureBlock)
+		}
 		return subSection
 	}
 	
@@ -118,6 +160,52 @@ export default class SelfProducedImplant extends DDComponent {
 				}
 			},
 		]
+		const list = document.createElement('ul')
+		for(let desc of descriptions) {
+			const item = this.#createDescriptionItem(desc)
+			list.appendChild(item)
+		}
+		return list
+	}
+
+	#createZirconiaDescriptions() {
+		const descriptions = [
+			{
+				text: 'Design forslag til tannlege',
+				image: {
+					src: './Images/products/1_tall_fet.svg',
+					alt: 'Tallet 1'
+				}
+			},
+			{
+				text: 'Digital fil med scan body`er',
+				image: {
+					src: './Images/products/2_tall_fet.svg',
+					alt: 'Tallet 2'
+				}
+			},
+			{
+				text: 'Metallskjeletter for individuelle distanser og base bridges',
+				image: {
+					src: './Images/products/3_tall_fet.svg',
+					alt: 'Tallet 3'
+				}
+			},
+			{
+				text: 'Ferdig zirconia og metallskjeletter for kroner - base bridges',
+				image: {
+					src: './Images/products/4_tall_fet.svg',
+					alt: 'Tallet 4'
+				}
+			},
+			{
+				text: 'Klinisk foto. Tannerstatninger lagd litt lyse da restannsett skal blekes senere',
+				image: {
+					src: './Images/products/5_tall_fet.svg',
+					alt: 'Tallet 5'
+				}
+			}
+		];
 		const list = document.createElement('ul')
 		for(let desc of descriptions) {
 			const item = this.#createDescriptionItem(desc)

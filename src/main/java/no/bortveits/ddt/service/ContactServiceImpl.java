@@ -25,6 +25,11 @@ public class ContactServiceImpl implements ContactService {
             .map(it -> {
                 var m = new ContactForm();
                 m.setName(it.getName());
+                m.setEmail(it.getEmail());
+                m.setInquiry(it.getInquiry());
+                m.setMessage(it.getMessage());
+                m.setReplyType(it.getReply_type());
+                m.setPhone(it.getPhone());
                 return m;
             })
             .toArray(ContactForm[]::new);
