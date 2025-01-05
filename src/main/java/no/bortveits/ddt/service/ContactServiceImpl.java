@@ -47,4 +47,9 @@ public class ContactServiceImpl implements ContactService {
         e.setReply_type(form.getReplyType());
         return this.contactRequestRepository.save(e).getId();
     }
+
+    @Override
+    public void deleteContactRequest(long id) {
+        this.contactRequestRepository.deleteById(id);
+    }
 }

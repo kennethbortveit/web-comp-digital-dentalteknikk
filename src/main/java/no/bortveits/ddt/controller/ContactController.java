@@ -3,10 +3,11 @@ package no.bortveits.ddt.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +17,7 @@ import no.bortveits.ddt.model.ReCaptchaRequest;
 import no.bortveits.ddt.model.ReCaptchaResponse;
 import no.bortveits.ddt.service.ContactService;
 
-@RestController
+@Controller
 @RequestMapping("/api/contact")
 public class ContactController {
 	private final WebClient webClient;
@@ -35,22 +36,17 @@ public class ContactController {
 		this.contactService = contactService;
 	}
 
-	@GetMapping("/list")
-	public ContactForm[] listLatest() {
-		return this.contactService
-			.listContactRequests(10, 0, false);
-	}
-
 	@PostMapping("/receive-contact-form")
-	public Long ReceiveContactForm(ContactForm contactForm) {
+	public String ReceiveContactForm(@ModelAttribute ContactForm contactForm) {
 		var captchaRes = validateCaptcha(
 			this.recaptchaVerificationUrl, 
 			contactForm.getRecaptcha(), 
 			this.recaptachaSecret);
 		if(captchaRes.getScore() > 0.5) {
-			return this.contactService.saveContactForm(contactForm);
+			this.contactService.saveContactForm(contactForm);
+			return "contact-request-success";
 		}
-		return -1L;
+		return "contact-request-error";
 	}
 
 	private ReCaptchaResponse validateCaptcha(final String uri, final String token, final String secret) {
