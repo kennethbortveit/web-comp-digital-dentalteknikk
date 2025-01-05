@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>DDT - admin</title>
+        <meta charset="utf-8" />
+        <style>
+            :root {
+                --spacing-m: 16px;
+            }
+            .messages-container {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-m);
+            }
+            .contact-request {
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                padding: var(--spacing-m);
+            }
+            .contact-request-item {
+                display: flex;
+                gap: var(--spacing-m);
+            }
+            p.description {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Administrator side</h1>
+        <h2>Meldinger fra nettsiden</h2>
+        <div class="messages-container">
+            <div th:each="message : ${messages}" class="contact-request">
+                <div class="inquiry contact-request-item">
+                    <p class="description">Henvendelsen gjelder:</p>
+                    <p th:text="${message.inquiry}"></p>
+                </div>
+                <div class="from contact-request-item">
+                    <p class="description">Fra:</p>
+                    <p th:text="${message.name}"></p>
+                </div>
+                <div class="phone contact-request-item">
+                    <p class="description">Telefon:</p>
+                    <p th:text="${message.phone}"></p>
+                </div>
+                <div class="email contact-request-item">
+                    <p class="description">Epost:</p>
+                    <p th:text="${message.email}"></p>
+                </div>
+                <div class="message contact-request-item">
+                    <p class="description">Message:</p>
+                    <p th:text="${message.message}"></p>
+                </div>
+                <div class="reply-type contact-request-item">
+                    <p class="description">Ønsker å kontaktes på:</p>
+                    <p th:text="${message.getReplyType()}"></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
