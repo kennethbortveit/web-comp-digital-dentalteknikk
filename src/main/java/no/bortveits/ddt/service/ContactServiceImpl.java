@@ -24,6 +24,7 @@ public class ContactServiceImpl implements ContactService {
             .stream()
             .map(it -> {
                 var m = new ContactForm();
+                m.setId(it.getId());
                 m.setName(it.getName());
                 m.setEmail(it.getEmail());
                 m.setInquiry(it.getInquiry());

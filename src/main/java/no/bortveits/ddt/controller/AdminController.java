@@ -26,8 +26,8 @@ public class AdminController {
         return "admin";
     }
     @DeleteMapping("/admin/message")
-    public String deleteMessage(@RequestParam("id") String id) {
+    public boolean deleteMessage(@RequestParam("id") String id) {
         this.contactService.deleteContactRequest(Long.parseLong(id));
-        return "message-deleted";
+        return true;
     }
 }

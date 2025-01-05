@@ -1,6 +1,7 @@
 package no.bortveits.ddt.model;
 
 public class ContactForm {
+	private long id;
 	private String inquiry;
 	private String name;
 	private String phone;
@@ -9,6 +10,12 @@ public class ContactForm {
 	private String replyType;
 	private String recaptcha;
 
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getRecaptcha() {
 		return recaptcha;
 	}
