@@ -111,8 +111,24 @@ export default class Contact extends DDComponent {
 	#createInquiryInput() {
 		const c = document.createElement('div')
 		c.classList.add('inquiry-input')
-		const i = this.#createTextInput('inquiry-input', 'inquiry')
-		c.appendChild(i)
+		const orderContainer = document.createElement('div')
+		const order = this.#createCheckInput('contact-inquiry-order')
+		const orderLabel = this.#createLabel('Bestilling', 'contact-inquiry-order')
+		orderContainer.appendChild(order)
+		orderContainer.appendChild(orderLabel)
+		const priceContainer = document.createElement('div')
+		const price = this.#createCheckInput('contact-inquiry-price')
+		const priceLabel = this.#createLabel('Pristilbud', 'contact-inquiry-price')
+		priceContainer.appendChild(price)
+		priceContainer.appendChild(priceLabel)
+		const otherContainer = document.createElement('div')
+		const other = this.#createCheckInput('contact-inquiry-other')
+		const otherLabel = this.#createLabel('Annet', 'contact-inquiry-other')	
+		otherContainer.appendChild(other)
+		otherContainer.appendChild(otherLabel)
+		c.appendChild(orderContainer)
+		c.appendChild(priceContainer)
+		c.appendChild(otherContainer)
 		return c
 	}	
 	#createNameLabel() {
@@ -201,7 +217,12 @@ export default class Contact extends DDComponent {
 		t.setAttribute('name', name)
 		return t
 	}
-	
+	#createCheckInput(id) {
+		const i = document.createElement('input')
+		i.setAttribute('type', 'checkbox')
+		i.setAttribute('id', id)
+		return i
+	}
     #createSendButton() {
         const button = new Button()
 		button.classList.add('contact-send-button')
