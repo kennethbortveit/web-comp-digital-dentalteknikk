@@ -74,6 +74,9 @@ export default class SelfProducedImplant extends DDComponent {
 			margin-bottom: var(--spacing-xsmall);
 			padding: 0;
 		}
+		.product-image-number {
+			width: var(--product-image-number-size);
+		}
 	`
 	constructor() {
 		super()
@@ -238,6 +241,7 @@ export default class SelfProducedImplant extends DDComponent {
 		item.classList.add('product-description-item')
 		const text = this.#createDescriptionText(data.text)
 		const image = this.#createDescriptionImage(data)
+		image.classList.add('product-image-number')
 		item.appendChild(image)
 		item.appendChild(text)
 		return item

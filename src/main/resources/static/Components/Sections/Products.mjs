@@ -55,6 +55,9 @@ export default class Products extends DDComponent {
                 margin-bottom: var(--spacing-xsmall);
                 padding: 0;
             }
+            .product-image-number {
+                width: var(--product-image-number-size);
+            }
 			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
         subSection.setAttribute('background-color', this.getAttribute('background-color'))
@@ -142,6 +145,7 @@ export default class Products extends DDComponent {
             const textNode = document.createTextNode(desc.text)
             p.appendChild(textNode)
             const image = document.createElement('img')
+            image.classList.add('product-image-number')
             image.setAttribute('src', desc.image.src)
             image.setAttribute('alt', desc.image.alt)
             item.appendChild(image)
