@@ -14,9 +14,13 @@
 	--spacing-xxlarge: 256px;
 
 	--inner-max-width: 1200px;
+
+	--global-font: 'Helvetica', 'Arial'
 }
 
 html, body {
 	margin: 0px;
 	padding: 0px;
+
+	font-family: var(--global-font);
 }
