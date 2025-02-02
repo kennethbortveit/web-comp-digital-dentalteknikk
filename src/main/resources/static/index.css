@@ -15,7 +15,9 @@
 
 	--inner-max-width: 1200px;
 
-	--global-font: 'Helvetica', 'Arial'
+	--global-font: 'Helvetica', 'Arial';
+
+	--font-size-list: 24px;
 }
 
 html, body {

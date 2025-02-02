@@ -66,7 +66,14 @@ export default class SelfProducedImplant extends DDComponent {
 		.product-description-list {
 			list-style: none;
 			padding: 0;
+			margin: 0;
+			font-size: var(--font-size-list);
 		}	
+		.product-description-item > p {
+			margin-top: var(--spacing-xsmall);
+			margin-bottom: var(--spacing-xsmall);
+			padding: 0;
+		}
 	`
 	constructor() {
 		super()

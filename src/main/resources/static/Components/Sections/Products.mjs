@@ -39,7 +39,7 @@ export default class Products extends DDComponent {
 			.product-description-item {
 				display: flex;
 				justify-content: flex-start;
-				gap: var(--spacing-small)
+				gap: var(--spacing-small);
 			}
 			.product-image > img {
 				width: 100%;
@@ -47,7 +47,14 @@ export default class Products extends DDComponent {
             .product-description-list {
                 list-style: none;
                 padding: 0;
+                margin: 0;
+                font-size: var(--font-size-list);
             }	
+            .product-description-item > p {
+                margin-top: var(--spacing-xsmall);
+                margin-bottom: var(--spacing-xsmall);
+                padding: 0;
+            }
 			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
         subSection.setAttribute('background-color', this.getAttribute('background-color'))
