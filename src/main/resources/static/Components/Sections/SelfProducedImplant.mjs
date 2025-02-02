@@ -63,6 +63,10 @@ export default class SelfProducedImplant extends DDComponent {
 		.zirconia-sub-section {
 			margin-top: var(--spacing-large);
 		}
+		.product-description-list {
+			list-style: none;
+			padding: 0;
+		}	
 	`
 	constructor() {
 		super()
@@ -167,6 +171,7 @@ export default class SelfProducedImplant extends DDComponent {
 			},
 		]
 		const list = document.createElement('ul')
+		list.classList.add('product-description-list')
 		for(let desc of descriptions) {
 			const item = this.#createDescriptionItem(desc)
 			list.appendChild(item)
@@ -213,6 +218,7 @@ export default class SelfProducedImplant extends DDComponent {
 			}
 		];
 		const list = document.createElement('ul')
+		list.classList.add('product-description-list')
 		for(let desc of descriptions) {
 			const item = this.#createDescriptionItem(desc)
 			list.appendChild(item)

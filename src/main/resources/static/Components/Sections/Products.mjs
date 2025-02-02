@@ -44,6 +44,10 @@ export default class Products extends DDComponent {
 			.product-image > img {
 				width: 100%;
 			}
+            .product-description-list {
+                list-style: none;
+                padding: 0;
+            }	
 			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
         subSection.setAttribute('background-color', this.getAttribute('background-color'))
@@ -86,6 +90,7 @@ export default class Products extends DDComponent {
 
     #createProductDescription() {
         const list = document.createElement('ul')
+        list.classList.add('product-description-list')
         const descriptons = [
             {
                 text: 'Fast protetikk',
