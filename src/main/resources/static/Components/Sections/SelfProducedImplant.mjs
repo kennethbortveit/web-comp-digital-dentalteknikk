@@ -60,6 +60,9 @@ export default class SelfProducedImplant extends DDComponent {
 		.product-image {
 			width: 100%;
 		}
+		.zirconia-sub-section {
+			margin-top: var(--spacing-large);
+		}
 	`
 	constructor() {
 		super()
@@ -103,6 +106,7 @@ export default class SelfProducedImplant extends DDComponent {
 	#createZirconia() {
 		const subSection = DDComponent.createElement(SubSection)
 		subSection.setAttribute('name', 'Individuelle distanser og bar bridges med zirconia')
+		subSection.classList.add('zirconia-sub-section')
 		const content = document.createElement('div')
 		content.classList.add('product-container')
 		const descriptionBlock = this.#createContentBlock(
