@@ -5,6 +5,7 @@ export default class Section extends DDComponent {
     static styles = `
         :host {
             scroll-margin-top: var(--spacing-large);
+            margin-top: var(--spacing-large);
         }
     `
     constructor() {
