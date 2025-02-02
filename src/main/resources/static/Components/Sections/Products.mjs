@@ -46,6 +46,7 @@ export default class Products extends DDComponent {
 			}
 			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
+        subSection.setAttribute('background-color', this.getAttribute('background-color'))
         this.shadowRoot.appendChild(subSection)
     }
 

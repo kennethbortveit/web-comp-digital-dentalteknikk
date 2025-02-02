@@ -8,7 +8,6 @@ export default class SubSection extends DDComponent {
 
     static styles = `
         .sub-section-content {
-            background-color: var(--blue);
             color: var(--white);
             padding: var(--spacing-small);
             height: 100%;
@@ -17,6 +16,11 @@ export default class SubSection extends DDComponent {
 
     connectedCallback() {
         this.applyStyles(SubSection.styles)
+        this.applyStyles(`
+            .sub-section-content {
+                background-color: ${this.getAttribute('background-color')};
+            }
+            `);
         const header = this.#getHeader()
         const container = this.#createContentContainer()
         const contentSlot = this.#createContentSlot()

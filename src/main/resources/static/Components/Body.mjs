@@ -49,6 +49,7 @@ export default class Body extends DDComponent {
         const products = document.createElement(
             DDComponent.getComponentName(Products)
         )
+        products.setAttribute('background-color', 'var(--black)')
         products.setAttribute('slot', 'content')
         section.appendChild(products)
         return section
@@ -78,6 +79,7 @@ export default class Body extends DDComponent {
 		const section = this.#createSection('Egenproduksjon implantater')
 		const selfProducesImplant = DDComponent.createElement(SelfProducedImplant)
 		selfProducesImplant.setAttribute('slot', 'content')
+        selfProducesImplant.setAttribute('background-color', 'var(--blue)')
 		section.appendChild(selfProducesImplant)
 		return section
 	}

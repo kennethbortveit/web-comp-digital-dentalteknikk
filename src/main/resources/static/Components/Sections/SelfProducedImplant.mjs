@@ -74,7 +74,9 @@ export default class SelfProducedImplant extends DDComponent {
 	#createContent() {
 		const container = document.createElement('div')
 		const torontoBridgeSubSection = this.#createTorontoBridge()
+		torontoBridgeSubSection.setAttribute('background-color', 'var(--blue)')
 		const zirconiaSubSection = this.#createZirconia()
+		zirconiaSubSection.setAttribute('background-color', 'var(--blue)')
 		container.appendChild(torontoBridgeSubSection)
 		container.appendChild(zirconiaSubSection)
 		return container

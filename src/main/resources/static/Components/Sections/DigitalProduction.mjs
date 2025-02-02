@@ -48,6 +48,7 @@ export default class DigitalProduction extends DDComponent {
         )
         const subSectionDescription = 'Digital dentalteknikk tar imot og produserer fra digitale og konvensjonelle avtrykk'
         subSection.setAttribute('name', subSectionDescription)
+        subSection.setAttribute('background-color', 'var(--red)')
         const content = this.#createContent()
         content.setAttribute('slot', 'content')
         subSection.appendChild(content)

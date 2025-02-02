@@ -37,6 +37,7 @@ export default class About extends DDComponent {
 
     #createHistory() {
         const subSection = this.#createSubSection('Historikk')
+        subSection.setAttribute('background-color', 'var(--blue)')
         const content = document.createElement('div')
         content.setAttribute('slot', 'content')
         const paragraphs = [
@@ -58,6 +59,7 @@ export default class About extends DDComponent {
 
     #createPurpose() {
         const subSection = this.#createSubSection('Formål')
+        subSection.setAttribute('background-color', 'var(--blue)')
         const content = document.createElement('div')
         content.setAttribute('slot', 'content')
         const paragraphs = [
@@ -89,6 +91,7 @@ export default class About extends DDComponent {
 
     #createQualityInsurance() {
         const subSection = this.#createSubSection('Kvalitetssikring')
+        subSection.setAttribute('background-color', 'var(--blue)')
         const content = document.createElement('div')
         content.setAttribute('slot', 'content')
         const paragraphs = [
