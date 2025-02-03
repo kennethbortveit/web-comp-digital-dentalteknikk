@@ -2,12 +2,46 @@ package no.bortveits.ddt.model;
 
 public class ContactForm {
 	private long id;
-	private String inquiry;
+	private boolean inquiryOrder;
+	private boolean inquiryPrice;
+	private boolean inquiryOther;
 	private String name;
 	private String phone;
 	private String email;
 	private String message;
-	private String replyType;
+	private boolean replyTypeEmail;
+	private boolean replyTypePhone;
+
+	public boolean isInquiryOrder() {
+		return inquiryOrder;
+	}
+	public void setInquiryOrder(boolean inquiryOrder) {
+		this.inquiryOrder = inquiryOrder;
+	}
+	public boolean isInquiryPrice() {
+		return inquiryPrice;
+	}
+	public void setInquiryPrice(boolean inquiryPrice) {
+		this.inquiryPrice = inquiryPrice;
+	}
+	public boolean isInquiryOther() {
+		return inquiryOther;
+	}
+	public void setInquiryOther(boolean inquiryOther) {
+		this.inquiryOther = inquiryOther;
+	}
+	public boolean isReplyTypeEmail() {
+		return replyTypeEmail;
+	}
+	public void setReplyTypeEmail(boolean replyTypeEmail) {
+		this.replyTypeEmail = replyTypeEmail;
+	}
+	public boolean isReplyTypePhone() {
+		return replyTypePhone;
+	}
+	public void setReplyTypePhone(boolean replyTypePhone) {
+		this.replyTypePhone = replyTypePhone;
+	}
 	private String recaptcha;
 
 	public long getId() {
@@ -21,18 +55,6 @@ public class ContactForm {
 	}
 	public void setRecaptcha(String recaptcha) {
 		this.recaptcha = recaptcha;
-	}
-	public String getReplyType() {
-		return replyType;
-	}
-	public void setReplyType(String replyType) {
-		this.replyType = replyType;
-	}
-	public String getInquiry() {
-		return inquiry;
-	}
-	public void setInquiry(String inquiry) {
-		this.inquiry = inquiry;
 	}
 	public String getName() {
 		return name;

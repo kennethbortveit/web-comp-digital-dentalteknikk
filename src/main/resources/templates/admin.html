@@ -88,10 +88,6 @@
             <div class="messages-container">
                 <div th:each="message : ${messages}" class="contact-request">
                     <div class="content">
-                        <div class="inquiry contact-request-item">
-                            <p class="description">Henvendelsen gjelder:</p>
-                            <p th:text="${message.inquiry}"></p>
-                        </div>
                         <div class="from contact-request-item">
                             <p class="description">Fra:</p>
                             <p th:text="${message.name}"></p>
@@ -107,10 +103,6 @@
                         <div class="message contact-request-item">
                             <p class="description">Message:</p>
                             <p th:text="${message.message}"></p>
-                        </div>
-                        <div class="reply-type contact-request-item">
-                            <p class="description">Ønsker å kontaktes på:</p>
-                            <p th:text="${message.getReplyType()}"></p>
                         </div>
                     </div>
                     <div class="actions">

@@ -112,17 +112,17 @@ export default class Contact extends DDComponent {
 		const c = document.createElement('div')
 		c.classList.add('inquiry-input')
 		const orderContainer = document.createElement('div')
-		const order = this.#createCheckInput('contact-inquiry-order')
+		const order = this.#createCheckInput('contact-inquiry-order', 'inquiryOrder')
 		const orderLabel = this.#createLabel('Bestilling', 'contact-inquiry-order')
 		orderContainer.appendChild(order)
 		orderContainer.appendChild(orderLabel)
 		const priceContainer = document.createElement('div')
-		const price = this.#createCheckInput('contact-inquiry-price')
+		const price = this.#createCheckInput('contact-inquiry-price', 'inquiryPrice')
 		const priceLabel = this.#createLabel('Pristilbud', 'contact-inquiry-price')
 		priceContainer.appendChild(price)
 		priceContainer.appendChild(priceLabel)
 		const otherContainer = document.createElement('div')
-		const other = this.#createCheckInput('contact-inquiry-other')
+		const other = this.#createCheckInput('contact-inquiry-other', 'inquiryOther')
 		const otherLabel = this.#createLabel('Annet', 'contact-inquiry-other')	
 		otherContainer.appendChild(other)
 		otherContainer.appendChild(otherLabel)
@@ -179,8 +179,14 @@ export default class Contact extends DDComponent {
 	#createReplyTypeInput() {
 		const c = document.createElement('div')
 		c.classList.add('reply-type-input')
-		const i = this.#createTextInput('reply-type-input', 'replyType')
-		c.appendChild(i)
+		const email = this.#createCheckInput('contact-reply-type-email', 'replyTypeEmail')
+		const emailLabel = this.#createLabel('Epost', 'contact-reply-type-email')
+		const phone = this.#createCheckInput('contact-reply-type-phone', 'replyTypePhone')
+		const phoneLabel = this.#createLabel('Telefon', 'contact-reply-type-phone')
+		c.appendChild(email)
+		c.appendChild(emailLabel)
+		c.appendChild(phone)
+		c.appendChild(phoneLabel)
 		return c
 	}
 	#createMessageLabel() {
@@ -217,10 +223,11 @@ export default class Contact extends DDComponent {
 		t.setAttribute('name', name)
 		return t
 	}
-	#createCheckInput(id) {
+	#createCheckInput(id, name) {
 		const i = document.createElement('input')
 		i.setAttribute('type', 'checkbox')
 		i.setAttribute('id', id)
+		i.setAttribute('name', name)
 		return i
 	}
     #createSendButton() {

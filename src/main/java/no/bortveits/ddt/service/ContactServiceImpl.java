@@ -27,9 +27,7 @@ public class ContactServiceImpl implements ContactService {
                 m.setId(it.getId());
                 m.setName(it.getName());
                 m.setEmail(it.getEmail());
-                m.setInquiry(it.getInquiry());
                 m.setMessage(it.getMessage());
-                m.setReplyType(it.getReply_type());
                 m.setPhone(it.getPhone());
                 return m;
             })
@@ -41,11 +39,9 @@ public class ContactServiceImpl implements ContactService {
     public Long saveContactForm(ContactForm form) {
         var e = new ContactRequest();
         e.setEmail(form.getEmail());
-        e.setInquiry(form.getInquiry());
         e.setMessage(form.getMessage());
         e.setName(form.getName());
         e.setPhone(form.getPhone());
-        e.setReply_type(form.getReplyType());
         return this.contactRequestRepository.save(e).getId();
     }
 
