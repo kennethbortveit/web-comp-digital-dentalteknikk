@@ -3,10 +3,16 @@ import Map from "./Map.mjs";
 
 export default class Footer extends DDComponent {
     static styles = `
+        :host {
+            display: flex;
+            justify-content: center;
+        }
         .footer-container {
+            width: 100%;
             display: flex;
             gap: var(--spacing-medium);
             padding: var(--spacing-medium);
+            max-width: var(--inner-max-width);
         }
         .footer-info {
             flex-basis: 0;
