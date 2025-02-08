@@ -5,7 +5,7 @@ export default class NavigationItem extends DDComponent
 	static styles = `
 		div {
 			color: var(--grey);
-			padding: var(--spacing-small);
+			padding: var(--spacing-xsmall);
 		}
 		.active-section {
 			color: var(--white);
