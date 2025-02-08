@@ -29,6 +29,11 @@ public class ContactServiceImpl implements ContactService {
                 m.setEmail(it.getEmail());
                 m.setMessage(it.getMessage());
                 m.setPhone(it.getPhone());
+                m.setInquiryOrder(it.isInquiry_order());
+                m.setInquiryPrice(it.isInquiry_price());
+                m.setInquiryOther(it.isInquiry_other());
+                m.setReplyTypeEmail(it.isReply_type_email());
+                m.setReplyTypePhone(it.isReply_type_phone());
                 return m;
             })
             .toArray(ContactForm[]::new);
@@ -42,6 +47,11 @@ public class ContactServiceImpl implements ContactService {
         e.setMessage(form.getMessage());
         e.setName(form.getName());
         e.setPhone(form.getPhone());
+        e.setInquiry_order(form.isInquiryOrder());
+        e.setInquiry_price(form.isInquiryPrice());
+        e.setInquiry_other(form.isInquiryOther());
+        e.setReply_type_email(form.isReplyTypeEmail());
+        e.setReply_type_phone(form.isReplyTypePhone());
         return this.contactRequestRepository.save(e).getId();
     }
 

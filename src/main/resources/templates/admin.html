@@ -104,6 +104,31 @@
                             <p class="description">Message:</p>
                             <p th:text="${message.message}"></p>
                         </div>
+                        <div class="message contact-request-item">
+                            <p class="description">Henvendelsen gjelder bestilling:</p>
+                            <p th:if="${message.inquiryOrder}">Ja</p>
+                            <p th:unless="${message.inquiryOrder}">Nei</p>
+                        </div>
+                        <div class="message contact-request-item">
+                            <p class="description">Henvendelsen gjelder pris:</p>
+                            <p th:if="${message.inquiryPrice}">Ja</p>
+                            <p th:unless="${message.inquiryPrice}">Nei</p>
+                        </div>
+                        <div class="message contact-request-item">
+                            <p class="description">Henvendelsen gjelder annet:</p>
+                            <p th:if="${message.inquiryOther}">Ja</p>
+                            <p th:unless="${message.inquiryOther}">Nei</p>
+                        </div>
+                        <div class="message contact-request-item">
+                            <p class="description">Ønsker å kontaktes på epost:</p>
+                            <p th:if="${message.replyTypeEmail}">Ja</p>
+                            <p th:unless="${message.replyTypeEmail}">Nei</p>
+                        </div>
+                        <div class="message contact-request-item">
+                            <p class="description">Henvendelsen gjelder bestilling:</p>
+                            <p th:if="${message.replyTypePhone}">Ja</p>
+                            <p th:unless="${message.replyTypePhone}">Nei</p>
+                        </div>
                     </div>
                     <div class="actions">
                         <div class="delete-contact-request">
