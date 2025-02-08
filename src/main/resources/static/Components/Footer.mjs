@@ -1,53 +1,40 @@
 import DDComponent from "./DDComponent.mjs";
-import H4 from "./Heading/H4.mjs";
 import Map from "./Map.mjs";
 
 export default class Footer extends DDComponent {
     static styles = `
         .footer-container {
-            color: var(--white);
-            padding: var(--spacing-medium);
             display: flex;
-            justify-content: space-between;
             gap: var(--spacing-medium);
-            max-width: var(--inner-max-width);
-            margin-left: auto;
-            margin-right: auto;
+            padding: var(--spacing-medium);
         }
-
         .footer-info {
-            flex-basis: 0px;
+            flex-basis: 0;
             flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
-
         .footer-map {
-            width: 50%;
-            height: 100%;
+            flex-basis: 0;
+            flex-grow: 1;
         }
-
-        .footer-info-pair {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+        .footer-info-header {
+            font-size: var(--font-size-footer-title);
+            color: var(--white);
+            text-transform: uppercase;
+            font-weight: normal;
+            text-align: left;
         }
-        .footer-info-pair > p {
-            margin: 0px;
-            padding: 0px;
-        }
-        .footer-info-pair > a > img {
-            width: var(--spacing-medium);
-            height: var(--spacing-medium);
-        }
-        .footer-info-pair-label {
+        .footer-info-label-cell {
             color: var(--grey);
         }
-        .info-block {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xxsmall);
+        .footer-info-value-cell {
+            color: var(--white);
+            padding-left: var(--footer-custom-spacing);
+        }
+        .footer-info-value-cell-facebook > img {
+            width: 40px;
+        }   
+        tr.footer-info-block-space > th, tr.footer-info-block-space > td {
+            padding-bottom: var(--spacing-medium);
         }
     `
     constructor() {
@@ -70,45 +57,9 @@ export default class Footer extends DDComponent {
         return container
     }
 
-    #createInfoBlock(keyValuePairs) {
-        const container = document.createElement('div')
-        container.setAttribute('class', 'info-block')
-        for(let pair of keyValuePairs) {
-            container.appendChild(
-                this.#createInfoPair(pair)
-            )
-        }
-        return container
-    } 
-
-    #createInfoPair(keyValuePair) {
-        const container = document.createElement('div')
-        container.setAttribute('class', 'footer-info-pair')
-        const label = this.#createInfoLabel(keyValuePair.label)
-        container.appendChild(label)
-        container.appendChild(keyValuePair.element)
-        return container
-    }
-
-    #createInfoLabel(text) {
-        const label = document.createElement('p')
-        label.setAttribute('class', 'footer-info-pair-label')
-        label.appendChild(
-            document.createTextNode(text)
-        )
-        return label
-    }
-
-    #createInfoText(text) {
-        const p = document.createElement('p')
-        p.appendChild(
-            document.createTextNode(text)
-        )
-        return p
-    }
-
     #createFacebookLink() {
         const link = document.createElement('a')
+        link.classList.add('footer-info-value-cell-facebook')
         link.setAttribute('href', 'https://www.facebook.com/DrobakDentalteknikk/')
         link.setAttribute('target', '_blank')
         const image = document.createElement('img')
@@ -129,49 +80,98 @@ export default class Footer extends DDComponent {
     #createInfo() {
 		const container = document.createElement('div')
 		container.setAttribute('class', 'footer-info')
-        const header = DDComponent.createElement(H4)
-        header.setAttribute('text', 'Digital Dentalteknikk')
-        container.appendChild(header)
+        const table = document.createElement('table')
 
-        const contactInfoBlock = this.#createInfoBlock([
-            {
-                label: 'Kontaktperson:', 
-                element: this.#createInfoText('Morten Iversen'),
-            },
-            {
-                label: 'Telefon:',
-                element: this.#createInfoText('22 42 12 39')
-            },
-            {
-                label: 'E-post:',
-                element: this.#createInfoText('ddtpost@online.no')
-            }
-        ])
-        container.appendChild(contactInfoBlock)
+        const tr0 = document.createElement('tr')
+        tr0.classList.add('footer-info-block-space')
+        const headerCell = document.createElement('th')
+        headerCell.setAttribute('colspan', '2')
+        headerCell.classList.add('footer-info-header')
+        headerCell.textContent = 'Digital Dentalteknikk AS'
+        tr0.appendChild(headerCell)
+        table.appendChild(tr0)
 
-        const addressInfoBlock = this.#createInfoBlock([
-            {
-                label: 'Postadresse:',
-                element: this.#createInfoText('Postboks 1614 Vika, 0119 Oslo')
-            },
-            {
-                label: 'Besøksadresse:',
-                element: this.#createInfoText('Øvre Vollgate 6, 0158 Oslo')
-            },
-            {
-                label: 'Org. nr.:',
-                element: this.#createInfoText('997 034 406')
-            }
-        ])
-        container.appendChild(addressInfoBlock)
+        const tr1 = document.createElement('tr')
+        const contactPersonLabelCell = document.createElement('td')
+        contactPersonLabelCell.classList.add('footer-info-label-cell')
+        contactPersonLabelCell.textContent = 'Kontaktperson:'
+        tr1.appendChild(contactPersonLabelCell)
+        const contactPersonValueCell = document.createElement('td')
+        contactPersonValueCell.classList.add('footer-info-value-cell')
+        contactPersonValueCell.textContent = 'Morten Iversen'
+        tr1.appendChild(contactPersonValueCell)
+        table.appendChild(tr1)
 
-        const socialMediaInfoBlock = this.#createInfoBlock([
-            {
-                label: 'Følg oss på:',
-                element: this.#createFacebookLink()
-            }
-        ])
-        container.appendChild(socialMediaInfoBlock)
+        const tr2 = document.createElement('tr')
+        const phoneLabelCell = document.createElement('td')
+        phoneLabelCell.classList.add('footer-info-label-cell')
+        phoneLabelCell.textContent = 'Telefon:'
+        tr2.appendChild(phoneLabelCell)
+        const phoneValueCell = document.createElement('td')
+        phoneValueCell.classList.add('footer-info-value-cell')
+        phoneValueCell.textContent = '22 42 12 39'
+        tr2.appendChild(phoneValueCell)
+        table.appendChild(tr2)
+
+        const tr3 = document.createElement('tr')
+        tr3.classList.add('footer-info-block-space')
+        const emailLabelCell = document.createElement('td')
+        emailLabelCell.classList.add('footer-info-label-cell')
+        emailLabelCell.textContent = 'E-post:'
+        tr3.appendChild(emailLabelCell)
+        const emailValueCell = document.createElement('td')
+        emailValueCell.classList.add('footer-info-value-cell')
+        emailValueCell.textContent = 'ddtpost@online.no'
+        tr3.appendChild(emailValueCell)
+        table.appendChild(tr3)
+
+        const tr4 = document.createElement('tr')
+        const addressLabelCell = document.createElement('td')
+        addressLabelCell.classList.add('footer-info-label-cell')
+        addressLabelCell.textContent = 'Postadresse:'
+        tr4.appendChild(addressLabelCell)
+        const addressValueCell = document.createElement('td')
+        addressValueCell.classList.add('footer-info-value-cell')
+        addressValueCell.textContent = 'Postboks 1614 Vika, 0119 Oslo'
+        tr4.appendChild(addressValueCell)
+        table.appendChild(tr4)
+
+        const tr5 = document.createElement('tr')
+        const visitAddressLabelCell = document.createElement('td')
+        visitAddressLabelCell.classList.add('footer-info-label-cell')
+        visitAddressLabelCell.textContent = 'Besøksadresse:'
+        tr5.appendChild(visitAddressLabelCell)
+        const visitAddressValueCell = document.createElement('td')
+        visitAddressValueCell.classList.add('footer-info-value-cell')
+        visitAddressValueCell.textContent = 'Øvre Vollgate 6, 0158 Oslo'
+        tr5.appendChild(visitAddressValueCell)
+        table.appendChild(tr5)
+
+        const tr6 = document.createElement('tr')
+        tr6.classList.add('footer-info-block-space')
+        const orgNumberLabelCell = document.createElement('td')
+        orgNumberLabelCell.classList.add('footer-info-label-cell')
+        orgNumberLabelCell.textContent = 'Org.nr.:'
+        tr6.appendChild(orgNumberLabelCell)
+        const orgNumberValueCell = document.createElement('td')
+        orgNumberValueCell.classList.add('footer-info-value-cell')
+        orgNumberValueCell.textContent = '997 034 406'
+        tr6.appendChild(orgNumberValueCell)
+        table.appendChild(tr6)
+
+        const tr7 = document.createElement('tr')
+        const facebookLabelCell = document.createElement('td')
+        facebookLabelCell.classList.add('footer-info-label-cell')
+        facebookLabelCell.textContent = 'Følg oss på:'
+        tr7.appendChild(facebookLabelCell)
+        const facebookValueCell = document.createElement('td')
+        facebookValueCell.classList.add('footer-info-value-cell')
+        const facebookLink = this.#createFacebookLink()
+        facebookValueCell.appendChild(facebookLink)
+        tr7.appendChild(facebookValueCell)
+        table.appendChild(tr7)
+
+        container.appendChild(table)
 		return container
 	}
 }
