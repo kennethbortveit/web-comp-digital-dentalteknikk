@@ -246,6 +246,7 @@ export default class Contact extends DDComponent {
 	}
     #createSendButton() {
         const button = new Button()
+		button.setAttribute('type', 'button')
 		button.classList.add('contact-send-button')
         button.innerText = 'Send'
 		button.onclick = e => {
