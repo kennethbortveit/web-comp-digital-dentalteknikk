@@ -23,21 +23,27 @@ export default class Contact extends DDComponent {
 		.contact-label {
 			display: flex;
 			justify-content: flex-end;
+			align-items: center;
 		}
 		.inquiry-label {
 			grid-area: inquiry-label;
+			align-items: center;
 		}
 		.inquiry-input {
 			grid-area: inquiry-input;
+			display: flex;
+			gap: var(--spacing-xsmall);
 		}
 		.name-label {
 			grid-area: name-label;
+			align-items: center;
 		}
 		.name-input {
 			grid-area: name-input;
 		}
 		.phone-label {
 			grid-area: phone-label;
+			align-items: center;
 		}
 		.phone-input {
 			grid-area: phone-input;
@@ -47,31 +53,35 @@ export default class Contact extends DDComponent {
 		}
 		.email-label {
 			grid-area: email-label;
+			align-items: center;
 		}
 		.email-input {
 			grid-area: email-input;
 		}
 		.reply-type-label {
 			grid-area: reply-type-label;
+			align-items: center;
 		}
 		.reply-type-input {
 			grid-area: reply-type-input;
+			display: flex;
+			gap: var(--spacing-xsmall);
 		}
 		.message-label {
 			grid-area: message-label;
+			align-items: center;
 		}
 		.message-input {
 			grid-area: message-input;
 		}
 		.ddt-text-input {
 			height: var(--spacing-medium);
-			border-radius: 4px;
 			width: var(--spacing-xxlarge);
 		}
 		.ddt-textarea {
 			width: var(--spacing-xxlarge);
 			height: var(--spacing-large);
-			border-radius: 4px;
+			resize: none;
 		}
 	`
 
@@ -179,14 +189,18 @@ export default class Contact extends DDComponent {
 	#createReplyTypeInput() {
 		const c = document.createElement('div')
 		c.classList.add('reply-type-input')
+		const emailContainer = document.createElement('div')
 		const email = this.#createCheckInput('contact-reply-type-email', 'replyTypeEmail')
 		const emailLabel = this.#createLabel('Epost', 'contact-reply-type-email')
+		emailContainer.appendChild(email)
+		emailContainer.appendChild(emailLabel)
+		const phoneContainer = document.createElement('div')
 		const phone = this.#createCheckInput('contact-reply-type-phone', 'replyTypePhone')
 		const phoneLabel = this.#createLabel('Telefon', 'contact-reply-type-phone')
-		c.appendChild(email)
-		c.appendChild(emailLabel)
-		c.appendChild(phone)
-		c.appendChild(phoneLabel)
+		phoneContainer.appendChild(phone)
+		phoneContainer.appendChild(phoneLabel)
+		c.appendChild(emailContainer)
+		c.appendChild(phoneContainer)
 		return c
 	}
 	#createMessageLabel() {
