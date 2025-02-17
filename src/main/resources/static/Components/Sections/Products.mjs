@@ -31,6 +31,11 @@ export default class Products extends DDComponent {
 
     connectedCallback() {
 		this.applyStyles(`
+            @media (width < 1200px) {
+                :host {
+                    padding: var(--spacing-medium);
+                }
+            } 
 			.product-content {
 				display: grid;
 				gap: var(--spacing-small);
