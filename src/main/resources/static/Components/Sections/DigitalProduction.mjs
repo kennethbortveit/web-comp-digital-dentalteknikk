@@ -37,6 +37,9 @@ export default class DigitalProduction extends DDComponent {
 		}
 
         @media (width < 1200px) {
+            :host {
+                padding: var(--spacing-medium);
+            }
             .digital-production-images {
                 flex-direction: column;
             }
