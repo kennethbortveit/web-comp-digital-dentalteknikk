@@ -54,7 +54,6 @@ export default class SelfProducedImplant extends DDComponent {
 		}
 		.product-container {
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
 			gap: var(--spacing-small);
 		}
 		.product-image {
@@ -76,6 +75,16 @@ export default class SelfProducedImplant extends DDComponent {
 		}
 		.product-image-number {
 			width: var(--product-image-number-size);
+		}
+		@media (width < 1200px) {
+			.product-container {
+				grid-template-columns: 1fr;
+			}
+		}	
+		@media (1200px <= width) {
+			.product-container {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
 		}
 	`
 	constructor() {
