@@ -17,20 +17,22 @@ export default class About extends DDComponent {
             overflow: hidden;
         }
 
-        .about-container > dd-subsection {
-            flex-basis: 0px;
-            flex-grow: 1;
-        }
 
         @media (1200px <= width) {
             .about-container {
                 flex-direction: row;
+            }
+
+            .about-container > dd-subsection {
+                flex-basis: 0px;
+                flex-grow: 1;
             }
         }
 
         @media (width < 1200px) {
             .about-container {
                 flex-direction: column;
+                padding: var(--spacing-medium);
             }
         }
     `
