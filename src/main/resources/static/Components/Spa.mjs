@@ -18,7 +18,8 @@ class Spa extends DDComponent
 		}
 
 		.body-container {
-			width: var(--inner-max-width);
+			width: 100%;
+			max-width: var(--inner-max-width);
 			margin-left: auto;
 			margin-right: auto;
 		}

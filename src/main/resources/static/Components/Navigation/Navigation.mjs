@@ -20,6 +20,10 @@ export default class Navigation extends DDComponent
             width: 100%;
             height: var(--spacing-large);
 		}
+        @media (width < 1200px) {
+        }
+        @media (1200px <= width) {
+        }   
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
         }
