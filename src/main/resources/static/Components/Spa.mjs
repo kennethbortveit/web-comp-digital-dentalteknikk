@@ -46,7 +46,6 @@ class Spa extends DDComponent
 
 			.footer-container {
 				width: 100%;
-				max-width: var(--inner-max-width);
 			}
 		}
 		@media (1200px <= width) {
@@ -59,7 +58,7 @@ class Spa extends DDComponent
 			}
 
 			.footer-container {
-				max-width: var(--inner-max-width);
+				width: 100%;
 			}
 		}
 	`

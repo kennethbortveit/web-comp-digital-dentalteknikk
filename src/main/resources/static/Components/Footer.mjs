@@ -12,6 +12,7 @@ export default class Footer extends DDComponent {
             display: flex;
             gap: var(--spacing-medium);
             padding: var(--spacing-medium);
+            max-width: var(--inner-max-width);
         }
 
         @media (width < 1200px) {
