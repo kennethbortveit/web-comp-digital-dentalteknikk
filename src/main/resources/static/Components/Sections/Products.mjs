@@ -33,7 +33,6 @@ export default class Products extends DDComponent {
 		this.applyStyles(`
 			.product-content {
 				display: grid;
-				grid-template-columns: 1fr 1fr 1fr;
 				gap: var(--spacing-small);
 			}
 			.product-description-item {
@@ -58,6 +57,15 @@ export default class Products extends DDComponent {
             .product-image-number {
                 width: var(--product-image-number-size);
             }
+            @media (width < 1200px) {
+                grid-template-columns: 1fr;
+            }
+            @media (1200px <= width) {
+                .product-content {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+            }   
 			`)
         const subSection = this.#createSubSection('Egenproduksjon og import')
         subSection.setAttribute('background-color', this.getAttribute('background-color'))
