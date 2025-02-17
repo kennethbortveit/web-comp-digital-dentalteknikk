@@ -18,20 +18,49 @@ class Spa extends DDComponent
 		}
 
 		.body-container {
-			width: 100%;
-			max-width: var(--inner-max-width);
 			margin-left: auto;
 			margin-right: auto;
 		}
 
 		.header-container {
-			width: var(--inner-max-width);
 			margin-left: auto;
 			margin-right: auto;
 		}
 
 		.footer-container {
+			margin-left: auto;
+			margin-right: auto;
 			background-color: var(--black);
+		}
+		
+		@media (width < 1200px) {
+			.body-container {
+				width: 100%;
+				max-width: var(--inner-max-width);
+			}
+
+			.header-container {
+				width: 100%;
+				max-width: var(--inner-max-width);
+			}
+
+			.footer-container {
+				width: 100%;
+				max-width: var(--inner-max-width);
+			}
+		}
+		@media (1200px <= width) {
+			.body-container {
+				max-width: var(--inner-max-width);
+			}
+
+			.header-container {
+				max-width: var(--inner-max-width);
+			}
+
+			.footer-container {
+				max-width: var(--inner-max-width);
+			}
 		}
 	`
     constructor()

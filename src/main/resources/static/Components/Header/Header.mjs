@@ -14,14 +14,11 @@ export default class Header extends DDComponent {
 	
 	static styles = `
 		.ddt-logo {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			width: 100%;
 		}
 
 		.ddt-logo > img {
-			flex-basis: 0;
-			flex-grow: 1;
+			width: 100%;
 		}
 
 		.ddt-certification {
