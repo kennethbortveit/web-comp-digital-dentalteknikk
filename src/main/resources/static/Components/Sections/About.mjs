@@ -8,17 +8,30 @@ export default class About extends DDComponent {
     }
 
     static styles = `
+
         .about-container {
             display: flex;
             justify-content: space-between;
             gap: var(--spacing-medium);
-            heigth: 100%;
+            height: 100%;
             overflow: hidden;
         }
 
         .about-container > dd-subsection {
             flex-basis: 0px;
             flex-grow: 1;
+        }
+
+        @media (1200px <= width) {
+            .about-container {
+                flex-direction: row;
+            }
+        }
+
+        @media (width < 1200px) {
+            .about-container {
+                flex-direction: column;
+            }
         }
     `
 

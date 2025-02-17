@@ -20,7 +20,8 @@ export default class Header extends DDComponent {
 		}
 
 		.ddt-logo > img {
-			width: 100%;
+			flex-basis: 0;
+			flex-grow: 1;
 		}
 
 		.ddt-certification {
@@ -32,6 +33,14 @@ export default class Header extends DDComponent {
 		.ddt-certification > img {
 			width: 100%;
 			height: 100px;
+		}
+
+		.ddt-logo-container {
+			width: 100%;
+		}
+
+		.ddt-header-container {
+			width: 100%;
 		}
 	`
 
@@ -51,11 +60,14 @@ export default class Header extends DDComponent {
 	}
 	
 	#createContainer() {
-		return document.createElement('div')
+		const c = document.createElement('div')
+		c.classList.add('ddt-header-container')
+		return c
 	}
 	
 	#createLogo() {
 		const container = document.createElement('div')
+		container.classList.add('ddt-logo-container')
 		const image = document.createElement('img')
 		container.setAttribute('class', 'ddt-logo')
 		image.setAttribute('src', Header.#images.logo.src)
