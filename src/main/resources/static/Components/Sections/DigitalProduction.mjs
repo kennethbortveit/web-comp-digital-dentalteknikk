@@ -35,6 +35,17 @@ export default class DigitalProduction extends DDComponent {
 		.digital-production-image > img {
 			width: 100%;
 		}
+
+        @media (width < 1200px) {
+            .digital-production-images {
+                flex-direction: column;
+            }
+        }
+        @media (1200px <= width) {
+            .digital-production-images {
+                flex-direction: row;
+            }
+        }
 		
 	`
     constructor() {
