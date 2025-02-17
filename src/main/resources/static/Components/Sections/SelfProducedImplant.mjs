@@ -77,6 +77,9 @@ export default class SelfProducedImplant extends DDComponent {
 			width: var(--product-image-number-size);
 		}
 		@media (width < 1200px) {
+			:host {
+				padding: var(--spacing-medium);
+			}
 			.product-container {
 				grid-template-columns: 1fr;
 			}
