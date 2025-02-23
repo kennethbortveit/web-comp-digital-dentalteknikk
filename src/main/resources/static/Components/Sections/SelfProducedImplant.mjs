@@ -232,7 +232,7 @@ export default class SelfProducedImplant extends DDComponent {
 				}
 			},
 			{
-				text: 'Klinisk foto. Tannerstatninger lagd litt lyse da restannsett skal blekes senere',
+				text: 'Klinisk foto. Tannerstatninger lagd litt lyse da resttannsett skal blekes senere',
 				image: {
 					src: './Images/products/5_tall_fet.svg',
 					alt: 'Tallet 5'

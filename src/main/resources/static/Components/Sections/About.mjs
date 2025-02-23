@@ -17,6 +17,10 @@ export default class About extends DDComponent {
             overflow: hidden;
         }
 
+        .about-text {
+            line-height: var(--extra-line-height);
+        }
+
 
         @media (1200px <= width) {
             .about-container {
@@ -60,10 +64,11 @@ export default class About extends DDComponent {
             'Import siden 2008.',
             'Firmaet ble etablert i Drøbak, men flyttet til Oslo i 2012.',
             'I 2016 byttet vi navn til Digital Dentalteknikk AS.',
-            'Alle ansatter autoriserte tannteknikere.'
+            'Alle ansatte er autoriserte tannteknikere.'
         ]
         paragraphs.forEach(paragraph => {
             const p = document.createElement('p')
+            p.classList.add('about-text')
             const textNode = document.createTextNode(paragraph)
             p.appendChild(textNode)
             content.appendChild(p)
@@ -84,6 +89,7 @@ export default class About extends DDComponent {
         ]
         paragraphs.forEach(paragraph => {
             const p = document.createElement('p')
+            p.classList.add('about-text')
             const textNode = document.createTextNode(paragraph)
             p.appendChild(textNode)
             content.appendChild(p)
@@ -95,6 +101,7 @@ export default class About extends DDComponent {
             ]
         guaranties.forEach(guaranty => {
             const item = document.createElement('li')
+            item.classList.add('about-text')
             const textNode = document.createTextNode(guaranty)
             item.appendChild(textNode)
             listOfGuaranties.appendChild(item)
@@ -115,6 +122,7 @@ export default class About extends DDComponent {
         ]
         paragraphs.forEach(paragraph => {
             const p = document.createElement('p')
+            p.classList.add('about-text')
             const textNode = document.createTextNode(paragraph)
             p.appendChild(textNode)
             content.appendChild(p)

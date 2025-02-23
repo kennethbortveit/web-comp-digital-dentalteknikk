@@ -21,6 +21,8 @@
 	--product-image-number-size: 24px;
 	--footer-custom-spacing: 75px;
 	--font-size-footer-title: 19px;
+
+	--extra-line-height: 2;
 }
 
 html, body {
