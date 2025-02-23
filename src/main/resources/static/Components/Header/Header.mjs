@@ -13,6 +13,10 @@ export default class Header extends DDComponent {
 	}
 	
 	static styles = `
+		:host {
+			padding-left: var(--spacing-medium);
+			padding-right: var(--spacing-medium);
+		}
 		.ddt-logo {
 			width: 100%;
 		}
