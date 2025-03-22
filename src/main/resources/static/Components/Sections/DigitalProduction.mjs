@@ -80,7 +80,7 @@ export default class DigitalProduction extends DDComponent {
     }
 
     #createInformation() {
-        const information = 'Vi kan lage modellfritt på mindre kasus. Vi freser zirconia, e-max, pmma og peek samt metaller (cocr og titan).'
+        const information = 'Vi kan lage modellfritt på mindre kasus. Vi freser zirconia, e-max, pmma og graphene forsterket pmma samt metaller (cocr og titan).'
         const textNode = document.createTextNode(information)
         const paragraph = document.createElement('p')
         paragraph.appendChild(textNode)
