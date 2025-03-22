@@ -5,6 +5,7 @@ import Header from "./Header/Header.mjs";
 import { pipe } from '../utils.mjs'
 import Body from './Body.mjs'
 import Footer from "./Footer.mjs";
+import PendingOperation from "./PendingOperation/PendingOperation.mjs";
 
 
 class Spa extends DDComponent
@@ -82,18 +83,13 @@ class Spa extends DDComponent
 		headerContainer.appendChild(header)
 		navigation.addObservedEntry(header)
 		body.menuItems.forEach(i => navigation.addObservedEntry(i))
-		container.appendChild(
-			navigation
-		)
-		container.appendChild(
-			headerContainer
-		)
-		container.appendChild(
-			bodyContainer
-		)
-		container.appendChild(
-			footerContainer
-		)
+
+		container.appendChild(new PendingOperation())
+		container.appendChild(navigation)
+		container.appendChild(headerContainer)
+		container.appendChild(bodyContainer)
+		container.appendChild(footerContainer)
+
         this.shadowRoot.appendChild(container)
     }
     #createContainer() {

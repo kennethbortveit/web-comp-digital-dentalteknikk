@@ -33,9 +33,6 @@ export default class DDComponent extends HTMLElement
     constructor() {
         super()
         this.attachShadow({mode: 'open'})
-        this.shadowRoot.appendChild(
-			DDComponent.createStyleLink('./index.css')
-		)
 		this.applyStyles(`
 			:host {
 				display: block;
