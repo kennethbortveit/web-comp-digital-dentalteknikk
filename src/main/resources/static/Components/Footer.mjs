@@ -126,7 +126,7 @@ export default class Footer extends DDComponent {
         tr2.appendChild(phoneLabelCell)
         const phoneValueCell = document.createElement('td')
         phoneValueCell.classList.add('footer-info-value-cell')
-        phoneValueCell.textContent = '22 42 12 39'
+        phoneValueCell.textContent = '90 79 17 24'
         tr2.appendChild(phoneValueCell)
         table.appendChild(tr2)
 
