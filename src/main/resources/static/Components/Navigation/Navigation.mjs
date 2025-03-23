@@ -8,22 +8,26 @@ export default class Navigation extends DDComponent
         :host {
             margin-bottom: var(--spacing-large);
         }
-		.navigation-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: var(--white);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: var(--spacing-medium);
-            width: 100%;
-            height: var(--spacing-large);
-		}
-        @media (width < 1200px) {
+        .navigation-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: var(--white);
+                width: 100%;
         }
-        @media (1200px <= width) {
-        }   
+        @media (width <= 768px) {
+            .navigation-container {
+            }
+        }
+        @media (width > 768px) {
+            .navigation-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: var(--spacing-medium);
+                height: var(--spacing-large);
+            }
+        }
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
         }
