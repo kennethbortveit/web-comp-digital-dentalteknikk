@@ -1,5 +1,6 @@
 import DDComponent from "../DDComponent.mjs";
 import Button from '../Button.mjs'
+import PendingOperation from "../PendingOperation/PendingOperation.mjs";
 
 export default class Contact extends DDComponent {
     constructor() {
@@ -250,6 +251,13 @@ export default class Contact extends DDComponent {
 		button.classList.add('contact-send-button')
         button.innerText = 'Send'
 		button.onclick = e => {
+			this.dispatchEvent(new CustomEvent(
+				PendingOperation.ENABLE_REQUESTED_EVENT_ID,
+				{
+					bubbles: true,
+					composed: true
+				}
+			))
 			e.preventDefault()
 			grecaptcha.ready(() => {
 				grecaptcha

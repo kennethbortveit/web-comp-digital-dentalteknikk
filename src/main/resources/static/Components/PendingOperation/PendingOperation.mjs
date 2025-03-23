@@ -64,6 +64,12 @@ export default class PendingOperation extends DDComponent {
         )
     }
 
+    clear() {
+        while(this.shadowRoot.firstChild) {
+            this.shadowRoot.removeChild(this.shadowRoot.lastChild)
+        }
+    }
+
     onEnableRequested() {
         this.#enabled = true
         this.render()
@@ -75,6 +81,7 @@ export default class PendingOperation extends DDComponent {
     }
 
     render() {
+        this.clear()
         this.applyStyles(PendingOperation.styles)
         this.style.display = this.#enabled ? 'flex' : 'none';
         this.shadowRoot.appendChild(this.createSpinner())
