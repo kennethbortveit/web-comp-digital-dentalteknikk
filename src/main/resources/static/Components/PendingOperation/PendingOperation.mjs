@@ -1,7 +1,8 @@
 import DDComponent from "../DDComponent.mjs";
 
 export default class PendingOperation extends DDComponent {
-
+    static ENABLE_REQUESTED_EVENT_ID = '8b5e5426-364c-469f-a642-3389597567cb'
+    static DISABLE_REQUESTED_EVENT_ID = 'b4ae0f68-0c74-4c9f-94d6-7500e096ebf8'
     static styles = `
         :host {
             background-color: #000000bb;
@@ -34,8 +35,48 @@ export default class PendingOperation extends DDComponent {
         }
     `
 
+    #enabled;
+
+    constructor() {
+        super()
+        this.#enabled = false
+    }
+
     connectedCallback() {
+        window.addEventListener(
+            PendingOperation.ENABLE_REQUESTED_EVENT_ID, 
+            this.onEnableRequested.bind(this)
+        )
+        window.addEventListener(
+            PendingOperation.DISABLE_REQUESTED_EVENT_ID, 
+            this.onDisableRequested.bind(this)
+        )
+        this.render()
+    }
+    disconnectedCallback() { 
+        window.removeEventListener(
+            PendingOperation.ENABLE_REQUESTED_EVENT_ID, 
+            this.onEnableRequested
+        )
+        window.removeEventListener(
+            PendingOperation.DISABLE_REQUESTED_EVENT_ID,
+            this.onDisableRequested
+        )
+    }
+
+    onEnableRequested() {
+        this.#enabled = true
+        this.render()
+    }
+
+    onDisableRequested() {
+        this.#enabled = false
+        this.render()
+    }
+
+    render() {
         this.applyStyles(PendingOperation.styles)
+        this.style.display = this.#enabled ? 'flex' : 'none';
         this.shadowRoot.appendChild(this.createSpinner())
     }
 
@@ -44,6 +85,7 @@ export default class PendingOperation extends DDComponent {
         c.classList.add('spinner')
         return c
     } 
+
 }
 
 customElements.define('dd-pending-operation', PendingOperation)
