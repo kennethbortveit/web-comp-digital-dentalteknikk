@@ -8,25 +8,28 @@ export default class Navigation extends DDComponent
         :host {
             margin-bottom: var(--spacing-large);
         }
-        .navigation-container {
-                position: fixed;
-                top: 0;
-                left: 0;
-                background-color: var(--white);
-                width: 100%;
-        }
-        @media (width <= 768px) {
+        @media (width <= 1200px) {
             .navigation-container {
+                flex-direction: column;
             }
         }
-        @media (width > 768px) {
+        @media (width > 1200px) {
             .navigation-container {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 gap: var(--spacing-medium);
                 height: var(--spacing-large);
+                flex-direction: row;
             }
+        }
+        .navigation-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: var(--white);
+                width: 100%;
+                display: flex;
         }
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
@@ -36,12 +39,16 @@ export default class Navigation extends DDComponent
     #observer;
     #container;
     #items;
+    #mobileMatcher
+    #desktopMatcher
 
     constructor() {
         super()
         this.#observer = new IntersectionObserver(this.observerCallback.bind(this))
         this.#container = this.#createContainer()
         this.#items = []
+        this.#mobileMatcher = window.matchMedia('(width < 1200px)')
+        this.#desktopMatcher = window.matchMedia('(width >= 1200px)')
     }
 
     addObservedEntry(e) {
@@ -68,6 +75,10 @@ export default class Navigation extends DDComponent
 
 
     connectedCallback() {
+        this.#onDesktopMatch()
+        this.#onMobileMatch()
+        window.addEventListener('resize', this.#onDesktopMatch.bind(this))
+        window.addEventListener('resize', this.#onMobileMatch.bind(this))
 		this.applyStyles(Navigation.styles)
         window.addEventListener('scroll', () => {
             this.#items.forEach(i => {
@@ -85,6 +96,11 @@ export default class Navigation extends DDComponent
         this.shadowRoot.appendChild(this.#container)
     }
 
+    disconnectedCallback() {
+        this.removeEventListener('change', this.#onDesktopMatch)
+        this.removeEventListener('change', this.#onMobileMatch)
+    }
+
     #createContainer() {
         const div = document.createElement('div')
         div.setAttribute('class', 'navigation-container')
@@ -96,6 +112,20 @@ export default class Navigation extends DDComponent
         i.setAttribute('label', item)
         i.element = el
         return i
+    }
+
+    #onDesktopMatch() {
+        console.debug(this.#desktopMatcher)
+        if(this.#desktopMatcher.matches) {
+            console.debug('desktop matches...')
+        }    
+    }
+
+    #onMobileMatch() {
+        console.debug(this.#mobileMatcher)
+        if(this.#mobileMatcher.matches) {
+            console.debug('mobile matches...')
+        }
     }
 }
 

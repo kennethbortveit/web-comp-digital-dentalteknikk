@@ -1,33 +1,63 @@
 :root {
-	--blue: #075fa8;
-	--white: #ffffff;
 	--black: #000000;
-	--red: #ec3626;
-	--grey: #919191;
-	
-	--spacing-xxsmal: 4px;
-	--spacing-xsmall: 8px;
-	--spacing-small: 16px;
-	--spacing-medium: 32px;
-	--spacing-large: 64px;
-	--spacing-xlarge: 128px;
-	--spacing-xxlarge: 256px;
-
-	--inner-max-width: 1200px;
-
+	--blue: #075fa8;
 	--global-font: 'Helvetica', 'Arial';
+	--grey: #919191;
+	--inner-max-width: 1200px;
+	--red: #ec3626;
+	--white: #ffffff;
+}
+@media (width >= 1200px) {
+	:root {
+		--extra-line-height: 2;
+		--extra-line-height: 2;
+		--font-size-footer-title: 19px;
+		--font-size-footer-title: 19px;
+		--font-size-list: 20px;
+		--font-size-list: 20px;
+		--footer-custom-spacing: 75px;
+		--footer-custom-spacing: 75px;
+		--product-image-number-size: 24px;
+		--product-image-number-size: 24px;
+		--spacing-large: 64px;
+		--spacing-medium: 32px;
+		--spacing-small: 16px;
+		--spacing-xlarge: 128px;
+		--spacing-xsmall: 8px;
+		--spacing-xxlarge: 256px;
+		--spacing-xxsmal: 4px;
+	}
+	html, body {
+		font-size: 16px;
+	}
 
-	--font-size-list: 20px;
-	--product-image-number-size: 24px;
-	--footer-custom-spacing: 75px;
-	--font-size-footer-title: 19px;
-
-	--extra-line-height: 2;
+}
+@media (width < 1200px) {
+	:root {
+		--extra-line-height: 2;
+		--font-size-footer-title: 19px;
+		--font-size-footer-title: 19px;
+		--font-size-list: 20px;
+		--font-size-list: 20px;
+		--footer-custom-spacing: 75px;
+		--footer-custom-spacing: 75px;
+		--product-image-number-size: 24px;
+		--product-image-number-size: 24px;
+		--spacing-large: 64px;
+		--spacing-medium: 32px;
+		--spacing-small: 16px;
+		--spacing-xlarge: 128px;
+		--spacing-xsmall: 8px;
+		--spacing-xxlarge: 256px;
+		--spacing-xxsmal: 4px;
+	}
+	html, body {
+		font-size: 40px;
+	}
 }
 
 html, body {
+	font-family: var(--global-font);
 	margin: 0px;
 	padding: 0px;
-
-	font-family: var(--global-font);
 }
