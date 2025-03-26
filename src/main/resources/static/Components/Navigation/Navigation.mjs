@@ -72,9 +72,20 @@ export default class Navigation extends DDComponent
         const distance = Math.abs(rect.top - viewPortMiddle)
         return distance
     }
+    #createToggle() {
+        const btn = document.createElement('btn')
+        btn.onclick = this.#onToggleClick.bind(this)
+        btn.classList.add('nav-toggle')
+        btn.textContent = 'Toggle'
+        return btn
+    }
 
+    #onToggleClick() {
+        console.debug('Toggle')
+    }
 
     connectedCallback() {
+        this.#container.insertBefore(this.#createToggle(), this.#container.firstChild)
         this.#onDesktopMatch()
         this.#onMobileMatch()
         window.addEventListener('resize', this.#onDesktopMatch.bind(this))
