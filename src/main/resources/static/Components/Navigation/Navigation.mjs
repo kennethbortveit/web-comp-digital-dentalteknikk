@@ -10,6 +10,11 @@ export default class Navigation extends DDComponent
         :host {
             margin-bottom: var(--spacing-large);
         }
+        .nav-toggle {
+            border: 6px solid var(--black);
+            width: var(--spacing-large);
+            height: var(--spacing-large);
+        }
         @media (width <= 1200px) {
             .navigation-container {
                 flex-direction: column;
@@ -52,24 +57,20 @@ export default class Navigation extends DDComponent
             0% {
                 opacity: 0;
                 height: 0;
-                transform: translateY(-100%);
             }
             100% {
                 opacity: 1;
                 height: auto;
-                transform: translateY(0);
             }
         }
         @keyframes slideUp {
             0% {
                 opacity: 1;
                 height: auto;
-                transform: translateY(0);
             }
             100% {
                 opacity: 0;
                 height: 0;
-                transform: translateY(-100%);
             }
         }
 	`
@@ -113,7 +114,8 @@ export default class Navigation extends DDComponent
         return distance
     }
     #createToggle() {
-        const btn = document.createElement('btn')
+        const btn = document.createElement('button')
+        btn.setAttribute('type', 'button')
         btn.onclick = this.#onToggleClick.bind(this)
         btn.classList.add('nav-toggle')
         btn.textContent = 'Toggle'
