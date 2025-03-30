@@ -3,6 +3,8 @@ import NavigationItem from '../Navigation/NavigationItem.mjs'
 
 export default class Navigation extends DDComponent
 {
+    static OPEN_ANIMATION_CLASS_NAME = 'nav-items-container-open'
+    static CLOSE_ANIMATION_CLASS_NAME = 'nav-items-container-closed'
     static activeSectionClassName = 'active-section'
 	static styles = `
         :host {
@@ -11,6 +13,12 @@ export default class Navigation extends DDComponent
         @media (width <= 1200px) {
             .navigation-container {
                 flex-direction: column;
+            }
+            .${Navigation.CLOSE_ANIMATION_CLASS_NAME} {
+                animation: slideUp 1s ease-in-out forwards;
+            }
+            .${Navigation.OPEN_ANIMATION_CLASS_NAME} {
+                animation: slideDown 1s ease-in-out forwards;
             }
             .nav-toggle {
                 display: block;
@@ -40,10 +48,35 @@ export default class Navigation extends DDComponent
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
         }
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                height: 0;
+                transform: translateY(-100%);
+            }
+            100% {
+                opacity: 1;
+                height: auto;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideUp {
+            0% {
+                opacity: 1;
+                height: auto;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                height: 0;
+                transform: translateY(-100%);
+            }
+        }
 	`
 
     #observer;
     #container;
+    #itemsContainer;
     #items;
     #mobileMatcher
     #desktopMatcher
@@ -52,6 +85,7 @@ export default class Navigation extends DDComponent
         super()
         this.#observer = new IntersectionObserver(this.observerCallback.bind(this))
         this.#container = this.#createContainer()
+        this.#itemsContainer = this.#createItemsContainer()
         this.#items = []
         this.#mobileMatcher = window.matchMedia('(width < 1200px)')
         this.#desktopMatcher = window.matchMedia('(width >= 1200px)')
@@ -61,7 +95,7 @@ export default class Navigation extends DDComponent
         this.#observer.observe(e)
         const item = this.#createItem(e.getAttribute('name'), e)
         this.#items.push({element: e, item, visible: false })
-        this.#container.appendChild(item)
+        this.#itemsContainer.appendChild(item)
     }
     
     observerCallback(entries) {
@@ -87,11 +121,24 @@ export default class Navigation extends DDComponent
     }
 
     #onToggleClick() {
-        console.debug('Toggle')
+        if(this.#itemsContainer.classList.contains(Navigation.OPEN_ANIMATION_CLASS_NAME)) {
+            this.#itemsContainer.classList.remove(Navigation.OPEN_ANIMATION_CLASS_NAME)
+            this.#itemsContainer.classList.add(Navigation.CLOSE_ANIMATION_CLASS_NAME)
+        } else {
+            this.#itemsContainer.classList.remove(Navigation.CLOSE_ANIMATION_CLASS_NAME)
+            this.#itemsContainer.classList.add(Navigation.OPEN_ANIMATION_CLASS_NAME)
+        }
+    }
+    
+    #createItemsContainer() {
+        const c = document.createElement('div')
+        c.classList.add(Navigation.CLOSE_ANIMATION_CLASS_NAME)
+        return c
     }
 
     connectedCallback() {
         this.#container.insertBefore(this.#createToggle(), this.#container.firstChild)
+        this.#container.appendChild(this.#itemsContainer)
         this.#onDesktopMatch()
         this.#onMobileMatch()
         window.addEventListener('resize', this.#onDesktopMatch.bind(this))
