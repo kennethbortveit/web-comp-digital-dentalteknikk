@@ -12,6 +12,9 @@ export default class Navigation extends DDComponent
             .navigation-container {
                 flex-direction: column;
             }
+            .nav-toggle {
+                display: block;
+            }
         }
         @media (width > 1200px) {
             .navigation-container {
@@ -21,6 +24,9 @@ export default class Navigation extends DDComponent
                 gap: var(--spacing-medium);
                 height: var(--spacing-large);
                 flex-direction: row;
+            }
+            .nav-toggle {
+                display: none;
             }
         }
         .navigation-container {
