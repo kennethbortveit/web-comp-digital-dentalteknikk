@@ -6,6 +6,10 @@ export default class Navigation extends DDComponent
     static OPEN_ANIMATION_CLASS_NAME = 'nav-items-container-open'
     static CLOSE_ANIMATION_CLASS_NAME = 'nav-items-container-closed'
     static activeSectionClassName = 'active-section'
+    static ACTIVE_SECTION_CLASS_NAME = 'active-section'
+    static NAVIGATION_ITEMS_CLASS_NAME = 'navigation-items-container'
+    static TOGGLE_ACTIVE = 'toggle-active'
+    static TOGGLE_INACTIVE = 'toggle-inactive'
 	static styles = `
         :host {
             margin-bottom: var(--spacing-large);
@@ -50,6 +54,12 @@ export default class Navigation extends DDComponent
                 width: 100%;
                 display: flex;
         }
+        .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_ACTIVE} {
+            display: flex;
+        }
+        .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_INACTIVE} {
+            display: none;
+        }
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
         }
@@ -78,6 +88,7 @@ export default class Navigation extends DDComponent
     #observer;
     #container;
     #itemsContainer;
+    #navItems
     #items;
     #mobileMatcher
     #desktopMatcher
@@ -87,6 +98,8 @@ export default class Navigation extends DDComponent
         this.#observer = new IntersectionObserver(this.observerCallback.bind(this))
         this.#container = this.#createContainer()
         this.#itemsContainer = this.#createItemsContainer()
+        this.#navItems = this.#createNavItemContainer()
+        this.#container.appendChild(this.#navItems)
         this.#items = []
         this.#mobileMatcher = window.matchMedia('(width < 1200px)')
         this.#desktopMatcher = window.matchMedia('(width >= 1200px)')
@@ -97,6 +110,7 @@ export default class Navigation extends DDComponent
         const item = this.#createItem(e.getAttribute('name'), e)
         this.#items.push({element: e, item, visible: false })
         this.#itemsContainer.appendChild(item)
+        this.#navItems.appendChild(item)
     }
     
     observerCallback(entries) {
@@ -122,6 +136,13 @@ export default class Navigation extends DDComponent
         return btn
     }
 
+    #createNavItemContainer() {
+        const div = document.createElement('div')
+        div.classList.add(Navigation.NAVIGATION_ITEMS_CLASS_NAME)
+        div.classList.add(Navigation.TOGGLE_INACTIVE)
+        return div
+    }
+
     #onToggleClick() {
         if(this.#itemsContainer.classList.contains(Navigation.OPEN_ANIMATION_CLASS_NAME)) {
             this.#itemsContainer.classList.remove(Navigation.OPEN_ANIMATION_CLASS_NAME)
@@ -136,6 +157,15 @@ export default class Navigation extends DDComponent
         const c = document.createElement('div')
         c.classList.add(Navigation.CLOSE_ANIMATION_CLASS_NAME)
         return c
+        const itemsContainer = this.#container.querySelector(`.${Navigation.NAVIGATION_ITEMS_CLASS_NAME}`)
+        console.debug('Toggle', itemsContainer)
+        if(itemsContainer.classList.contains(Navigation.TOGGLE_ACTIVE)) {
+            itemsContainer.classList.remove(Navigation.TOGGLE_ACTIVE)
+            itemsContainer.classList.add(Navigation.TOGGLE_INACTIVE)
+        } else {
+            itemsContainer.classList.remove(Navigation.TOGGLE_INACTIVE)
+            itemsContainer.classList.add(Navigation.TOGGLE_ACTIVE)
+        }
     }
 
     connectedCallback() {
