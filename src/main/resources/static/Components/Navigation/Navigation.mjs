@@ -32,6 +32,12 @@ export default class Navigation extends DDComponent
             .nav-toggle {
                 display: block;
             }
+            .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_ACTIVE} {
+                display: flex;
+            }
+            .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_INACTIVE} {
+                display: none;
+            }
         }
         @media (width > 1200px) {
             .navigation-container {
@@ -45,6 +51,9 @@ export default class Navigation extends DDComponent
             .nav-toggle {
                 display: none;
             }
+            .${Navigation.NAVIGATION_ITEMS_CLASS_NAME} {
+                display: flex;
+            }
         }
         .navigation-container {
                 position: fixed;
@@ -53,12 +62,6 @@ export default class Navigation extends DDComponent
                 background-color: var(--white);
                 width: 100%;
                 display: flex;
-        }
-        .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_ACTIVE} {
-            display: flex;
-        }
-        .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_INACTIVE} {
-            display: none;
         }
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
