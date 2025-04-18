@@ -3,7 +3,6 @@ import NavigationItem from '../Navigation/NavigationItem.mjs'
 
 export default class Navigation extends DDComponent
 {
-    static OPEN_ANIMATION_CLASS_NAME = 'nav-items-container-open'
     static CLOSE_ANIMATION_CLASS_NAME = 'nav-items-container-closed'
     static activeSectionClassName = 'active-section'
     static ACTIVE_SECTION_CLASS_NAME = 'active-section'
@@ -22,12 +21,6 @@ export default class Navigation extends DDComponent
         @media (width <= 1200px) {
             .navigation-container {
                 flex-direction: column;
-            }
-            .${Navigation.CLOSE_ANIMATION_CLASS_NAME} {
-                animation: slideUp 1s ease-in-out forwards;
-            }
-            .${Navigation.OPEN_ANIMATION_CLASS_NAME} {
-                animation: slideDown 1s ease-in-out forwards;
             }
             .nav-toggle {
                 display: block;
