@@ -63,26 +63,6 @@ export default class Navigation extends DDComponent
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
         }
-        @keyframes slideDown {
-            0% {
-                opacity: 0;
-                height: 0;
-            }
-            100% {
-                opacity: 1;
-                height: auto;
-            }
-        }
-        @keyframes slideUp {
-            0% {
-                opacity: 1;
-                height: auto;
-            }
-            100% {
-                opacity: 0;
-                height: 0;
-            }
-        }
 	`
 
     #observer;
@@ -144,33 +124,25 @@ export default class Navigation extends DDComponent
     }
 
     #onToggleClick() {
-        if(this.#itemsContainer.classList.contains(Navigation.OPEN_ANIMATION_CLASS_NAME)) {
-            this.#itemsContainer.classList.remove(Navigation.OPEN_ANIMATION_CLASS_NAME)
-            this.#itemsContainer.classList.add(Navigation.CLOSE_ANIMATION_CLASS_NAME)
+        if(this.#itemsContainer.classList.contains(Navigation.TOGGLE_ACTIVE)) {
+            this.#itemsContainer.classList.remove(Navigation.TOGGLE_ACTIVE)
+            this.#itemsContainer.classList.add(Navigation.TOGGLE_INACTIVE)
+            console.debug('Inactive')
         } else {
-            this.#itemsContainer.classList.remove(Navigation.CLOSE_ANIMATION_CLASS_NAME)
-            this.#itemsContainer.classList.add(Navigation.OPEN_ANIMATION_CLASS_NAME)
+            this.#itemsContainer.classList.remove(Navigation.TOGGLE_INACTIVE)
+            this.#itemsContainer.classList.add(Navigation.TOGGLE_ACTIVE)
+            console.debug('Active')
         }
     }
     
     #createItemsContainer() {
         const c = document.createElement('div')
-        c.classList.add(Navigation.CLOSE_ANIMATION_CLASS_NAME)
+        c.classList.add(Navigation.NAVIGATION_ITEMS_CLASS_NAME)
         return c
-        const itemsContainer = this.#container.querySelector(`.${Navigation.NAVIGATION_ITEMS_CLASS_NAME}`)
-        console.debug('Toggle', itemsContainer)
-        if(itemsContainer.classList.contains(Navigation.TOGGLE_ACTIVE)) {
-            itemsContainer.classList.remove(Navigation.TOGGLE_ACTIVE)
-            itemsContainer.classList.add(Navigation.TOGGLE_INACTIVE)
-        } else {
-            itemsContainer.classList.remove(Navigation.TOGGLE_INACTIVE)
-            itemsContainer.classList.add(Navigation.TOGGLE_ACTIVE)
-        }
     }
 
     connectedCallback() {
         this.#container.insertBefore(this.#createToggle(), this.#container.firstChild)
-        this.#container.appendChild(this.#itemsContainer)
         this.#onDesktopMatch()
         this.#onMobileMatch()
         window.addEventListener('resize', this.#onDesktopMatch.bind(this))
