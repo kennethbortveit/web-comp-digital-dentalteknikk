@@ -27,6 +27,7 @@ export default class Navigation extends DDComponent
             }
             .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_ACTIVE} {
                 display: flex;
+                flex-direction: column;
             }
             .${Navigation.NAVIGATION_ITEMS_CLASS_NAME}.${Navigation.TOGGLE_INACTIVE} {
                 display: none;
@@ -73,7 +74,6 @@ export default class Navigation extends DDComponent
         super()
         this.#observer = new IntersectionObserver(this.observerCallback.bind(this))
         this.#container = this.#createContainer()
-        this.#itemsContainer = this.#createItemsContainer()
         this.#navItems = this.#createNavItemContainer()
         this.#container.appendChild(this.#navItems)
         this.#items = []
@@ -85,7 +85,6 @@ export default class Navigation extends DDComponent
         this.#observer.observe(e)
         const item = this.#createItem(e.getAttribute('name'), e)
         this.#items.push({element: e, item, visible: false })
-        this.#itemsContainer.appendChild(item)
         this.#navItems.appendChild(item)
     }
     
@@ -120,13 +119,13 @@ export default class Navigation extends DDComponent
     }
 
     #onToggleClick() {
-        if(this.#itemsContainer.classList.contains(Navigation.TOGGLE_ACTIVE)) {
-            this.#itemsContainer.classList.remove(Navigation.TOGGLE_ACTIVE)
-            this.#itemsContainer.classList.add(Navigation.TOGGLE_INACTIVE)
+        if(this.#navItems.classList.contains(Navigation.TOGGLE_ACTIVE)) {
+            this.#navItems.classList.remove(Navigation.TOGGLE_ACTIVE)
+            this.#navItems.classList.add(Navigation.TOGGLE_INACTIVE)
             console.debug('Inactive')
         } else {
-            this.#itemsContainer.classList.remove(Navigation.TOGGLE_INACTIVE)
-            this.#itemsContainer.classList.add(Navigation.TOGGLE_ACTIVE)
+            this.#navItems.classList.remove(Navigation.TOGGLE_INACTIVE)
+            this.#navItems.classList.add(Navigation.TOGGLE_ACTIVE)
             console.debug('Active')
         }
     }
@@ -134,6 +133,7 @@ export default class Navigation extends DDComponent
     #createItemsContainer() {
         const c = document.createElement('div')
         c.classList.add(Navigation.NAVIGATION_ITEMS_CLASS_NAME)
+        c.classList.add(Navigation.TOGGLE_INACTIVE)
         return c
     }
 
