@@ -3,18 +3,17 @@ import NavigationItem from '../Navigation/NavigationItem.mjs'
 
 export default class Navigation extends DDComponent
 {
-    static CLOSE_ANIMATION_CLASS_NAME = 'nav-items-container-closed'
-    static activeSectionClassName = 'active-section'
     static ACTIVE_SECTION_CLASS_NAME = 'active-section'
     static NAVIGATION_ITEMS_CLASS_NAME = 'navigation-items-container'
     static TOGGLE_ACTIVE = 'toggle-active'
     static TOGGLE_INACTIVE = 'toggle-inactive'
+
 	static styles = `
         :host {
             margin-bottom: var(--spacing-large);
         }
         .nav-toggle {
-            border: 6px solid var(--black);
+            border: 2px solid var(--black);
             width: var(--spacing-large);
             height: var(--spacing-large);
         }
@@ -60,11 +59,13 @@ export default class Navigation extends DDComponent
         .${Navigation.activeSectionClassName} {
             background-color: var(--blue);
         }
+        .toggle-image {
+            width: 100%;
+        }
 	`
 
     #observer;
     #container;
-    #itemsContainer;
     #navItems
     #items;
     #mobileMatcher
@@ -107,7 +108,8 @@ export default class Navigation extends DDComponent
         btn.setAttribute('type', 'button')
         btn.onclick = this.#onToggleClick.bind(this)
         btn.classList.add('nav-toggle')
-        btn.textContent = 'Toggle'
+        const image = this.#createToggleImage()
+        btn.appendChild(image)
         return btn
     }
 
@@ -130,13 +132,6 @@ export default class Navigation extends DDComponent
         }
     }
     
-    #createItemsContainer() {
-        const c = document.createElement('div')
-        c.classList.add(Navigation.NAVIGATION_ITEMS_CLASS_NAME)
-        c.classList.add(Navigation.TOGGLE_INACTIVE)
-        return c
-    }
-
     connectedCallback() {
         this.#container.insertBefore(this.#createToggle(), this.#container.firstChild)
         this.#onDesktopMatch()
@@ -190,6 +185,13 @@ export default class Navigation extends DDComponent
         if(this.#mobileMatcher.matches) {
             console.debug('mobile matches...')
         }
+    }
+
+    #createToggleImage() {
+        const img = document.createElement('img')
+        img.src = './Images/triple-bar.svg'
+        img.classList.add('toggle-image')
+        return img
     }
 }
 
