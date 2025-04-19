@@ -8,81 +8,104 @@ export default class Contact extends DDComponent {
     }
 	
 	static styles = `
-		form {
-			display: grid;
-			gap: var(--spacing-small);
-			grid-template-columns: 1fr 1fr;
-			grid-template-areas:
-				'inquiry-label inquiry-input'
-				'name-label name-input'
-				'phone-label phone-input'
-				'email-label email-input'
-				'reply-type-label reply-type-input'
-				'message-label message-input'
-				'. send-button';
+		@media (width <= 1200px) {
+			form {
+				display: grid;
+				gap: var(--spacing-small);
+				grid-template-columns: 1fr;
+				grid-template-areas:
+					'inquiry-label'
+					'inquiry-input'
+					'name-label'
+					'name-input'
+					'phone-label'
+					'phone-input'
+					'email-label'
+					'email-input'
+					'reply-type-label'
+					'reply-type-input'
+					'message-label'
+					'message-input'
+					'send-button';
+			}
 		}
-		.contact-label {
-			display: flex;
-			justify-content: flex-end;
-			align-items: center;
-		}
-		.inquiry-label {
-			grid-area: inquiry-label;
-			align-items: center;
-		}
-		.inquiry-input {
-			grid-area: inquiry-input;
-			display: flex;
-			gap: var(--spacing-xsmall);
-		}
-		.name-label {
-			grid-area: name-label;
-			align-items: center;
-		}
-		.name-input {
-			grid-area: name-input;
-		}
-		.phone-label {
-			grid-area: phone-label;
-			align-items: center;
-		}
-		.phone-input {
-			grid-area: phone-input;
-		}
-		.contact-send-button {
-			grid-area: send-button;
-		}
-		.email-label {
-			grid-area: email-label;
-			align-items: center;
-		}
-		.email-input {
-			grid-area: email-input;
-		}
-		.reply-type-label {
-			grid-area: reply-type-label;
-			align-items: center;
-		}
-		.reply-type-input {
-			grid-area: reply-type-input;
-			display: flex;
-			gap: var(--spacing-xsmall);
-		}
-		.message-label {
-			grid-area: message-label;
-			align-items: center;
-		}
-		.message-input {
-			grid-area: message-input;
-		}
-		.ddt-text-input {
-			height: var(--spacing-medium);
-			width: var(--spacing-xxlarge);
-		}
-		.ddt-textarea {
-			width: var(--spacing-xxlarge);
-			height: var(--spacing-large);
-			resize: none;
+		@media (width > 1200px) {
+			form {
+				display: grid;
+				gap: var(--spacing-small);
+				grid-template-columns: 1fr 1fr;
+				grid-template-areas:
+					'inquiry-label inquiry-input'
+					'name-label name-input'
+					'phone-label phone-input'
+					'email-label email-input'
+					'reply-type-label reply-type-input'
+					'message-label message-input'
+					'. send-button';
+			}
+			.contact-label {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+			}
+			.inquiry-label {
+				grid-area: inquiry-label;
+				align-items: center;
+			}
+			.inquiry-input {
+				grid-area: inquiry-input;
+				display: flex;
+				gap: var(--spacing-xsmall);
+			}
+			.name-label {
+				grid-area: name-label;
+				align-items: center;
+			}
+			.name-input {
+				grid-area: name-input;
+			}
+			.phone-label {
+				grid-area: phone-label;
+				align-items: center;
+			}
+			.phone-input {
+				grid-area: phone-input;
+			}
+			.contact-send-button {
+				grid-area: send-button;
+			}
+			.email-label {
+				grid-area: email-label;
+				align-items: center;
+			}
+			.email-input {
+				grid-area: email-input;
+			}
+			.reply-type-label {
+				grid-area: reply-type-label;
+				align-items: center;
+			}
+			.reply-type-input {
+				grid-area: reply-type-input;
+				display: flex;
+				gap: var(--spacing-xsmall);
+			}
+			.message-label {
+				grid-area: message-label;
+				align-items: center;
+			}
+			.message-input {
+				grid-area: message-input;
+			}
+			.ddt-text-input {
+				height: var(--spacing-medium);
+				width: var(--spacing-xxlarge);
+			}
+			.ddt-textarea {
+				width: var(--spacing-xxlarge);
+				height: var(--spacing-large);
+				resize: none;
+			}
 		}
 	`
 
