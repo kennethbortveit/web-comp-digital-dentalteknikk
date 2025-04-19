@@ -16,6 +16,8 @@ export default class Navigation extends DDComponent
             border: 2px solid var(--black);
             width: var(--spacing-large);
             height: var(--spacing-large);
+            margin-left: var(--spacing-medium);
+            margin-top: var(--spacing-medium);
         }
         @media (width <= 1200px) {
             .navigation-container {
