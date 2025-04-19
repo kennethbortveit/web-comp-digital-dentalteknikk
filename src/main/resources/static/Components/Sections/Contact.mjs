@@ -8,25 +8,16 @@ export default class Contact extends DDComponent {
     }
 	
 	static styles = `
+		:host {
+			margin: var(--spacing-medium);
+		}
 		@media (width <= 1200px) {
 			form {
-				display: grid;
-				gap: var(--spacing-small);
-				grid-template-columns: 1fr;
-				grid-template-areas:
-					'inquiry-label'
-					'inquiry-input'
-					'name-label'
-					'name-input'
-					'phone-label'
-					'phone-input'
-					'email-label'
-					'email-input'
-					'reply-type-label'
-					'reply-type-input'
-					'message-label'
-					'message-input'
-					'send-button';
+				display: flex;
+				flex-direction: column;
+			}
+			form > *:nth-child(2n) {
+				margin-bottom: var(--spacing-medium);
 			}
 		}
 		@media (width > 1200px) {
