@@ -8,81 +8,126 @@ export default class Contact extends DDComponent {
     }
 	
 	static styles = `
-		form {
-			display: grid;
-			gap: var(--spacing-small);
-			grid-template-columns: 1fr 1fr;
-			grid-template-areas:
-				'inquiry-label inquiry-input'
-				'name-label name-input'
-				'phone-label phone-input'
-				'email-label email-input'
-				'reply-type-label reply-type-input'
-				'message-label message-input'
-				'. send-button';
+		:host {
+			margin: var(--spacing-medium);
 		}
-		.contact-label {
-			display: flex;
-			justify-content: flex-end;
-			align-items: center;
+		@media (width <= 1200px) {
+			form {
+				display: flex;
+				flex-direction: column;
+			}
+			form > *:nth-child(2n) {
+				margin-bottom: var(--spacing-medium);
+			}
+			.inquiry-input {
+				display: flex;
+				gap: var(--spacing-medium);
+			}
+			.reply-type-input {
+				display: flex;
+				gap: var(--spacing-medium);
+			}
+			.ddt-text-input {
+				height: var(--spacing-large);
+				font-size: 36px;
+				width: 512px;
+				border: 2px solid var(--black);
+			}
+			.ddt-textarea {
+				width: 512px;
+				height: var(--spacing-xlarge);
+				border: 2px solid var(--black);
+				font-size: 36px;
+				resize: none;
+			}
+			form input[type="checkbox"] {
+				height: var(--spacing-large);
+				width: var(--spacing-large);
+				border: 2px solid var(--black);
+			}
+			.check-container {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+			}
 		}
-		.inquiry-label {
-			grid-area: inquiry-label;
-			align-items: center;
-		}
-		.inquiry-input {
-			grid-area: inquiry-input;
-			display: flex;
-			gap: var(--spacing-xsmall);
-		}
-		.name-label {
-			grid-area: name-label;
-			align-items: center;
-		}
-		.name-input {
-			grid-area: name-input;
-		}
-		.phone-label {
-			grid-area: phone-label;
-			align-items: center;
-		}
-		.phone-input {
-			grid-area: phone-input;
-		}
-		.contact-send-button {
-			grid-area: send-button;
-		}
-		.email-label {
-			grid-area: email-label;
-			align-items: center;
-		}
-		.email-input {
-			grid-area: email-input;
-		}
-		.reply-type-label {
-			grid-area: reply-type-label;
-			align-items: center;
-		}
-		.reply-type-input {
-			grid-area: reply-type-input;
-			display: flex;
-			gap: var(--spacing-xsmall);
-		}
-		.message-label {
-			grid-area: message-label;
-			align-items: center;
-		}
-		.message-input {
-			grid-area: message-input;
-		}
-		.ddt-text-input {
-			height: var(--spacing-medium);
-			width: var(--spacing-xxlarge);
-		}
-		.ddt-textarea {
-			width: var(--spacing-xxlarge);
-			height: var(--spacing-large);
-			resize: none;
+		@media (width > 1200px) {
+			form {
+				display: grid;
+				gap: var(--spacing-small);
+				grid-template-columns: 1fr 1fr;
+				grid-template-areas:
+					'inquiry-label inquiry-input'
+					'name-label name-input'
+					'phone-label phone-input'
+					'email-label email-input'
+					'reply-type-label reply-type-input'
+					'message-label message-input'
+					'. send-button';
+			}
+			.contact-label {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+			}
+			.inquiry-label {
+				grid-area: inquiry-label;
+				align-items: center;
+			}
+			.inquiry-input {
+				grid-area: inquiry-input;
+				display: flex;
+				gap: var(--spacing-xsmall);
+			}
+			.name-label {
+				grid-area: name-label;
+				align-items: center;
+			}
+			.name-input {
+				grid-area: name-input;
+			}
+			.phone-label {
+				grid-area: phone-label;
+				align-items: center;
+			}
+			.phone-input {
+				grid-area: phone-input;
+			}
+			.contact-send-button {
+				grid-area: send-button;
+			}
+			.email-label {
+				grid-area: email-label;
+				align-items: center;
+			}
+			.email-input {
+				grid-area: email-input;
+			}
+			.reply-type-label {
+				grid-area: reply-type-label;
+				align-items: center;
+			}
+			.reply-type-input {
+				grid-area: reply-type-input;
+				display: flex;
+				gap: var(--spacing-xsmall);
+			}
+			.message-label {
+				grid-area: message-label;
+				align-items: center;
+			}
+			.message-input {
+				grid-area: message-input;
+			}
+			.ddt-text-input {
+				height: var(--spacing-medium);
+				width: var(--spacing-xxlarge);
+			}
+			.ddt-textarea {
+				width: var(--spacing-xxlarge);
+				height: var(--spacing-large);
+				resize: none;
+			}
 		}
 	`
 
@@ -119,20 +164,25 @@ export default class Contact extends DDComponent {
 		l.classList.add('contact-label')
 		return l
 	}
+	#createCheckContainer() {
+		const c = document.createElement('div')
+		c.classList.add('check-container')
+		return c
+	}
 	#createInquiryInput() {
 		const c = document.createElement('div')
 		c.classList.add('inquiry-input')
-		const orderContainer = document.createElement('div')
+		const orderContainer = this.#createCheckContainer()
 		const order = this.#createCheckInput('contact-inquiry-order', 'inquiryOrder')
 		const orderLabel = this.#createLabel('Bestilling', 'contact-inquiry-order')
 		orderContainer.appendChild(order)
 		orderContainer.appendChild(orderLabel)
-		const priceContainer = document.createElement('div')
+		const priceContainer = this.#createCheckContainer()
 		const price = this.#createCheckInput('contact-inquiry-price', 'inquiryPrice')
 		const priceLabel = this.#createLabel('Pristilbud', 'contact-inquiry-price')
 		priceContainer.appendChild(price)
 		priceContainer.appendChild(priceLabel)
-		const otherContainer = document.createElement('div')
+		const otherContainer = this.#createCheckContainer()
 		const other = this.#createCheckInput('contact-inquiry-other', 'inquiryOther')
 		const otherLabel = this.#createLabel('Annet', 'contact-inquiry-other')	
 		otherContainer.appendChild(other)
@@ -190,12 +240,12 @@ export default class Contact extends DDComponent {
 	#createReplyTypeInput() {
 		const c = document.createElement('div')
 		c.classList.add('reply-type-input')
-		const emailContainer = document.createElement('div')
+		const emailContainer = this.#createCheckContainer()
 		const email = this.#createCheckInput('contact-reply-type-email', 'replyTypeEmail')
 		const emailLabel = this.#createLabel('Epost', 'contact-reply-type-email')
 		emailContainer.appendChild(email)
 		emailContainer.appendChild(emailLabel)
-		const phoneContainer = document.createElement('div')
+		const phoneContainer = this.#createCheckContainer()
 		const phone = this.#createCheckInput('contact-reply-type-phone', 'replyTypePhone')
 		const phoneLabel = this.#createLabel('Telefon', 'contact-reply-type-phone')
 		phoneContainer.appendChild(phone)
@@ -246,7 +296,11 @@ export default class Contact extends DDComponent {
 		return i
 	}
     #createSendButton() {
-        const button = new Button()
+        const button = new Button.Builder()
+			.setFontSize('24px')
+			.setWidth('256px')
+			.setHeight('128px')
+			.build()
 		button.setAttribute('type', 'button')
 		button.classList.add('contact-send-button')
         button.innerText = 'Send'
