@@ -19,6 +19,27 @@ export default class Contact extends DDComponent {
 			form > *:nth-child(2n) {
 				margin-bottom: var(--spacing-medium);
 			}
+			.inquiry-input {
+				display: flex;
+			}
+			.reply-type-input {
+				display: flex;
+			}
+			.ddt-text-input {
+				height: var(--spacing-large);
+				font-size: 36px;
+				width: 512px;
+				border: 2px solid var(--black);
+			}
+			.ddt-textarea {
+				width: 512px;
+				height: var(--spacing-xlarge);
+				border: 2px solid var(--black);
+				font-size: 36px;
+				resize: none;
+			}
+			
+
 		}
 		@media (width > 1200px) {
 			form {
