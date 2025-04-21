@@ -21,9 +21,11 @@ export default class Contact extends DDComponent {
 			}
 			.inquiry-input {
 				display: flex;
+				gap: var(--spacing-medium);
 			}
 			.reply-type-input {
 				display: flex;
+				gap: var(--spacing-medium);
 			}
 			.ddt-text-input {
 				height: var(--spacing-large);
@@ -38,8 +40,16 @@ export default class Contact extends DDComponent {
 				font-size: 36px;
 				resize: none;
 			}
-			
-
+			form input[type="checkbox"] {
+				height: var(--spacing-large);
+				width: var(--spacing-large);
+				border: 2px solid var(--black);
+			}
+			.check-container {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+			}
 		}
 		@media (width > 1200px) {
 			form {
@@ -154,20 +164,25 @@ export default class Contact extends DDComponent {
 		l.classList.add('contact-label')
 		return l
 	}
+	#createCheckContainer() {
+		const c = document.createElement('div')
+		c.classList.add('check-container')
+		return c
+	}
 	#createInquiryInput() {
 		const c = document.createElement('div')
 		c.classList.add('inquiry-input')
-		const orderContainer = document.createElement('div')
+		const orderContainer = this.#createCheckContainer()
 		const order = this.#createCheckInput('contact-inquiry-order', 'inquiryOrder')
 		const orderLabel = this.#createLabel('Bestilling', 'contact-inquiry-order')
 		orderContainer.appendChild(order)
 		orderContainer.appendChild(orderLabel)
-		const priceContainer = document.createElement('div')
+		const priceContainer = this.#createCheckContainer()
 		const price = this.#createCheckInput('contact-inquiry-price', 'inquiryPrice')
 		const priceLabel = this.#createLabel('Pristilbud', 'contact-inquiry-price')
 		priceContainer.appendChild(price)
 		priceContainer.appendChild(priceLabel)
-		const otherContainer = document.createElement('div')
+		const otherContainer = this.#createCheckContainer()
 		const other = this.#createCheckInput('contact-inquiry-other', 'inquiryOther')
 		const otherLabel = this.#createLabel('Annet', 'contact-inquiry-other')	
 		otherContainer.appendChild(other)
@@ -225,12 +240,12 @@ export default class Contact extends DDComponent {
 	#createReplyTypeInput() {
 		const c = document.createElement('div')
 		c.classList.add('reply-type-input')
-		const emailContainer = document.createElement('div')
+		const emailContainer = this.#createCheckContainer()
 		const email = this.#createCheckInput('contact-reply-type-email', 'replyTypeEmail')
 		const emailLabel = this.#createLabel('Epost', 'contact-reply-type-email')
 		emailContainer.appendChild(email)
 		emailContainer.appendChild(emailLabel)
-		const phoneContainer = document.createElement('div')
+		const phoneContainer = this.#createCheckContainer()
 		const phone = this.#createCheckInput('contact-reply-type-phone', 'replyTypePhone')
 		const phoneLabel = this.#createLabel('Telefon', 'contact-reply-type-phone')
 		phoneContainer.appendChild(phone)
