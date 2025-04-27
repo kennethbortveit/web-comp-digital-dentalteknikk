@@ -12,8 +12,6 @@
 		--extra-line-height: 2;
 		--extra-line-height: 2;
 		--font-size-footer-title: 19px;
-		--font-size-footer-title: 19px;
-		--font-size-list: 20px;
 		--font-size-list: 20px;
 		--footer-custom-spacing: 75px;
 		--footer-custom-spacing: 75px;
@@ -35,7 +33,7 @@
 @media (width < 1200px) {
 	:root {
 		--extra-line-height: 2;
-		--font-size-footer-title: 19px;
+		--font-size-footer-title: 40px;
 		--font-size-list: 40px;
 		--footer-custom-spacing: 75px;
 		--footer-custom-spacing: 75px;
