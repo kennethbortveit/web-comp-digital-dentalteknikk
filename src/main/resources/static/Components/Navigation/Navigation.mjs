@@ -126,20 +126,14 @@ export default class Navigation extends DDComponent
         if(this.#navItems.classList.contains(Navigation.TOGGLE_ACTIVE)) {
             this.#navItems.classList.remove(Navigation.TOGGLE_ACTIVE)
             this.#navItems.classList.add(Navigation.TOGGLE_INACTIVE)
-            console.debug('Inactive')
         } else {
             this.#navItems.classList.remove(Navigation.TOGGLE_INACTIVE)
             this.#navItems.classList.add(Navigation.TOGGLE_ACTIVE)
-            console.debug('Active')
         }
     }
     
     connectedCallback() {
         this.#container.insertBefore(this.#createToggle(), this.#container.firstChild)
-        this.#onDesktopMatch()
-        this.#onMobileMatch()
-        window.addEventListener('resize', this.#onDesktopMatch.bind(this))
-        window.addEventListener('resize', this.#onMobileMatch.bind(this))
 		this.applyStyles(Navigation.styles)
         window.addEventListener('scroll', () => {
             this.#items.forEach(i => {
@@ -157,11 +151,6 @@ export default class Navigation extends DDComponent
         this.shadowRoot.appendChild(this.#container)
     }
 
-    disconnectedCallback() {
-        this.removeEventListener('change', this.#onDesktopMatch)
-        this.removeEventListener('change', this.#onMobileMatch)
-    }
-
     #createContainer() {
         const div = document.createElement('div')
         div.setAttribute('class', 'navigation-container')
@@ -173,20 +162,6 @@ export default class Navigation extends DDComponent
         i.setAttribute('label', item)
         i.element = el
         return i
-    }
-
-    #onDesktopMatch() {
-        console.debug(this.#desktopMatcher)
-        if(this.#desktopMatcher.matches) {
-            console.debug('desktop matches...')
-        }    
-    }
-
-    #onMobileMatch() {
-        console.debug(this.#mobileMatcher)
-        if(this.#mobileMatcher.matches) {
-            console.debug('mobile matches...')
-        }
     }
 
     #createToggleImage() {
