@@ -19,11 +19,17 @@ export default class Footer extends DDComponent {
             .footer-container {
                 flex-direction: column;
             }
+            .footer-info-value-cell-facebook > img {
+                width: 80px;
+            }   
         }
         @media (1200px <= width) {
             .footer-container {
                 flex-direction: row;
             }
+            .footer-info-value-cell-facebook > img {
+                width: 40px;
+            }   
         }
         .footer-info {
             flex-basis: 0;
@@ -47,9 +53,6 @@ export default class Footer extends DDComponent {
             color: var(--white);
             padding-left: var(--footer-custom-spacing);
         }
-        .footer-info-value-cell-facebook > img {
-            width: 40px;
-        }   
         tr.footer-info-block-space > th, tr.footer-info-block-space > td {
             padding-bottom: var(--spacing-medium);
         }
