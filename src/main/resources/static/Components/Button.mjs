@@ -9,7 +9,6 @@ export default class Button extends DDComponent {
 		button {
 			background-color: var(--blue);
 			border: 0px solid var(--black);
-			padding: var(--spacing-small);
 			cursor: pointer;
 			color: var(--white);
 			min-width: var(--spacing-xlarge);
@@ -18,6 +17,7 @@ export default class Button extends DDComponent {
 		}
 		@media (width < 1200px) {
 			button {
+				padding: var(--spacing-small);
 				width: var(--spacing-xxlarge);
 				height: var(--spacing-xlarge);
 				font-size: 32px;
@@ -27,7 +27,7 @@ export default class Button extends DDComponent {
 		@media (width >= 1200px) {
 			button {
 				width: var(--spacing-xlarge);
-				height: var(--spacing-large);
+				height: 48px;
 			}
 		}
 	`
@@ -43,8 +43,9 @@ export default class Button extends DDComponent {
 	
 	connectedCallback() {
 		this.applyStyles(Button.styles)
-		const txt = this.textContent
-		this.#btn.appendChild(document.createTextNode(txt))
+		const textSlot = document.createElement('slot')
+		textSlot.setAttribute('name', 'text')
+		this.#btn.appendChild(textSlot)
 		this.shadowRoot.appendChild(this.#btn)
 	}
 

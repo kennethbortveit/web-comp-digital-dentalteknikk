@@ -299,7 +299,10 @@ export default class Contact extends DDComponent {
         const button = new Button()
 		button.setAttribute('type', 'button')
 		button.classList.add('contact-send-button')
-        button.innerText = 'Send'
+		const txtSpan = document.createElement('span')
+		txtSpan.setAttribute('slot', 'text')
+		txtSpan.innerText = 'Send something'
+		button.appendChild(txtSpan)
 		button.onclick = e => {
 			this.dispatchEvent(new CustomEvent(
 				PendingOperation.ENABLE_REQUESTED_EVENT_ID,
