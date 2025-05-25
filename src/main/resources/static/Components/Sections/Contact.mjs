@@ -301,7 +301,7 @@ export default class Contact extends DDComponent {
 		button.classList.add('contact-send-button')
 		const txtSpan = document.createElement('span')
 		txtSpan.setAttribute('slot', 'text')
-		txtSpan.innerText = 'Send something'
+		txtSpan.innerText = 'Send'
 		button.appendChild(txtSpan)
 		button.onclick = e => {
 			this.dispatchEvent(new CustomEvent(
