@@ -1,8 +1,10 @@
 package no.bortveits.ddt.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import no.bortveits.ddt.client.EmailClient;
 import no.bortveits.ddt.model.ContactForm;
 import no.bortveits.ddt.model.orm.ContactRequest;
 import no.bortveits.ddt.repository.ContactRequestRepository;
@@ -10,11 +12,14 @@ import no.bortveits.ddt.repository.ContactRequestRepository;
 @Service
 public class ContactServiceImpl implements ContactService {
     private final ContactRequestRepository contactRequestRepository;
+    private final EmailClient emailClient;
 
     public ContactServiceImpl(
-        @Autowired ContactRequestRepository contactRequestRepository
+        @Autowired ContactRequestRepository contactRequestRepository,
+        @Autowired EmailClient emailClient
     ) {
         this.contactRequestRepository = contactRequestRepository;
+        this.emailClient = emailClient;
     }
 
     @Override
@@ -52,7 +57,9 @@ public class ContactServiceImpl implements ContactService {
         e.setInquiry_other(form.isInquiryOther());
         e.setReply_type_email(form.isReplyTypeEmail());
         e.setReply_type_phone(form.isReplyTypePhone());
-        return this.contactRequestRepository.save(e).getId();
+        Long id = this.contactRequestRepository.save(e).getId();
+        this.emailClient.sendEmail("webmail@digitaldentalteknikk.no", "Kontaktskjema", "Mottatt melding.");
+        return id;
     }
 
     @Override

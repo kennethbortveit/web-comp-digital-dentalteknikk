@@ -1,14 +1,19 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
   "version": "0.2.0",
   "configurations": [
-      {
-        "name": "Attach to ddt-web",
-        "type": "java",
-        "request": "attach",
-        "hostName": "localhost",
-        "port": 5005
-      }
+    {
+      "type": "java",
+      "name": "DdtWebApplication",
+      "request": "launch",
+      "mainClass": "no.bortveits.ddt.DdtWebApplication",
+      "projectName": "demo",
+    },
+    {
+      "name": "Attach to ddt-web",
+      "type": "java",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005
+    }
   ]
 }
