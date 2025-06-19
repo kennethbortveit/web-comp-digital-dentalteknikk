@@ -15,6 +15,8 @@ ENTRYPOINT [ \
     -DPOSTGRES_PASSWORD=$POSTGRES_PASSWORD \
     -DRECAPTCHA_SECRET=$RECAPTCHA_SECRET \
     -Dspring.profiles.active=prod \
+    -Dspring.mail.username=$MAIL_USERNAME \
+    -Dspring.mail.password=$MAIL_PASSWORD \
     -jar \
     ./demo-0.0.1-SNAPSHOT.jar" ]
 
