@@ -7,6 +7,11 @@ export default class Section extends DDComponent {
             scroll-margin-top: var(--spacing-large);
             margin-top: var(--spacing-large);
         }
+        @media (1200px > width) {
+            :host {
+                scroll-margin-top: 128px;
+            }
+        }
     `
     constructor() {
         super()

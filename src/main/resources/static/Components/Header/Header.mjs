@@ -17,6 +17,11 @@ export default class Header extends DDComponent {
 			padding-left: var(--spacing-medium);
 			padding-right: var(--spacing-medium);
 		}
+		@media (width < 1200px) {
+			:host {
+				margin-top: 128px;
+			}
+		}
 		.ddt-logo {
 			width: 100%;
 		}

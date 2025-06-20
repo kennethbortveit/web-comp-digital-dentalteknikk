@@ -10,6 +10,7 @@ h2 {
 
 @media (width < 1200px) {
 	h2 {
+		margin-bottom: 0px;
 		font-size: var(--spacing-large);
 	}
 }

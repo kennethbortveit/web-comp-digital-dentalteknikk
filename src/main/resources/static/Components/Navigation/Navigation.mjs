@@ -13,11 +13,12 @@ export default class Navigation extends DDComponent
             margin-bottom: var(--spacing-large);
         }
         .nav-toggle {
-            border: 2px solid var(--black);
+            border: 1px solid var(--black);
             width: var(--spacing-large);
             height: var(--spacing-large);
             margin-left: var(--spacing-medium);
             margin-top: var(--spacing-medium);
+            margin-bottom: var(--spacing-medium);
         }
         @media (width <= 1200px) {
             .navigation-container {
@@ -70,8 +71,6 @@ export default class Navigation extends DDComponent
     #container;
     #navItems
     #items;
-    #mobileMatcher
-    #desktopMatcher
 
     constructor() {
         super()
@@ -80,8 +79,6 @@ export default class Navigation extends DDComponent
         this.#navItems = this.#createNavItemContainer()
         this.#container.appendChild(this.#navItems)
         this.#items = []
-        this.#mobileMatcher = window.matchMedia('(width < 1200px)')
-        this.#desktopMatcher = window.matchMedia('(width >= 1200px)')
     }
 
     addObservedEntry(e) {
