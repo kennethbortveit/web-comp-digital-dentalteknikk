@@ -19,6 +19,11 @@ export default class Map extends DDComponent {
             width: 100%;
             overflow: hidden;
         }
+        @media (width < 1200px) {
+            #dd-map {
+                height: 600px;
+            }
+        }
     `
     
     constructor() {
