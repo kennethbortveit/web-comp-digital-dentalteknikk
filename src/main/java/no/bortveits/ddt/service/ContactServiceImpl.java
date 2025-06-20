@@ -57,8 +57,46 @@ public class ContactServiceImpl implements ContactService {
         e.setReply_type_email(form.isReplyTypeEmail());
         e.setReply_type_phone(form.isReplyTypePhone());
         Long id = this.contactRequestRepository.save(e).getId();
-        this.emailClient.sendEmail("webmail@digitaldentalteknikk.no", "Kontaktskjema", "Mottatt melding.");
+        this.emailClient.sendEmail(
+            "webmail@digitaldentalteknikk.no", 
+            "Kontaktskjema", 
+            this.createMessage(e)
+            );
         return id;
+    }
+
+    private String createMessage(ContactRequest request) {
+        final String yesText = "Ja";
+        final String noText = "Nei";
+        return """
+        Det er kommet et kontaktskjema fra %s.
+
+        Telefonnummer: %s
+        Epost: %s
+
+        Henvendelsen gjelder:
+            Bestilling: %s
+            Pristilbud: %s
+            Annet: %s
+        
+        Melding: %s
+
+        Personen ønsker å bli kontaktet på:
+            Telefon: %s
+            Epost: %s
+        
+        Denne meldingngen er automatisk generert.
+        """.formatted(
+            request.getName(), 
+            request.getPhone(), 
+            request.getEmail(),
+            request.isInquiry_order() ? yesText : noText,
+            request.isInquiry_price() ? yesText : noText,
+            request.isInquiry_other() ? yesText : noText,
+            request.getMessage(),
+            request.isReply_type_phone() ? yesText : noText,
+            request.isReply_type_email() ? yesText : noText
+            );
     }
 
     @Override
